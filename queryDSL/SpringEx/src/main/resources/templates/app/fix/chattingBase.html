@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅창</title>
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+</head>
+<body>
+<div th:fragment="chattingSpace">
+    <div class="chattingWrap2">
+        <div class="chattingToggle active callChatNormal">
+
+        </div>
+    </div>
+
+    <div class="chattingWrap " id="chattingList">
+        <div class="chattingContentWrap ">
+            <div class="chattingHeader">
+                <div class="left"><p>대화 목록</p></div>
+                <div class="right"></div>
+                <div class="foldChatBtn"></div>
+            </div>
+            <div class="chattingSection">
+                <div class="list left">
+                    <p class="emptyList"><span>현재 진행중인 대화가 없습니다.</span><span>오픈 챗에 참여해보세요</span>
+                        <button class="btn redBtn">참여하기</button>
+                    </p>
+                </div>
+                <div class="chattingRoom right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/fix/chatting.js"></script>
+</html>

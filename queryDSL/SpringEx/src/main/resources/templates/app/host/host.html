@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>나의 바다 - 모임등록</title>
+	<link rel="stylesheet" href="/css/host/host.css">
+	<link rel="stylesheet" href="/css/fix/header.css">
+	<link rel="stylesheet" href="/css/fix/footer.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+</head>
+<body class="g-sidenav-pinned g-sidenav-show">
+<div th:if="${session.userId}">
+	<header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+	<header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<div id="app">
+	<div class="main-content mb-9">
+		<div>
+			<div class="content" style="transform-origin: center top;">
+				<!--수정으로 들어왔을때는 "모임 수정" 으로 텍스트 수정-->
+				<div th:if="${groupDTO.groupId}" class="bg-white wg-100 p-3 font-weight-bold"> 모임 수정 </div>
+				<div th:unless="${groupDTO.groupId}" class="bg-white wg-100 p-3 font-weight-bold"> 모임 등록 </div>
+				<div data-v-59b7de29 class="m-3" style="">
+					<div data-v-59b7de29 class="row">
+						<div data-v-59b7de29 class="col-lg-8">
+							<!--수정으로 들어왔을때 상태 표시 항목-->
+							<div data-v-2ba7cd5f="" data-v-59b7de29="" class="card shadow-0">
+								<div data-v-2ba7cd5f="" class="card-header border-bottom-0">
+									<span th:if="${groupDTO.groupId}" data-v-2ba7cd5f="" class="" style="font-weight: 700;"> 모임 수정 </span>
+									<span th:unless="${groupDTO.groupId}" data-v-2ba7cd5f="" class="" style="font-weight: 700;"> 모임 등록 </span>
+								</div>
+								<div data-v-2ba7cd5f="" class="">
+									<div data-v-59b7de29="" class="my-3">
+										<div data-v-59b7de29="" class="px-3">
+											<div class="row my-2">
+												<div class="col-lg-2">
+													<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+														<!----> 모임 <!---->
+													</div>
+												</div>
+												<div id="groupHeader" class="col-lg-10">
+													<div>
+														<div data-v-59b7de29="" class="row">
+															<div data-v-59b7de29="" class="col">
+																<fieldset data-v-59b7de29="" class="form-group" id="__BVID__579">
+																	<div>
+																		<label class="form-control-label">ID</label>
+																		<div th:if="${groupDTO.groupId}" th:text="${groupDTO.groupId}" class="text-sm"></div>
+																		<div th:unless="${groupDTO.groupId}" class="text-sm">신규등록</div>
+																	</div>
+																</fieldset>
+															</div>
+															<div data-v-59b7de29="" class="col"><fieldset data-v-59b7de29="" class="form-group" id="__BVID__581">
+																<div>
+																	<label class="form-control-label">상태</label>
+																	<div class="text-sm">
+																		<div data-v-59b7de29="" class="text-frip-primary font-weight-bold"> 등록중 </div>
+																	</div>
+																</div>
+															</fieldset>
+															</div>
+															<div data-v-59b7de29="" class="col">
+																<fieldset data-v-59b7de29="" class="form-group" id="__BVID__583">
+																	<div>
+																		<label class="form-control-label">검수상태</label>
+																		<div th:if="${groupDTO}" class="text-sm">
+																			<div th:if="${#strings.equals(groupDTO.groupStatus, '승인대기')}" data-v-59b7de29="" class="text-muted font-weight-bold"> 검수 진행중 </div>
+																			<div th:unless="${#strings.equals(groupDTO.groupStatus, '승인대기')}" data-v-59b7de29="" class="text-muted font-weight-bold"> 검수 미신청 </div>
+																		</div>
+																		<div th:unless="${groupDTO}" class="text-sm">
+																			<div data-v-59b7de29="" class="text-muted font-weight-bold"> 검수 미신청 </div>
+																		</div>
+																	</div>
+																</fieldset>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-v-2ba7cd5f data-v-59b7de29 class="card shadow-0">
+								<div data-v-2ba7cd5f class="card-header border-bottom-0">
+									<span data-v-2ba7cd5f class="" style="font-weight: 700;"> 모임 등록 </span>
+								</div>
+								<div data-v-2ba7cd5f class="">
+									<div data-v-59b7de29 class="tabs" id="__BVID__561">
+										<div class="border-bottom">
+											<ul role="tablist" class="nav nav-fill"
+												id="__BVID__561__BV_tab_controls_">
+												<li role="presentation" class="nav-item">
+													<a role="tab" aria-selected="true" aria-setsize="5"aria-posinset="1" href="#" target="_self"class="nav-link active active-tab"id="__BVID__562___BV_tab_button__"aria-controls="__BVID__562">
+														<div data-v-59b7de29="" class="py-2 px-0 container info">
+															<span data-v-59b7de29="">기본 정보</span>
+														</div>
+													</a>
+												</li>
+												<li role="presentation" class="nav-item">
+													<a role="tab" tabindex="-1" aria-selected="false"aria-setsize="5" aria-posinset="3" href="#" target="_self"class="nav-link" id="__BVID__696___BV_tab_button__"aria-controls="__BVID__696">
+														<div data-v-59b7de29="" class="py-2 px-0 container ex">
+															<span data-v-59b7de29="">상세 정보</span>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="tab-content" id="__BVID__561__BV_tab_container_">
+											<div data-v-59b7de29="" role="tabpanel" aria-hidden="false"class="active" id="__BVID__562"aria-labelledby="__BVID__562___BV_tab_button__" style="">
+												<div data-v-217c2c81="" data-v-59b7de29="" class="pt-5">
+													<!-- 모임 설명 선택 시 -->
+													<div class="px-4 py-2 explain" style="display: none">
+														<h2>모임 설명</h2>
+													</div>
+													<div class="explain">
+														<div class="px-3">
+															<div class="row my-2">
+																<div class="col-lg-2">
+																	<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+																		<!----> 대표 이미지 <!---->
+																	</div>
+																</div>
+																<div class="col-lg-10">
+																	<div>
+																		<div>
+																			<div class="row">
+																				<div class="col-md-6 col-lg-4">
+																					<div data-v-2ba7cd5f="" data-v-292c0328="" class="card shadow-0">
+																						<div data-v-2ba7cd5f="" class="" >
+																							<div data-v-292c0328="" class="container imgInputBox">
+																								<div data-v-292c0328="" style="display: none" class="image-header">
+																									<button data-v-292c0328="" class="removeImg">
+																										<img data-v-292c0328="" src="https://frip.host/img/delete-white.d7c8ddda.svg" width="24" height="24">
+																									</button>
+																								</div>
+																								<div data-v-292c0328="" class="img-text container"  onclick="$('.plusThumb').click()">
+																									<div data-v-292c0328="">
+																										<div data-v-292c0328="" class="text-center container thumbnailPlus">
+																											<img data-v-292c0328="" src="https://frip.host/img/add.85e31315.svg" width="48" height="48">
+																											<div data-v-292c0328="">이미지 추가하기</div>
+																										</div>
+																									</div>
+																								</div>
+																								<input class="plusThumb" name="plusThumb" data-v-292c0328="" type="file" accept="image/*">
+																								<img data-v-292c0328="" src="" class="img-box">
+																							</div>
+																							<div data-v-292c0328="" class="container thumbMsg" style="color: red;">
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="text-frip-danger text-sm mb-3"> 텍스트를 사용한 대표 이미지는 노출이 불가합니다. 우측 가이드를 반드시 준수하시어 대표 이미지를 등록해주세요. </div>
+																		<div class="text-frip-primary text-sm"> 권장 사이즈: 가로 1000px * 세로 1000px </div>
+																		<div class="text-frip-primary text-sm"> 최소 사이즈: 가로 600px * 세로 600px </div>
+																		<div class="text-frip-primary text-sm"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<hr>
+														<div class="p-4">
+															<label for="editor">모임 상세 설명</label>
+															<div id="summernote"></div>
+														</div>
+														<!-- 일정 선택 -->
+														<div class="calendarWrap" id="calendarWrap">
+															<hr>
+															<div class="px-4 py-2">
+																<h2>일정 설정</h2>
+															</div>
+															<div data-v-2c2bef28="" class="description px-4">
+																[일정 추가] 버튼을 클릭하거나, 달력의 날짜를 클릭하여 일정을 등록할 수 있어요.
+																<p class="alertMsg" style="display:none;"></p>
+															</div>
+															<div data-v-1e397a0c="" class="m-3">
+																<div data-v-1e397a0c="" class="mb-3">
+																	<div data-v-1e397a0c="" class="my-3">
+																		<div data-v-1e397a0c="" class="row">
+																			<div data-v-1e397a0c="" class="col"></div>
+																			<div data-v-1e397a0c="" class="col">
+																				<button data-v-1e397a0c="" type="button" class="prevDay btn frip-button btn-outline-frip-default btn-sm">
+																					<!---->
+																					<img data-v-1e397a0c="" src="https://frip.host/img/left-arrow.04832fdb.svg" width="24" height="24">
+																				</button>
+																				<h2 data-v-1e397a0c="" class="mx-3 dateTitle" style="display: inline;"> 2022년 11월 </h2>
+																				<button data-v-1e397a0c="" type="button" class="nextDay btn frip-button btn-outline-frip-default btn-sm">
+																					<!---->
+																					<img data-v-1e397a0c="" src="https://frip.host/img/right-arrow.10fee101.svg" width="24" height="24">
+																				</button>
+																			</div>
+																			<div data-v-1e397a0c="" class="col">
+																				<div data-v-1e397a0c="" class="text-right mx-3">
+																					<button data-v-1e397a0c="" onclick="addSchedule();" type="button" class="btn frip-button btn-outline-frip-primary" style="display:none;">
+																						<!---->
+																						일정 추가
+																					</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<table data-v-1e397a0c="" border="" class="table">
+																		<thead data-v-1e397a0c="">
+																		<tr data-v-1e397a0c="" class="text-center">
+																			<th data-v-1e397a0c="">일</th>
+																			<th data-v-1e397a0c="">월</th>
+																			<th data-v-1e397a0c="">화</th>
+																			<th data-v-1e397a0c="">수</th>
+																			<th data-v-1e397a0c="">목</th>
+																			<th data-v-1e397a0c="">금</th>
+																			<th data-v-1e397a0c="">토</th>
+																		</tr>
+																		</thead>
+																		<tbody data-v-1e397a0c="" class="calendar">
+																		<tr data-v-1e397a0c="" class="week">
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="text-gray float-right">
+																							<!----> 30일
+																						</div>
+																						<!--after-->
+																					</div>
+																					<div data-v-3655f65c="" class="px-2">
+																						<div data-v-3655f65c="" class="bg-frip-primary-50 text-frip-primary rounded p-1 my-2 wg-100" style="cursor: pointer;">
+																							<div class="clearfix">
+																								<div class="float-left">18:48</div>
+																								<div class="float-right">  </div>
+																								<!--after-->
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</td>
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="text-gray float-right">
+																							<!----> 31일
+																						</div>
+																					</div>
+																					<div data-v-3655f65c="" class="px-2"></div>
+																				</div>
+																			</td>
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="float-right">
+																							<!----> 1일
+																						</div>
+																					</div>
+																					<div data-v-3655f65c="" class="px-2"></div>
+																				</div>
+																			</td>
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="float-right">
+																							<!----> 2일
+																						</div>
+																					</div>
+																					<div data-v-3655f65c="" class="px-2"></div>
+																				</div>
+																			</td>
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="float-right"><!----> 3일 </div>
+																					</div>
+																					<div data-v-3655f65c="" class="px-2"></div>
+																				</div>
+																			</td>
+																			<td data-v-1e397a0c="">
+																				<div data-v-3655f65c="" data-v-1e397a0c="" class="day">
+																					<div data-v-3655f65c="" class="clearfix px-2 pt-2">
+																						<div data-v-3655f65c="" class="float-left">
+																							<div data-v-3655f65c="" class="day-btn">+</div>
+																						</div>
+																						<div data-v-3655f65c="" class="float-right"><!----> 4일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-frip-primary float-right"><!----> 5일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td></tr><tr data-v-1e397a0c=""><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-danger float-right"><!----> 6일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 7일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 8일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 9일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 10일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 11일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-frip-primary float-right"><!----> 12일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td></tr><tr data-v-1e397a0c=""><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-danger float-right"><!----> 13일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day today"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><span data-v-3655f65c="">오늘</span> 14일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 15일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 16일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 17일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 18일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-frip-primary float-right"><!----> 19일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td></tr><tr data-v-1e397a0c=""><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-danger float-right"><!----> 20일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 21일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 22일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 23일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 24일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 25일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-frip-primary float-right"><!----> 26일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td></tr><tr data-v-1e397a0c=""><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-danger float-right"><!----> 27일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 28일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 29일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="float-right"><!----> 30일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-gray float-right"><!----> 1일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-gray float-right"><!----> 2일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td><td data-v-1e397a0c=""><div data-v-3655f65c="" data-v-1e397a0c="" class="day"><div data-v-3655f65c="" class="clearfix px-2 pt-2"><div data-v-3655f65c="" class="float-left"><div data-v-3655f65c="" class="day-btn">+</div></div><div data-v-3655f65c="" class="text-gray float-right"><!----> 3일 </div></div><div data-v-3655f65c="" class="px-2"></div></div></td></tr></tbody></table></div><!----><!----><!----></div></div>
+
+													</div>
+													<!-- 기본정보 선택 시 -->
+													<div data-v-217c2c81="" class="px-4 py-2 basic-info">
+														<h2>기본정보</h2>
+													</div>
+													<span data-v-217c2c81="" class="basic-info">
+															<form id="groupForm" name="groupForm" method="post" th:action="@{/host/index}" data-v-217c2c81="" th:object="${groupDTO}">
+																<div data-v-217c2c81="" class="px-3">
+																	<div class="row my-2">
+																		<div class="col-lg-2">
+																			<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+																				<span class="text-danger position-absolute ml--2">*</span>
+																				모임 유형
+																			</div>
+																		</div>
+																		<div class="col-lg-10">
+																			<div>
+																				<div data-v-217c2c81="">
+																					<div data-v-2c2bef28="" data-v-217c2c81="" class="description">어떤 모임을 호스팅하고 싶으신가요?</div>
+																					<div data-v-71dbc711="" data-v-217c2c81="">
+																						<div data-v-71dbc711="" class="row no-gutters" th:if="${groupDTO.groupLocation}">
+																							<div data-v-71dbc711="" class="my-2 col-lg-6 align-self-stretch">
+																								<div data-v-71dbc711="" id="offline" class="selectBox mx-2 selected" style="min-height: 7rem;" data-type="offline">
+																									<div data-v-71dbc711="" class="p-3">
+																										<div data-v-71dbc711="">오프라인</div>
+																										<div data-v-71dbc711="" class="mt-2 text-sm">오프라인에서 직접 대면하여 진행되는 모임 </div>
+																									</div>
+																								</div>
+																							</div>
+																							<div data-v-71dbc711="" class="my-2 col-lg-6 align-self-stretch">
+																								<div data-v-71dbc711="" class="selectBox mx-2" style="min-height: 7rem;" data-type="online">
+																									<div data-v-71dbc711="" class="p-3">
+																										<div data-v-71dbc711="">온라인</div>
+																										<div data-v-71dbc711="" class="mt-2 text-sm">실시간 채팅, 전화, 영상 등의 방법으로 만나는 비대면 모임 </div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						<div data-v-71dbc711="" class="row no-gutters" th:unless="${groupDTO.groupLocation}">
+																							<div data-v-71dbc711="" class="my-2 col-lg-6 align-self-stretch">
+																								<div data-v-71dbc711="" class="selectBox mx-2" style="min-height: 7rem;" data-type="offline">
+																									<div data-v-71dbc711="" class="p-3">
+																										<div data-v-71dbc711="">오프라인</div>
+																										<div data-v-71dbc711="" class="mt-2 text-sm">오프라인에서 직접 대면하여 진행되는 모임 </div>
+																									</div>
+																								</div>
+																							</div>
+																							<div data-v-71dbc711="" class="my-2 col-lg-6 align-self-stretch">
+																								<div data-v-71dbc711="" class="selectBox mx-2 selected" style="min-height: 7rem;" data-type="online">
+																									<div data-v-71dbc711="" class="p-3">
+																										<div data-v-71dbc711="">온라인</div>
+																										<div data-v-71dbc711="" class="mt-2 text-sm">실시간 채팅, 전화, 영상 등의 방법으로 만나는 비대면 모임 </div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						<!--컨트롤러로 넘기기 위한 숨겨진 input 창-->
+																							<input data-v-72dffd28="" th:field="*{groupLocationType}" name="groupLocationType" type="text" maxlength="40" class="form-control groupLocationType" style="display:none;">
+																						<!--모임 상세 설명 input창-->
+																							<input data-v-72dffd28="" th:field="*{groupContent}" name="groupContent" type="text" class="form-control groupContent" style="display:none;">
+																						<!--진행 장소 이름-->
+																							<input data-v-72dffd28="" th:field="*{groupLocationName}" name="groupLocationName" type="text" maxlength="40" class="form-control groupLocationName" style="display:none;">
+																						<!--진행 장소-->
+																							<input data-v-72dffd28="" th:field="*{groupLocation}" name="groupLocation" type="text" maxlength="40" class="form-control groupLocation" style="display:none;">
+																						<!--진행 장소 이름-->
+																							<input data-v-72dffd28="" th:field="*{groupLocationDetail}" name="groupLocationDetail" type="text" maxlength="40" class="form-control groupLocationDetail" style="display:none;">
+																						<!--진행 장소 주차 상세사항-->
+																							<input data-v-72dffd28="" th:field="*{groupMoreInformation}" name="groupMoreInformation" type="text" maxlength="40" class="form-control groupMoreInformation" style="display:none;">
+																						<!--국내/해외-->
+																							<input data-v-72dffd28="" th:field="*{groupOverSea}" name="groupOverSea" type="text" maxlength="40" class="form-control groupOverSea" style="display:none;">
+																						<!--주차 가능 여부-->
+																							<input data-v-72dffd28="" th:field="*{groupParkingAvailable}" name="groupParkingAvailable" type="text" maxlength="40" class="form-control groupParkingAvailable" style="display:none;">
+																						<!--파일 이름-->
+																							<input data-v-72dffd28="" th:field="*{groupFileName}" name="groupFileName" type="text" maxlength="40" class="form-control groupFileName" style="display:none;">
+																						<!--파일 경로-->
+																							<input data-v-72dffd28="" th:field="*{groupFilePath}" name="groupFilePath" type="text" maxlength="40" class="form-control groupFilePath" style="display:none;">
+																						<!--파일 크기-->
+																							<input data-v-72dffd28="" th:field="*{groupFileSize}" name="groupFileSize" type="text" maxlength="40" class="form-control groupFileSize" style="display:none;">
+																						<!--파일 UUID-->
+																							<input data-v-72dffd28="" th:field="*{groupFileUuid}" name="groupFileUuid" type="text" maxlength="40" class="form-control groupFileUuid" style="display:none;">
+																						<!--그룹 ID-->
+																							<input data-v-72dffd28="" th:field="*{groupId}" name="groupId" type="text" maxlength="40" class="form-control groupFileUuid" style="display:none;">
+																					</div>
+																					<div data-v-2c2bef28="" data-v-217c2c81="" class="description text-frip-danger">모임 유형은 최초 등록 후에는 변경이 불가능합니다.</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div data-v-217c2c81="">
+																	<hr data-v-217c2c81="">
+																	<div data-v-72dffd28="" data-v-217c2c81="" class="mb-2 py-1 px-3">
+																		<span data-v-72dffd28="" placeholder="모임의 특징이 잘 드러나도록 모임명을 입력해주세요.">
+																			<div data-v-72dffd28="">
+																				<fieldset data-v-72dffd28="" class="form-group" id="__BVID__636" aria-labelledby="__BVID__636__BV_label_">
+																					<div class="form-row">
+																						<legend tabindex="-1" class="col-md-4 col-lg-2 bv-no-focus-ring col-form-label" id="__BVID__636__BV_label_">
+																							<span data-v-72dffd28="" class="text-danger position-absolute ml-2">*</span>
+																							<span data-v-72dffd28="" class="pl-3" style="font-size: 0.9rem;">모임명</span>
+																						</legend>
+																						<div class="col-md-8 col-lg-10">
+																							<div data-v-72dffd28="" class="input-group has-label w-100">
+
+																								<!--모임 입력 창-->
+																								<input data-v-72dffd28="" th:field="*{groupName}" name="groupName" type="text" maxlength="40" required="required" placeholder="모임의 특징이 잘 드러나도록 모임명을 입력해주세요." class="form-control">
+
+																								<div data-v-72dffd28="" class="input-group-append">
+																									<span data-v-72dffd28="" class="input-group-text">
+																										<small data-v-72dffd28="" class="text-muted"> 0 / 40 </small>
+																									</span>
+																								</div>
+																							</div>
+																							<div data-v-72dffd28="" class="invalid-feedback" style="display: none;"> 모임명은 필수입니다. 40자 이내로 입력해주세요. </div>
+																						</div>
+																					</div>
+																				</fieldset>
+																			</div>
+																		</span>
+																	</div>
+																	<div data-v-72dffd28="" data-v-217c2c81="" class="mb-2 py-1 px-3">
+																		<span data-v-72dffd28="" placeholder="모임의 특징이 잘 드러나도록 모임명을 입력해주세요.">
+																			<div data-v-72dffd28="">
+																				<fieldset data-v-72dffd28="" class="form-group" id="__BVID__636" aria-labelledby="__BVID__636__BV_label_">
+																					<div class="form-row">
+																						<legend tabindex="-1" class="col-md-4 col-lg-2 bv-no-focus-ring col-form-label" id="__BVID__636__BV_label_">
+																							<span data-v-72dffd28="" class="text-danger position-absolute ml-2">*</span>
+																							<span data-v-72dffd28="" class="pl-3" style="font-size: 0.9rem;">카테고리</span>
+																						</legend>
+																						<div class="col-md-8 col-lg-10">
+																							<div data-v-72dffd28="" class="input-group has-label w-100">
+																								<input th:field="*{groupCategory}" name="groupCategory" data-v-72dffd28="" type="text" maxlength="40" required="required" placeholder="모임의 특징이 잘 드러나도록 카테고리를 입력해주세요." class="form-control">
+																								<div data-v-72dffd28="" class="input-group-append">
+																									<span data-v-72dffd28="" class="input-group-text">
+																										<small data-v-72dffd28="" class="text-muted"> 0 / 40 </small>
+																									</span>
+																								</div>
+																							</div>
+																							<div data-v-72dffd28="" class="invalid-feedback" style="display: none;"> 카테고리는 필수입니다. 40자 이내로 입력해주세요. </div>
+																						</div>
+																					</div>
+																				</fieldset>
+																			</div>
+																		</span>
+																	</div>
+																	<div data-v-217c2c81="">
+																		<hr data-v-217c2c81="">
+																		<div data-v-7f07114e="" data-v-3b98bc42="" class="py-1 px-3">
+																			<div data-v-7f07114e="" class="row number">
+																				<div data-v-7f07114e="" class="col-lg-2">
+																					<div data-v-7f07114e="" class="mt-2 pl-3">
+																						<!---->
+																						<span data-v-7f07114e="" style="font-size: 0.9rem;">모집인원</span>
+																						<!---->
+																					</div>
+																				</div>
+																				<div data-v-7f07114e="" class="col-lg-9">
+																					<div data-v-7f07114e="" class="recruitment">
+																						<div data-v-7f07114e="" class="row number">
+																							<div data-v-7f07114e="" class="col">
+																								<span data-v-307da538="" data-v-7f07114e="">
+																									<fieldset data-v-307da538="" class="form-group" id="__BVID__1277">
+																										<!---->
+																										<div>
+																											<!---->
+																											<div data-v-307da538="" class="input-group">
+																												<!---->
+																												<input th:field="*{minMember}" name="minMember" data-v-307da538=""  min="1" max="20" type="number" class="number1 form-control" valid="true">
+																												<div data-v-307da538="" class="input-group-append">
+																													<span data-v-307da538="" class="input-group-text">
+																														<small data-v-307da538="">명</small>
+																													</span>
+																												</div>
+																											</div>
+																										</div>
+																									</fieldset>
+																								</span>
+																							</div>
+																							<div data-v-7f07114e="" class="mt-3">~</div>
+																							<div data-v-7f07114e="" class="col">
+																								<span data-v-307da538="" data-v-7f07114e="">
+																									<fieldset data-v-307da538="" class="form-group" id="__BVID__1280">
+																										<div>
+																											<div data-v-307da538="" class="input-group">
+																												<input th:field="*{maxMember}" name="maxMember" data-v-307da538=""  min="1" max="20" type="number" class="number2 form-control" valid="true">
+																												<div data-v-307da538="" class="input-group-append">
+																													<span data-v-307da538="" class="input-group-text">
+																														<small data-v-307da538="">명</small>
+																													</span>
+
+																												</div>
+
+																											</div>
+																										</div>
+																									</fieldset>
+																								</span>
+																							</div>
+																						</div>
+																					</div>
+																					<div data-v-7f07114e="" class="invalid-feedback" style="display: none;"> 최대 인원은 최소 인원보다 적을 수 없습니다. 최소 인원보다 높은 인원을 선택해주세요. </div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- 오프라인 모임 시, 장소선택 -->
+																	<div data-v-217c2c81="" style="display: none" class="place">
+																		<hr data-v-217c2c81="">
+																		<div data-v-217c2c81="" class="px-3">
+																			<div class="row my-2">
+																				<div class="col-lg-2">
+																					<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+																						<!----> 장소 <!---->
+																					</div>
+																				</div>
+																				<div class="col-lg-10">
+																					<div>
+																						<div data-v-217c2c81="" class="my-1 container">
+																							<div data-v-217c2c81="">
+																								<div data-v-217c2c81="" class="mb-2">
+																									<div data-v-217c2c81="">
+																										<span data-v-217c2c81="" class="text-danger position-absolute ml--2">*</span>진행장소
+																									</div>
+																									<!---->
+																								</div>
+																								<div data-v-217c2c81="">
+																									<div data-v-52931a0e="" data-v-217c2c81="" class="my-3 placeTableBtn">
+																										<div data-v-52931a0e="">
+																											<div data-v-52931a0e="" class="clearfix">
+																												<div data-v-52931a0e="" class="float-left text-muted mt-3">
+																													<i data-v-52931a0e="" class="fas fa-bars"></i>
+																												</div>
+																												<div data-v-52931a0e="" class="float-right">
+																													<button data-v-52931a0e="" type="button" class="clearPlace btn frip-button p-2 btn-outline-frip-default">
+																														<!---->
+																														<img data-v-52931a0e="" src="https://frip.host/img/delete.6d6ddd61.svg" width="24" height="24">
+																													</button>
+																												</div>
+																											</div>
+																										</div>
+																										<div data-v-52931a0e="" class="my-2 placeTable">
+																											<table data-v-52931a0e="" class="table table-sm border bg-white">
+																												<tr data-v-52931a0e="">
+																													<th data-v-52931a0e="" class="border text-muted text-center" style="width: 30%;"> 장소명 </th>
+																													<td data-v-52931a0e="" class="placeName border text-wrap">xfcSzds</td>
+																												</tr>
+																												<tr data-v-52931a0e="">
+																													<th data-v-52931a0e="" class="border text-muted text-center" style="width: 30%;"> 주소 </th>
+																													<td data-v-52931a0e="" class="placeAddr border text-wrap">서울 강남구 강남대로 328</td>
+																												</tr>
+																											</table>
+																										</div>
+																									</div>
+																								</div>
+																								<button data-v-217c2c81="" type="button" class="findPlace btn frip-button btn-outline-frip-primary" onclick="findPlace()">
+																									<!---->
+																									진행 장소 추가
+																								</button>
+																								<p class="siteMessage" style="color:red;"></p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- 금액 설정 -->
+																	<hr>
+																	<div data-v-260b6a70="" data-v-99d114e2="">
+																		<fieldset data-v-260b6a70="" class="form-group col-lg-12 mb-2" id="__BVID__243" aria-labelledby="__BVID__243__BV_label_">
+																			<div class="form-row">
+																				<legend tabindex="-1" class="col-lg-2 bv-no-focus-ring col-form-label" id="__BVID__243__BV_label_">
+																					<div data-v-260b6a70="">
+																						<span data-v-72dffd28="" class="text-danger position-absolute ml-2">*</span>
+																						<div data-v-260b6a70="" class="pl-3" style="font-size: 0.9rem; word-break: keep-all;"> 금액설정 </div>
+																					</div>
+																				</legend>
+																				<div class="col-lg-10">
+																					<div data-v-260b6a70="" class="row">
+																						<div data-v-260b6a70="" class="col">
+																							<span data-v-307da538="" data-v-260b6a70="" placeholder="예시) 100 포인트">
+																								<fieldset data-v-307da538="" class="form-group" id="__BVID__246">
+																									<!---->
+																									<div>
+																										<!---->
+																										<div data-v-307da538="" class="">
+																											<input th:field="*{groupPoint}" name="groupPoint" data-v-307da538="" type="text" placeholder="예시) 100포인트" mode="lazy" class="form-control" valid="true">
+																										</div>
+																									</div>
+																								</fieldset>
+																							</span>
+																						</div>
+																					</div>
+																					<div data-v-260b6a70="" class="mt-1"></div>
+																					<div data-v-260b6a70="" class="text-frip-danger m-2" style="font-size: 0.9rem;">  </div>
+																					<div data-v-260b6a70="" class="text-muted text-sm caption"> 10000포인트 이상은 설정하실 수 없습니다. </div>
+																				</div>
+																			</div>
+																		</fieldset>
+																	</div>
+																</div>
+															</form>
+														</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div data-v-59b7de29="" class="col-lg-4">
+							<!-- 모임설명탭 주의사항 -->
+							<div style="display: none" data-v-2ba7cd5f="" data-v-59b7de29="" class="card shadow-0 noticeEx">
+								<div data-v-2ba7cd5f="" class="card-header border-bottom-0">
+									<span data-v-2ba7cd5f="" class="" style="font-weight: 700;"> 상품 등록 가이드 </span>
+								</div>
+								<div data-v-2ba7cd5f="" class="">
+									<div data-v-59b7de29="" class="card-body">
+										<article data-v-1353e418="" data-v-59b7de29="" id="6782bd2c-ff7e-4f0c-bb22-98e88c533484" class="page sans">
+											<header data-v-1353e418="">
+												<h1 data-v-1353e418="" class="page-title">
+													<a data-v-1353e418="" href="https://frip.notion.site/009fcc4638de445fab0910712bb81c5e" target="_blank">모임 설명 가이드</a>
+												</h1>
+											</header>
+											<div data-v-1353e418="" class="page-body">
+												<h3 data-v-1353e418="" id="011ea07e-0f43-4472-b11e-ec263e531900" class="block-color-gray_background"> 대표 이미지 등록 가이드 </h3>
+												<ul data-v-1353e418="" id="95db2821-48d7-4f40-99e7-1450bfe6dbe3" class="bulleted-list">
+													<li data-v-1353e418="" style="list-style-type: disc;"> 1:1 비율의 (정사각형) 이미지를 권장합니다. </li>
+												</ul>
+												<ul data-v-1353e418="" id="bcd4cbd8-a912-4562-b5bd-8417b3d1d76e" class="bulleted-list">
+													<li data-v-1353e418="" style="list-style-type: disc;"> 텍스트가 없는 이미지만 대표 이미지로 노출 가능합니다. (단, 업장 내부 사진 또는 모임 결과물(ex. 레터링 케이크)에 텍스트가 포함된 경우, 해당 사진을 사용하는 것은 가능합니다.) 보다 자세한 가이드는
+														<a data-v-1353e418="" href="https://frip.notion.site/51d06d5f2cf646ceaac57b873b57c35b" target="_blank">여기</a>
+														서 확인하실 수 있습니다.
+													</li>
+
+												</ul>
+												<h3 data-v-1353e418="" id="bad5fec3-f35c-4571-9874-abdd57cda6d8" class="block-color-gray_background"> 대표 이미지 좋은 예시 vs 나쁜 예시 </h3>
+												<div data-v-1353e418="" id="997ff574-e1c6-41d0-bf7e-a961e87bd16c" class="column-list">
+													<div data-v-1353e418="" id="ec04b58b-f513-4d7d-b423-ae8a8652da7d" class="column" style="width: 50%;">
+														<figure data-v-1353e418="" id="c0c4f323-4b0a-4a87-ace5-8a0f52c93a11" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/0.jpg">
+																<img data-v-1353e418="" src="https://frip.host/img/0.80251705.jpg">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="16499fea-f16d-4155-905f-2ecd6b33c010">결과물이 한 눈에 보이는 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="06abd7d2-be0f-47b6-8c28-c90f5ebb7de0" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled.1038806a.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="973b1246-6bed-4961-8509-9b030ab254cf">체험 과정이 보이는 이미지 ( O )</span>
+													</div>
+													<div data-v-1353e418="" id="0409a0a4-7afc-4505-9bc8-4fb3fafe5abc" class="column" style="width: 50%;">
+														<figure data-v-1353e418="" id="e1ffbf97-7625-4d59-beb4-b3351899906a" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled1.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled1.6adf727f.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="84a115ff-18ad-4cea-871e-fea8450aeb94">결과물이 명확하지 않은 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="1c187d15-7f62-4daa-b989-243327924f38" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled2.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled2.ea75867c.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="78955c59-97ad-4312-a4f5-bf14c8b64b00">체험 과정이 보이지 않는 이미지 ( X )</span>
+													</div>
+												</div>
+												<div data-v-1353e418="" id="db575c67-095f-490c-b0ad-0bc5fca010ca" class="column-list">
+													<div data-v-1353e418="" id="c361e6f8-7592-4109-b0c3-b5ef845e2700" class="column" style="width: 50%;">
+														<figure data-v-1353e418="" id="bcc6731f-3320-443d-ad80-1372056ab8fe" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/5.jpg"><img data-v-1353e418="" src="https://frip.host/img/5.4a685434.jpg"></a>
+														</figure>
+														<span data-v-1353e418="" id="a3bb0668-086f-49b9-bf67-550973362c4c">여백을 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="167e10f3-9f5f-4b82-8a72-4412843f4fa1" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/3.jpg"><img data-v-1353e418="" src="https://frip.host/img/3.411a4f54.jpg"></a>
+														</figure>
+														<span data-v-1353e418="" id="58a5419c-f611-41b9-b2ab-4f5827196a94">여백을 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="9e91329f-4d17-4667-96cc-3392981d98cd" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled3.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled3.adccdbbb.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="baa29669-3bfd-4a09-8900-02dbda95ecfb">로고를 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="3c8f875a-19b0-4aad-8780-165f9f527e06" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled4.png"><img data-v-1353e418="" src="https://frip.host/img/Untitled4.b81eaac6.png"></a>
+														</figure>
+														<span data-v-1353e418="" id="06b8e848-b1cf-493d-859d-19d9401ec17c">로고를 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="22fc79cb-2217-494d-a56f-bd54f754180d" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled5.png"><img data-v-1353e418="" src="https://frip.host/img/Untitled5.9aec3c35.png"></a>
+														</figure>
+														<span data-v-1353e418="" id="40083cc9-22f2-4f85-9a77-4548be9e1491">로고를 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="4df73c81-a6ca-462f-80b3-0031ba7ef3b4" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled6.png"><img data-v-1353e418="" src="https://frip.host/img/Untitled6.d955bd76.png"></a>
+														</figure>
+														<span data-v-1353e418="" id="0cfce2bb-fd03-4bb9-991e-2a20424e7bb1">로고를 적절히 활용한 이미지 ( O )</span>
+														<figure data-v-1353e418="" id="a40d547a-5a8d-4d23-acee-755b90efca7c" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled7.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled7.200ff31c.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="7660d407-b5a9-4538-b800-e177e61fb75a">로고를 적절히 활용한 이미지 ( O )</span>
+													</div>
+													<div data-v-1353e418="" id="b10738c8-ca19-407b-be2c-93dbffc087ad" class="column" style="width: 50%;">
+														<figure data-v-1353e418="" id="8c2b28d8-8a7d-4eac-85b2-386a2795ad82" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled8.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled8.8e005717.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="702f1ac0-9393-4a8f-948e-8b94ce58e193">배경이 흰색인 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="4e390107-9b6f-411f-bac4-e204498c9d24" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/Untitled9.png">
+																<img data-v-1353e418="" src="https://frip.host/img/Untitled9.29c41255.png">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="c47f0ef3-a1d6-432c-b0ad-ffe996dfae4f">텍스트를 사용한 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="0099da3f-cc16-45a6-b02d-aa9639e1140f" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/1.jpeg">
+																<img data-v-1353e418="" src="https://frip.host/img/1.46c59cbc.jpeg">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="9aa559f1-43c0-4c7a-9da6-0274308b1a90">텍스트를 사용한 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="50db5233-e597-44ed-9046-9080b7dffa15" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/2.jpg">
+																<img data-v-1353e418="" src="https://frip.host/img/2.a31ebcf8.jpg">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="2e1a9e6f-bcf6-4c71-bb20-bfc21d953f76">텍스트를 사용한 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="e22cd98f-fbad-498f-a0cf-5689da17da46" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/4.jpg">
+																<img data-v-1353e418="" src="https://frip.host/img/4.1a3f8bea.jpg">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="2d667b56-1081-4563-8eee-c796c9fa82bc">텍스트를 사용한 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="bcc76f14-b40f-4953-84b3-344f17c77e5d" class="image">
+															<a data-v-1353e418="" href="@/assets/img/guide/description/2_1.jpg">
+																<img data-v-1353e418="" src="https://frip.host/img/2_1.7f28f693.jpg">
+															</a>
+														</figure>
+														<span data-v-1353e418="" id="fca78ab5-d91b-48d8-be26-c9cd192c20ac">텍스트만 사용한 이미지 ( X )</span>
+														<figure data-v-1353e418="" id="e1e82da4-456a-4fd6-9d74-d51f15980676" class="image">
+															<img data-v-1353e418="" src="https://frip.host/img/description.9b188c1c.jpg">
+														</figure>
+														<span data-v-1353e418="" id="44c7c3ee-5db0-4de6-8697-bc850a62a8de">텍스트만 사용한 이미지 ( X )</span>
+													</div>
+												</div>
+												<h3 data-v-1353e418="" id="65e34154-697c-4545-9bcf-06c82106caa8" class="block-color-gray_background"> 모임 설명 필수 작성 항목 </h3>
+												<figure data-v-1353e418="" id="4b3a3583-f774-470a-a0ec-b3e92c58cd66" class="callout block-color-gray_background" style="display: flex; align-items: center;">
+													<div data-v-1353e418="" style="font-size: 1.5em;">
+														<span style="padding-right: 15px;" data-v-1353e418="" class="icon">⚠️</span>
+													</div>
+													<div data-v-1353e418="" style="width: 100%;"> 호스트님의 SNS 계정, 메일 주소, 연락처 등 개인정보와 홈페이지, 블로그 등 외부 링크 삽입은 불가합니다. </div>
+												</figure>
+												<ul data-v-1353e418="" class="bulleted-list">
+													<li data-v-1353e418="" style="list-style-type: disc;"> 호스트님의 모임을 보다 매력적으로 소개하기 위해
+														<a data-v-1353e418="" href="https://frip.notion.site/009fcc4638de445fab0910712bb81c5e" target="_blank">모임 설명 가이드</a>
+														를 반드시 확인해주세요.
+													</li>
+												</ul>
+												<ul data-v-1353e418="" class="bulleted-list">
+													<li data-v-1353e418="" style="list-style-type: disc;"> 모임 설명에 호스트 소개, 모임 진행 순서, 모임을 통해 얻을 수 있는 결과물, 어떤 분들에게 추천하는지 작성해주시면 판매를 높이는 데 도움이 됩니다. </li>
+												</ul>
+											</div>
+										</article>
+									</div>
+									<hr data-v-59b7de29="">
+								</div>
+							</div>
+							<!-- 기본 정보탭 주의사항 -->
+							<div data-v-2ba7cd5f="" data-v-59b7de29="" class="card shadow-0 noticeInfo">
+								<div data-v-2ba7cd5f="" class="card-header border-bottom-0">
+									<span data-v-2ba7cd5f="" class="" style="font-weight: 700;"> 상품 등록 가이드 </span>
+								</div>
+								<div data-v-2ba7cd5f="" class="">
+									<div data-v-59b7de29="" class="card-body">
+										<article data-v-b5c0a92e="" data-v-59b7de29="" id="48878819-99ff-4ae3-8180-3e9a0f824241" class="page sans">
+											<header data-v-b5c0a92e="">
+												<h1 data-v-b5c0a92e="" class="page-title">모임
+													<strong data-v-b5c0a92e="">만들기 전 고려 사항</strong>
+												</h1>
+											</header>
+											<div data-v-b5c0a92e="" class="page-body">
+												<figure data-v-b5c0a92e="" id="db5fbbe2-0d3d-4371-95e4-d711a76a4a36" class="callout block-color-gray_background" style="display: flex;">
+													<div data-v-b5c0a92e="" style="font-size: 1.5em;">
+														<span data-v-b5c0a92e="" class="icon">⚠️</span>
+													</div>
+													<div data-v-b5c0a92e="" style="width: 100%;">
+														<ul data-v-b5c0a92e="" class="bulleted-list">
+															<li data-v-b5c0a92e="" style="list-style-type: disc;"> 모임 진행 시 주의해야 하는 부분을 먼저 확인 부탁드립니다. </li>
+															<li data-v-b5c0a92e="" style="list-style-type: disc;"> 법률 규정 이슈가 있을 경우, 모임은 어떠한 경우에도 책임을 지지 않습니다. </li>
+															<li data-v-b5c0a92e="" style="list-style-type: disc;"> 안전 규정 및 법률은 호스트님과 크루들을 위해 개별적으로 확인 후 진행 부탁드립니다. </li>
+														</ul>
+													</div>
+												</figure>
+												<h3 data-v-b5c0a92e="" id="d45a9dde-0e13-411d-b75a-2ce12c015528" class="block-color-gray_background">
+													<a data-v-b5c0a92e="" href="https://frip.notion.site/3998716fff1d4c2db63369207d9db931" target="_blank">오픈 불가 모임</a>
+												</h3>
+												<ul data-v-b5c0a92e="" id="b9c90ede-7596-4c3b-b0ee-a1a376604364" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">소개팅 / 남녀 만남 주선 모임</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="727e220b-becf-41ef-a341-70951dbf8a6e" style="display: block; margin: 8px 0px;"> 모임은 여가, 여행, 액티비티 플랫폼으로서, 아래 모임은 오픈할 수 없습니다. </span>
+															<ul data-v-b5c0a92e="" id="b4aaa90d-1b51-4131-b760-1e4153574ce7">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;">소개팅 주선이 목적인 모임</li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="41aad45a-312e-403f-ae62-8b9bcf96205f">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 건전하지 못한 남녀 만남을 주선하는 모임 </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="caf48471-4be5-4c7a-96e3-16c28b87c1db" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">영화 상영 모임</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="4b51e68a-bb65-456c-b9a3-d6d1104a95e5" style="display: block; margin: 8px 0px;"> 저작권 보호를 위해 아래의 경우 상영이 불가할 수 있습니다. </span>
+															<ul data-v-b5c0a92e="" id="10208779-9f08-4f54-813c-25d9e5809b81" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 영화 상영을 이익·대가 목적으로 하는 모임 </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="925a1940-179c-48cf-a6e3-af85fded3722" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 발행일로부터 6개월이 지나지 아니한 상업적 목적으로 공표된 영상저작물을 재생하는 형태 </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="bf830a63-8308-4355-a4bd-7c788fcb9a00" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 면적 50㎡ (약 15평)이상의 커피·생맥주, 체력단련장 등을 운영하는 사업자는 매장에서 영상저작물 상영 시, 면적 규모에 따라 저작권료 지불 필요(「저작권법 시행령」 제11조) </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="d51bd2a9-ae78-49be-85f0-eac90b0651be" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">드라이브, 안전이 보장되지 않은 장소에서 하는 모임</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="ea36a80e-0ccc-43de-9046-365a0a22c881" style="display: block; margin: 8px 0px;"> 크루들의 불안 요소는 피해 주시기 바랍니다. </span>
+															<ul data-v-b5c0a92e="" id="2c093ef3-a372-4234-a32d-03ea6b23d81d">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 개인 차량으로 운영되는 모임(자가용 자동차의 안전성 결여) </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="e0fd4880-eb15-4a52-b3e7-07b030c80abb">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 집에서 진행하는 경우, 크루들이 불안하지 않도록 호스트 포함 3명 이상이 모이는 모임으로 진행 필요(실제 운영되는 장소에 대한 사진과 정보를 충분히 제공해야함) </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<p data-v-b5c0a92e="" id="1fd2bba0-3782-4561-9375-f48a0632df98"></p>
+												<h3 data-v-b5c0a92e="" id="c7024f1a-fcfe-48f0-9c30-83a4dd8b9831" class="block-color-gray_background">
+													<a data-v-b5c0a92e="" href="https://frip.notion.site/3998716fff1d4c2db63369207d9db931" target="_blank"> 주의가 필요한 모임 </a>
+												</h3>
+												<ul data-v-b5c0a92e="" id="af0b7b80-7989-4c63-b3ae-0e95a712e2c8" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">활동적인 액티비티 모임</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="8d2e40b1-496c-4c48-9a5d-926b8620abf2" style="display: block; margin: 8px 0px;"> 모임 제공 중 발생할 수 있는 안전사고를 예방해주시기 바랍니다. </span>
+															<ul data-v-b5c0a92e="" id="4822b0ce-c777-43cc-8138-13fb1e76fd85" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 안전 대책과 인력, 물적 시설을 구비하시기 바랍니다. </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="af8b088d-db6c-424c-81f2-ebff1d5f7e64" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 모임 진행 과정에서 발생할 수 있는 안전사고, 기타 위험 요소에 대해 사전에 크루들에게 고지하여 참여 여부를 결정할 수 있도록 해주시기 바랍니다. </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="a84c3642-a9a0-400e-8159-1c5dbf61bb20" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 법령상 보험가입 의무가 있는 경우 반드시 보험에 가입하셔야 합니다. </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="a9085501-62f8-428a-9cec-2ca42a2fd89d" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">개인 과외 모임</strong>
+															</summary>
+															<ul data-v-b5c0a92e="" id="2d4b85b7-bbf6-4001-ada0-9c6a96c17a34" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 교육청에 개인 과외 교습을 신고해주시기 바랍니다. </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="a3b2cda5-89ce-4fdf-ad9e-cd68883b0ad3" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">요리, 음료를 제공하는 모임</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="6b1dc17d-9116-41b4-a1d2-f06bb1117cec" style="display: block; margin: 8px 0px;"> 맛있고 기분 좋은 시식을 위해 아래의 사항을 확인 부탁드립니다. </span>
+															<ul data-v-b5c0a92e="" id="f0ba2414-64ff-4cc9-8209-b7da66331ba7" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 제공하는 음식 및 재료는 위생을 철저히 지키고 식품위생법을 준수해야 합니다. </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="b08c3a2c-f2c9-4942-8eb1-ab40d11b10a4" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 크루들에게 특정 알레르기 또는 피해야 하는 음식이 있는지 사전에 확인해야 합니다. </li>
+															</ul>
+														</details>
+													</li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="1aedeb9e-8637-4405-881a-3a321af9d586" class="toggle">
+													<li data-v-b5c0a92e="">
+														<details data-v-b5c0a92e="">
+															<summary data-v-b5c0a92e="">
+																<strong data-v-b5c0a92e="">주류를 제공할 경우 주의사항</strong>
+															</summary>
+															<span data-v-b5c0a92e="" id="1762a383-e591-4a48-a4c7-b28efa9f757a" style="display: block; margin: 8px 0px;"> 재밌고 안전한 모임을 위해 아래의 크루들에게 주류는 제공할 수 없습니다. </span>
+															<ul data-v-b5c0a92e="" id="465bde52-86b7-459f-8535-50bcda3b47ac" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 만 19세 미만의 크루 (신분증 확인 필수) </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="bdf0f5f4-1ffa-47ba-8648-9483bca798a6" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 차량을 소지하고 모임에 참여한 크루 중 이후 운전 계획이 있는 크루 </li>
+															</ul>
+															<ul data-v-b5c0a92e="" id="1ef7af0d-ab15-4546-938b-9d62056e1d38" class="bulleted-list">
+																<li data-v-b5c0a92e="" style="list-style-type: disc;"> 만취하여 다른 크루들에게 불편함을 줄 수 있다고 판단되는 경우 </li>
+															</ul>
+															<p data-v-b5c0a92e="" id="0acaf488-0f37-4913-83e0-61b8b807255f"></p>
+														</details>
+													</li>
+												</ul>
+												<h3 data-v-b5c0a92e="" id="84fbd34e-7867-40a9-9b99-d08c2a8b12b4" class="block-color-gray_background"> 기타 주의사항 </h3>
+												<ul data-v-b5c0a92e="" id="f4248485-0d35-44f1-be4d-329698d77509" class="bulleted-list">
+													<li data-v-b5c0a92e="" style="list-style-type: disc;"> 참가자의 개인정보 (전화번호, 이메일, SNS등)는 수집하실 수 없습니다. </li>
+												</ul>
+												<ul data-v-b5c0a92e="" id="40f8ef9e-e5e4-4983-bd57-9e8c2a74a656" class="bulleted-list">
+													<li data-v-b5c0a92e="" style="list-style-type: disc;"> 사주 모임 등 필수적으로 추가 개인 정보가 필요한 경우 크루의 정보 제공 동의가 필요하며, 자료가 남는 형태(설문지, 메일, 문자 메시지 등)로 직접 동의를 받아야 합니다. </li>
+												</ul>
+												<p data-v-b5c0a92e="" id="5cad8feb-d898-4d78-a218-2a873e387588"></p>
+												<p data-v-b5c0a92e="" id="1e3496c9-343b-4aa9-a0be-95a43f80a017"></p>
+											</div>
+										</article>
+										<hr data-v-59b7de29="">
+										<article data-v-da60d0fa="" data-v-59b7de29="" id="d6892911-9e7b-499d-bcac-86bc2f1d2f49" class="page sans">
+											<header data-v-da60d0fa="">
+												<h1 data-v-da60d0fa="" class="page-title">
+													<a data-v-da60d0fa="" href="https://frip.notion.site/1197c6b055f74382ba49e4b42d46a9bc" target="_blank"> 기본 작성 가이드</a>
+												</h1>
+											</header>
+											<div data-v-da60d0fa="" class="page-body">
+												<h3 data-v-da60d0fa="" id="65ef9b8a-48a4-4f04-a2f5-a999c82a3155" class="block-color-gray_background"> 모임 유형 </h3>
+												<span data-v-da60d0fa="" id="1d84becc-48ed-4d92-81e4-d5f42e16fef9" style="display: block; margin: 8px 0px;">모임 유형은 추후 수정이 불가하며, 동일한 모임을 온라인과 오프라인 동시에 운영 원하신다면 각각 하나의 모임으로 오픈 부탁드립니다.</span>
+												<p data-v-da60d0fa="" id="bd084301-31c2-4ad1-b625-519d4097853e"></p>
+												<h3 data-v-da60d0fa="" id="a191fa0b-6d65-4172-b202-478e6620f552" class="block-color-gray_background"> 카테고리 </h3>
+												<ul data-v-da60d0fa="" id="88ec7258-676c-4d32-9e25-72ef88d6182a" class="bulleted-list">
+													<li data-v-da60d0fa="" style="list-style-type: disc;">
+														<strong data-v-da60d0fa="">직접 선택 </strong>호스트님의 모임 컨텐츠에 알맞게 1차 카테고리를 선택하신 후, 더 세부적인 2차, 3차, 4차 카테고리도 선택해주시기 바랍니다.
+													</li>
+												</ul>
+												<ul data-v-da60d0fa="" id="2d85bca2-d7a0-40bd-a515-a3c464031693" class="bulleted-list">
+													<li data-v-da60d0fa="" style="list-style-type: disc;">
+														<strong data-v-da60d0fa="">카테고리명 검색 </strong>
+														호스트님의 모임에 적절한 카테고리를 직접 검색하시면 추천해드립니다.
+													</li>
+												</ul>
+												<p data-v-da60d0fa="" id="70a1b392-b8ee-40ae-8643-987938811338"></p>
+												<h3 data-v-da60d0fa="" id="0dd276bf-83b4-4616-9851-c245e4c50d33" class="block-color-gray_background">
+													<a data-v-da60d0fa="" href="https://frip.notion.site/1197c6b055f74382ba49e4b42d46a9bc" target="_blank"> 모임 속성</a>
+												</h3>
+												<span data-v-da60d0fa="" id="6bc22535-c757-4679-b776-11772ae601ba" style="display: block; margin: 8px 0px;">호스트님께서 운영하실 모임의 성격을 하나 혹은 그 이상으로 복수 선택 가능합니다.</span>
+												<p data-v-da60d0fa="" id="5c724688-902e-44d9-9810-69ecf63ec779"></p>
+												<h3 data-v-da60d0fa="" id="293b02f5-b744-43be-9768-6d0630525ee1" class="block-color-gray_background"> 모임명 </h3>
+												<span data-v-da60d0fa="" id="ca451983-6351-4e1e-ba2e-61c98efc3237" style="display: block; margin: 8px 0px;">클래스 제목에 해당하며, 작성 시 아래의 주의사항을 확인해주시기 바랍니다.</span>
+												<div data-v-da60d0fa="" class="indented">
+													<ul data-v-da60d0fa="" id="8d75c920-7450-43f5-ab9c-43b5a4e21b5f" class="bulleted-list">
+														<li data-v-da60d0fa="" style="list-style-type: disc;"> 장소와 액티비티를 모임명에 넣어주시면 좋습니다. (예시 : [홍대] 밸리댄스를 배워봐요!) </li>
+													</ul>
+													<ul data-v-da60d0fa="" id="b8b493a6-dd43-4996-be74-dc45f5152bfa" class="bulleted-list">
+														<li data-v-da60d0fa="" style="list-style-type: disc;"> 욕설 및 선정적인 단어는 사용이 불가능합니다. </li>
+													</ul>
+													<ul data-v-da60d0fa="" id="b5713fc0-d570-4a17-a420-b88094f202e8" class="bulleted-list">
+														<li data-v-da60d0fa="" style="list-style-type: disc;"> 특수문자는 괄호 외에는 사용이 불가능합니다. (예시 : '', ☆, ♥, ♠) </li>
+													</ul>
+													<ul data-v-da60d0fa="" id="7d354d73-0652-4d92-bd03-b8f4d13b3f7a" class="bulleted-list">
+														<li data-v-da60d0fa="" style="list-style-type: disc;"> 확인되지 않은 과도한 홍보 문구는 사용이 불가능합니다. (예시 : 국내 최고의 클래스) </li>
+													</ul>
+												</div>
+												<h3 data-v-da60d0fa="" id="932c1791-ddbf-4524-9211-8c08e30960aa" class="block-color-gray_background"> 진행 장소 (오프라인 모임만 해당) </h3>
+												<ul data-v-da60d0fa="" id="7d55aa51-98a1-4bfb-afd0-0e232e4a9099" class="bulleted-list">
+													<li data-v-da60d0fa="" style="list-style-type: disc;">모임이 진행되는 장소입니다.</li>
+												</ul>
+												<ul data-v-da60d0fa="" id="e141b1e7-3869-4183-89ed-505895da3382" class="bulleted-list">
+													<li data-v-da60d0fa="" style="list-style-type: disc;"> 상세하게 작성해주셔야 크루들이 헤매지 않고 찾아갈 수 있습니다. (예시 : 헤이그라운드 601호 (에스콰이어 빌딩 정문 오른쪽으로 들어오시면 됩니다.)) </li>
+												</ul>
+												<p data-v-da60d0fa="" id="7c44e3ff-ca4d-4544-8cd6-5266b223c495"></p>
+											</div>
+										</article>
+									</div>
+									<!---->
+									<!---->
+									<!---->
+									<!---->
+									<hr data-v-59b7de29="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div data-v-087ac9bc="" data-v-59b7de29="" class="fixed-bottom bg-white p-2 px-3 text-right border-top" style="">
+							<span data-v-087ac9bc="">
+								<button data-v-087ac9bc="" type="button" class="btn frip-button float-left btn-outline-frip-default">
+									<img data-v-087ac9bc="" src="https://frip.host/img/top-arrow.94425994.svg" width="24" height="24">
+								</button>
+								<button data-v-087ac9bc="" type="button" class="btn frip-button float-left btn-outline-frip-default">
+									<img data-v-087ac9bc="" src="https://frip.host/img/down-arrow.b55e9493.svg" width="24" height="24">
+								</button>
+							</span>
+						<span data-v-087ac9bc="">
+								<span data-v-59b7de29="" class="mx-2 alertMessage" style="color:red;"></span>
+								<span data-v-59b7de29="" class="mx-2">
+									<!-- 백엔드에서 불러온 데이터가 있다면(수정하기를 눌러서 온거라면) 모임삭제 show() -->
+									<button type="button" class="saveRecruitment btn frip-button btn-outline-frip-default btn-tab">
+										저장
+									</button>
+								</span>
+								<span data-v-087ac9bc="" class="mr-3 text-frip-secondary">|</span>
+							</span>
+						<button data-v-59b7de29="" type="button" class="btn frip-button btn-frip-primary btn-tab">
+							검수 요청
+						</button>
+						<span data-v-59b7de29="" title="좌측 저장버튼 클릭 후 요청해주세요"><!----></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 모달 -->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="display: none; position: absolute; z-index: 1040;">
+	<div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<span tabindex="0"></span>
+			<!--저장 확인-->
+			<div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content">
+				<!---->
+				<div id="__BVID__123___BV_modal_body_" class="modal-body">
+					<div class="text-center p-3"><div class="text-frip-primary my-3">
+						<i class="" style="font-size: 2.5rem;"></i>
+					</div>
+						<h2>저장되었습니다</h2>
+						<div>
+							<div></div>
+							<div>
+								<div>
+									<span>등록하시려면 검수 요청을 진행해주세요</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+					<div class="text-center p-3 container">
+						<button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+							확인
+						</button>
+					</div>
+				</footer>
+			</div>
+			<!--검수 요청 모달-->
+			<div id="__BVID__21___BV_modal_content_" tabindex="-1" class="modal-content">
+				<!---->
+				<div id="__BVID__21___BV_modal_body_" class="modal-body">
+					<div class="text-center p-3"><div class="text-frip-primary my-3">
+						<i class="" style="font-size: 2.5rem;"></i>
+					</div>
+						<h2>모임 검수요청 체크</h2>
+						<div>
+							<div></div>
+							<div>
+								<div>
+									<span>모임 등록에 오입력 또는 누락된 항목은 없는지 재확인해주세요.</span>
+									<br>
+									<span>승인 요청은 3일정도 걸릴 수 있습니다.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer id="__BVID__21___BV_modal_footer_" class="modal-footer">
+					<div class="text-center p-3 container">
+						<button type="button" class="checkRequest btn frip-button btn-frip-primary btn-tab">
+							<!----> 확인
+						</button>
+					</div>
+				</footer>
+			</div>
+			<!-- 일정등록 모달 -->
+			<div id="__BVID__1216___BV_modal_content_" tabindex="-1" class="modal-content" style="width:300%;">
+				<header id="__BVID__1216___BV_modal_header_" class="modal-header">
+					<h2 data-v-1e397a0c="">일정 등록</h2>
+					<button type="button" data-dismiss="modal" aria-label="Close" class="close" onclick="closeModal()">
+						<span>×</span>
+					</button>
+				</header>
+				<div id="__BVID__1216___BV_modal_body_" class="modal-body">
+					<div class="">
+						<div data-v-3b98bc42="" data-v-1e397a0c="" class="my-3">
+								<span data-v-3b98bc42="">
+									<form data-v-3b98bc42="">
+										<div data-v-3b98bc42="" class="px-3">
+											<div class="row my-2">
+												<div class="col-lg-2">
+													<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+														<!----> 일정 <!---->
+													</div>
+												</div>
+												<div class="col-lg-10" >
+													<div>
+														<div data-v-3b98bc42="">
+															<div data-v-3b98bc42="" class="el-select">
+																<div class="el-input el-input--suffix">
+																	<span class="el-input__suffix">
+																		<span class="el-input__suffix-inner">
+																			<i class="el-select__caret el-input__icon el-icon-arrow-up"></i>
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<div data-v-3b98bc42="" class="mt-2">
+															<input data-v-3b98bc42="" type="date" placeholder="시작 시간" class="col-lg-6 form-control" id="__BVID__1237">
+															<div data-v-3b98bc42="" class="text-muted text-sm my-2"> 종료일은 현재로부터 3개월을 초과할 수 없습니다. </div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<hr data-v-3b98bc42="">
+										<div data-v-3b98bc42="" class="px-3">
+											<div class="row my-2">
+												<div class="col-lg-2">
+													<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+														<span class="text-danger position-absolute ml--2">*</span> 운영시간
+													</div>
+												</div>
+												<div class="col-lg-10" style="margin-left: 5%;">
+													<div>
+														<div data-v-3b98bc42="">
+															<div data-v-3b98bc42="">
+																<div class="my-2">
+																	<div class="row">
+																		<span data-v-307da538="">
+																			<fieldset data-v-307da538="" class="form-group" id="__BVID__1243">
+																				<div>
+																					<div data-v-307da538="" class="">
+																						<input data-v-307da538="" type="time" class="openTime form-control" valid="true">
+																					</div>
+																				</div>
+																			</fieldset>
+																		</span>
+																		<span class="mx-3 mt-2">~</span>
+																		<span data-v-307da538="">
+																			<fieldset data-v-307da538="" class="form-group" id="__BVID__1264">
+																				<div>
+																					<div data-v-307da538="" class="">
+																						<input data-v-307da538="" type="time" class="closeTime form-control" valid="true">
+																					</div>
+																				</div>
+																			</fieldset>
+																		</span>
+																		<div class="ml-3 my-auto">
+																		</div>
+																	</div>
+																	<div class="timeNotice mt-2 text-sm text-frip-danger" style="display: none"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<hr data-v-3b98bc42="">
+										<div data-v-3b98bc42="">
+
+											<div data-v-3b98bc42="" class="px-3">
+												<div class="row my-2">
+													<div class="col-lg-2">
+														<!---->
+													</div>
+													<div class="col-lg-10">
+														<div></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-3b98bc42="" class="text-right px-3 mt-5" style="padding-top: 30px">
+											<button data-v-3b98bc42="" type="button" class="createPlan btn frip-button btn-frip-primary btn-tab"><!---->일정 생성</button>
+											<button data-v-3b98bc42="" type="button" class="btn frip-button btn-frip-secondary btn-tab" onclick="closeModal()"><!---->취소</button>
+										</div>
+									</form>
+								</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- 장소찾기 모달 -->
+			<form id="groupLocationForm" name="groupLocationForm" method="post" data-v-217c2c81="" style="width:100%;">
+				<div id="__BVID__287___BV_modal_content_" tabindex="-1" class="modal-content">
+					<header id="__BVID__287___BV_modal_header_" class="modal-header">
+						<div data-v-217c2c81="">
+							<h2 data-v-217c2c81="" class="modal-title">장소 추가</h2>
+						</div>
+						<button type="button" data-dismiss="modal" aria-label="Close" class="close" onclick="closeModal()">
+							<span>×</span>
+						</button>
+					</header>
+					<div id="__BVID__287___BV_modal_body_" class="modal-body">
+						<div class="">
+							<div data-v-217c2c81="" class="my-3">
+									<span>
+										<form class="needs-validation">
+											<div data-v-72dffd28="" class="py-1 px-3">
+												<span data-v-72dffd28="" placeholder="장소명을 입력해주세요.">
+													<div data-v-72dffd28="">
+														<fieldset data-v-72dffd28="" class="form-group" id="__BVID__1033" aria-labelledby="__BVID__1033__BV_label_">
+															<div class="form-row">
+																<legend tabindex="-1" class="col-md-4 col-lg-2 bv-no-focus-ring col-form-label" id="__BVID__1033__BV_label_">
+																	<span data-v-72dffd28="" class="text-danger position-absolute ml-2">*</span>
+																	<span data-v-72dffd28="" class="pl-3" style="font-size: 0.9rem;">장소명</span>
+																</legend>
+																<div class="col-md-8 col-lg-6">
+																	<div data-v-72dffd28="" class="input-group has-label w-100">
+																		<input th:value="${groupDTO.groupLocationName}" data-v-72dffd28="" name="locationName" type="text" maxlength="40" required="required" placeholder="장소 명을 입력해주세요." class="form-control">
+																		<div data-v-72dffd28="" class="input-group-append">
+																			<span data-v-72dffd28="" class="input-group-text">
+																				<small data-v-72dffd28="" class="text-muted"> 0 / 40 </small>
+																			</span>
+																		</div>
+																	</div>
+																	<div data-v-72dffd28="" class="invalid-feedback" style="display: none;"> 장소 명을 입력해주세요. </div>
+																</div>
+															</div>
+														</fieldset>
+													</div>
+												</span>
+											</div>
+											<hr>
+											<div class="px-3">
+												<div class="row my-2">
+													<div class="col-lg-2">
+														<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+															<span class="text-danger position-absolute ml--2">*</span> 해외 장소 여부
+														</div>
+													</div>
+													<div class="col-lg-10">
+														<div>
+															<fieldset class="form-group" id="__BVID__1035">
+																<div class="countryOption">
+																	<div class="my-2 custom-control custom-radio" data-value = "country" value="true">
+																		<input type="radio" name="isOverseas" class="custom-control-input" value="true" id="__BVID__1036" checked>
+																		<label class="custom-control-label" for="__BVID__1036">국내장소</label>
+																	</div>
+																	<div class="custom-control custom-radio" data-value = "foreign">
+																		<input type="radio" name="isOverseas" class="custom-control-input" value="false" id="__BVID__1037" disabled="">
+																		<label class="custom-control-label" for="__BVID__1037">해외장소</label>
+																	</div>
+																</div>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="px-3">
+												<div class="row my-2">
+													<div class="col-lg-2">
+														<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;">
+															<span class="text-danger position-absolute ml--2">*</span>
+															주소
+														</div>
+													</div>
+													<div class="col-lg-10">
+														<div>
+															<div>
+																<button type="button" class="findBtn btn frip-button mb-2 btn-outline-frip-default btn-tab">
+																	주소 검색
+																</button>
+																<span data-v-307da538="" placeholder="주소를 입력해주세요.">
+																	<fieldset data-v-307da538="" class="form-group" id="__BVID__1042">
+																		<div>
+																			<div data-v-307da538="" class="input-group">
+																				<input th:value="${groupDTO.groupLocation}" id="placeAddress" data-v-307da538="" readonly="readonly" type="text" placeholder="주소를 입력해주세요." class="form-control">
+																			</div>
+																			<div data-v-307da538="" class="invalid-feedback" style="display: none;"> 주소를 입력해주세요. </div>
+																			<div data-v-307da538="" class="input-group">
+																				<input th:value="${groupDTO.groupLocationDetail}" data-v-307da538="" id="locationDetail" type="text" placeholder="상세주소를 입력해주세요." class="form-control">
+																			</div>
+																		</div>
+																	</fieldset>
+																</span>
+																<small>상세 주소까지 입력해주세요.</small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="px-3">
+												<div class="row my-2">
+													<div class="col-lg-2">
+														<div class="mt-3 pl-3 text-wrap input-label-style" style="font-size: 0.9rem;"><!----> 주차 가능 여부 <!---->
+														</div>
+													</div>
+													<div class="col-lg-10">
+														<div>
+															<fieldset class="form-group mt-2" id="__BVID__1047">
+																<div>
+																	<div th:if="${#strings.equals(groupDTO.groupParkingAvailable, '가능')}" id="parkingOption" role="radiogroup" tabindex="-1" class="bv-no-focus-ring">
+																		<div class="custom-control custom-control-inline custom-radio">
+																			<input id="parkingOption_BV_option_0" type="radio" name="isParkingAvailable" class="custom-control-input" value="true" checked>
+																			<label for="parkingOption_BV_option_0" class="custom-control-label">
+																				<span>가능</span>
+																			</label>
+																		</div>
+																		<div class="custom-control custom-control-inline custom-radio">
+																			<input id="parkingOption_BV_option_1" type="radio" name="isParkingAvailable" class="custom-control-input" value="false">
+																			<label for="parkingOption_BV_option_1" class="custom-control-label">
+																				<span>불가능</span>
+																			</label>
+																		</div>
+																	</div>
+																	<div th:unless="${#strings.equals(groupDTO.groupParkingAvailable, '가능')}" id="parkingOption" role="radiogroup" tabindex="-1" class="bv-no-focus-ring">
+																		<div class="custom-control custom-control-inline custom-radio">
+																			<input id="parkingOption_BV_option_0" type="radio" name="isParkingAvailable" class="custom-control-input" value="false">
+																			<label for="parkingOption_BV_option_0" class="custom-control-label">
+																				<span>가능</span>
+																			</label>
+																		</div>
+																		<div class="custom-control custom-control-inline custom-radio">
+																			<input id="parkingOption_BV_option_1" type="radio" name="isParkingAvailable" class="custom-control-input" value="true" checked>
+																			<label for="parkingOption_BV_option_1" class="custom-control-label">
+																				<span>불가능</span>
+																			</label>
+																		</div>
+																	</div>
+																</div>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="px-3 mt-3"><div class="row my-2">
+												<div class="col-lg-2"><!----></div>
+												<div class="col-lg-10">
+													<div>
+														<textarea th:value="${groupDTO.groupMoreInformation}" id="textarea" disabled="disabled" placeholder="추가 안내사항을 입력해주세요. (예시) 건물 내 1대 주차 가능 / 근처 공영주차장을 이용해주세요." wrap="soft" class="form-control" style="resize: none; overflow-y: scroll; height: 90px;"></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="py-2 text-right container">
+											<button type="button" class="createPlace btn frip-button btn-frip-primary btn-tab"><!---->등록</button>
+											<button type="button" class="btn frip-button btn-frip-secondary btn-tab" onclick="closeModal()"><!---->닫기</button>
+										</div>
+									</form>
+								</span>
+								<!---->
+							</div>
+						</div>
+					</div>
+					<!---->
+				</div>
+			</form>
+			<span tabindex="0"></span>
+		</div>
+	</div>
+	<div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/host/host.js"></script>
+<script>
+	// 탭에 따라 변경하는 부분들
+	$('.explain').hide();
+	$('.noticeEx').hide();
+	$('#__BVID__287___BV_modal_outer_').hide();
+	$('.place').hide();
+	$('.image-header').hide();
+	$('.img-box').hide();
+	$('.placeTableBtn').hide();
+	$('.my-2.placeTable').hide();
+	$('.cancelRecruitment').hide();
+
+
+	//반응형
+	function resizeApply() {
+		var minWidth = 1350;
+		var calender = document.getElementsByClassName('m-3')[1];
+		if (window.innerWidth < minWidth) { calender.style.zoom = (window.innerWidth / minWidth); }
+		else calender.style.zoom = 1;
+	}
+
+	window.onload = function() {
+		window.addEventListener('resize', function() {
+			resizeApply();
+		});
+	}
+
+	resizeApply();
+
+
+</script>
+</html>

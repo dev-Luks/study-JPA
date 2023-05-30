@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <title>나의 일기 상세페이지 - 나의 바다(MyOcean)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/community/detail.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+</style>
+<body>
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+
+<div class="ProductDetailPage__Wrapper-sc-126q1k2-0 CijWU">
+    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+        <div class="ProductDetailPage__ContentWrapper-sc-126q1k2-1 eNYAxQ">
+            <div class="ProductDetailPage__ProductDetailContainer-sc-126q1k2-2 jAFMyC" th:object="${diaryDTO}">
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa">
+                    <article>
+                        <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 cGKzvC"></section>
+                        <header class="Article__Header-sc-1mmkltm-0 fCwkht">
+                            <hgroup>
+                                <h2 class="Article__Title-sc-1mmkltm-1 bZNoYF">일기 정보</h2>
+                            </hgroup>
+                        </header>
+                        <dl class="InfoSection__InfoContainer-yf02u4-0 dbbJUL">
+                            <div>
+                                <dt>일기 종류</dt>
+                                <dd th:text="*{diaryCategory}"></dd>
+                            </div>
+                            <div>
+                                <dt>일기 작성일</dt>
+                                <dd th:text="${#temporals.format(diaryDTO.createDate,'yyyy-MM-dd HH:mm:ss')}"></dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 cGKzvC"></section>
+                <div class="ProductDetailPage__SectionWrapper-sc-126q1k2-3 jLKVwS">
+                    <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa"><article><header class="Article__Header-sc-1mmkltm-0 blaApX"><hgroup>
+                        <h2 class="Article__Title-sc-1mmkltm-1 bZNoYF" th:text="*{diaryTitle}"></h2>
+                    </hgroup></header>
+
+                        <!--본문 내용-->
+                        <div class="DescriptionSection__DescriptionContainer-sc-1vvzceq-0 edqUZK">
+                            <style type="text/css">
+                                .product-description {
+                                    padding: 0 20px;
+                                    margin: 0;
+                                }
+                                .product-description img {
+                                    width: calc(100% + 40px);
+                                    max-width: calc(100% + 40px);
+                                    margin-left: -20px;
+                                }
+                                .product-description li {
+                                    list-style-position: inside;
+                                }
+                                .product-description p {
+                                    margin: 0;
+                                }
+                                .product-description span.fr-emoticon.fr-emoticon-img {
+                                    min-width: 20px;
+                                    min-height: 20px;
+                                    display: inline-block;
+                                }
+                            </style>
+                            <!--본문 내용-->
+                            <div th:utext="*{diaryContent}" class="product-description"></div>
+                        </div>
+                        <div class="DescriptionSection__ButtonContainer-sc-1vvzceq-1 dvQeHx">
+                            <button type="button" class="ButtonMore__Button-sc-1xa20cg-0 jJfiPr">
+                                <span>더보기</span>
+                                <div class="ButtonMore__IconContainer-sc-1xa20cg-1 QiNdM">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E %3Cpath fill='%23333' fill-rule='evenodd' d='M3.21 5.203c.28-.27.735-.27 1.015 0L8.5 9.329l4.275-4.126c.28-.27.735-.27 1.015 0 .28.27.28.708 0 .979l-4.783 4.615c-.28.27-.734.27-1.014 0L3.21 6.182c-.28-.27-.28-.709 0-.98z' clip-rule='evenodd'/%3E %3C/svg%3E" alt="상세정보 arrow icon">
+                                </div>
+                            </button>
+                        </div>
+                    </article></section>
+                </div>
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa">
+                    <article>
+                        <div class="LinkAccordion__AccordionContainer-sc-1o112j5-1 cJPEOD">
+                            <div id="noticeWrap" class="Accordion__Container-sc-1jd6vdl-0 eGMegW">
+                                <div>
+                                    유의 사항
+                                </div>
+                                <div class="Accordion__IconContainer-sc-1jd6vdl-1 kOAmkm">
+                                    <img src="data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M1 11L6 6L1 1' stroke='%23CCCCCC' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E" alt="Arrcodion arrow" class="Accordion__IconArrow-sc-1jd6vdl-2 ewyXrB">
+                                </div>
+                            </div>
+                            <div id="notice" class="Accordion__Content-sc-1jd6vdl-3 zRWUs">
+                                · 일기 성격과 상이한 내용이 기재될 경우, 예고없이 삭제 조치 될 수 있습니다. <br> ·&nbsp;바르고 고운 말을 사용해주세요.
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/community/detail.js"></script>
+</html>

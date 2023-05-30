@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 게시판</title>
+    <link rel="stylesheet" href="/css/community/community.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+
+    .kdumyH {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+
+    .cVpYem {
+        font-size: 11px;
+        font-weight: 300;
+        line-height: 18px;
+        text-align: center;
+        color: rgb(155, 155, 155);
+        margin-top: 10px;
+    }
+</style>
+<body>
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<input style="display:none;" th:value="${session.userId}" name="userId">
+<div class="SocialFeedPage__Wrapper-ky5ymg-0 fzBbGO">
+    <div class="SocialFeedPage__Header-ky5ymg-1 jIjcTX">
+        <div style="padding-left: 20px; padding-right: 20px;">
+            <!--맨 위 제목-->
+            <span class="SocialFeedPage__Title-ky5ymg-2 gVPyuz">마음껏 이야기 해보세요 </span>
+            <button class="SocialFeedPage__TooltipButton-ky5ymg-3 cUtFFV">
+                <img style="padding-bottom: 5px"; src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17' viewBox='0 0 17 17'%3E %3Cpath fill='%23CCC' d='M8.5 0C13.194 0 17 3.806 17 8.5S13.194 17 8.5 17 0 13.194 0 8.5 3.806 0 8.5 0zm0 1.5c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm-.09 9.22c.613 0 .92.32.92.96 0 .64-.307.96-.92.96-.607 0-.91-.32-.91-.96 0-.64.303-.96.91-.96zm.15-5.95c.627 0 1.123.157 1.49.47.393.333.59.81.59 1.43 0 .313-.09.62-.27.92-.073.113-.163.24-.27.38l-.47.54c-.053.06-.1.12-.14.18-.107.133-.19.26-.25.38-.16.293-.223.597-.19.91H7.77c-.053-.367-.01-.717.13-1.05.053-.133.13-.273.23-.42.073-.113.167-.24.28-.38l.56-.68c.173-.247.26-.473.26-.68 0-.547-.283-.82-.85-.82-.38 0-.75.187-1.11.56l-.81-.74c.273-.313.58-.553.92-.72.367-.187.76-.28 1.18-.28z'/%3E %3C/svg%3E" alt="프립 피드란?"></button>
+        </div>
+        <!-- 글작성 버튼 -->
+        <a th:href="@{/community/register}" style="margin-right: -8px" class="down785px">
+            <div class="writeBtn" >
+                <button class="PlusLink__IconBtn-sc-7f77eh-0 faWmEE">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='20' viewBox='0 0 18 20'%3E %3Cpath fill='%234E5968' fill-rule='evenodd' d='M9 .765c.552 0 1 .447 1 1v7.392h7c.552 0 1 .448 1 1v.098c0 .552-.448 1-1 1h-7v7.392c0 .552-.448 1-1 1s-1-.448-1-1v-7.392H1c-.552 0-1-.448-1-1v-.098c0-.552.448-1 1-1h7V1.765c0-.553.448-1 1-1z'/%3E %3C/svg%3E" alt="+">
+                </button>
+            </div>
+        </a>
+    </div>
+    <!-- 필터 추가 -->
+    <div class="Filter__FilterButtonWrapper-sc-1buujtg-1 gRnEmw">
+        <div class="filter_wrapper_3l">
+            <div class="FilterAll__Wrapper-tqa6fq-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq allFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        전체
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button></button>
+                </div>
+            </div>
+            <div class="FilterCook__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq childFilter cookFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        요리
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button>
+                    </button>
+                </div>
+            </div>
+            <div class="FilterSports__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq childFilter exerciseFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        운동
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button>
+                    </button>
+                </div>
+            </div>
+            <div class="FilterMovie__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq childFilter movieFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        영화
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button>
+                    </button>
+                </div>
+            </div>
+            <div class="FilterBook__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq childFilter bookFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        책
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button>
+                    </button>
+                </div>
+            </div>
+            <div class="FilterDiary__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq childFilter diaryFilter">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">
+                        고민
+                        <button height="18px" class="Button-bqxlp0-0 FilterOpenButton__CloseButton-sc-91gci-1 gRNDCb">
+                            <img src="/imgin/community/blueClose.png" class="FilterOpenButton__CloseIcon-sc-91gci-2 hnfyOW"></button>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 글작성 버튼 -->
+        <a href="/community/register" style="margin-right: -8px" class="until785px">
+            <div class="writeBtn" >
+                <button class="PlusLink__IconBtn-sc-7f77eh-0 faWmEE">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='20' viewBox='0 0 18 20'%3E %3Cpath fill='%234E5968' fill-rule='evenodd' d='M9 .765c.552 0 1 .447 1 1v7.392h7c.552 0 1 .448 1 1v.098c0 .552-.448 1-1 1h-7v7.392c0 .552-.448 1-1 1s-1-.448-1-1v-7.392H1c-.552 0-1-.448-1-1v-.098c0-.552.448-1 1-1h7V1.765c0-.553.448-1 1-1z'/%3E %3C/svg%3E" alt="+">
+                </button>
+            </div>
+        </a>
+    </div>
+    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+        <div class="view__FeedListWrapper-sc-1fff32g-0 ciajVR">
+            <!--본문 게시글 -->
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 페이지 설명 모달 -->
+<div id="modal-page">
+    <div>
+        <div class="ActionSheet__Container-akkdcx-0 jgFMVr pageIntroduce_modalContainer_1h">
+            <div class="ActionSheet__Content-akkdcx-2 cyEVkt pageIntroduce_Container_1h">
+                <header class="ActionSheet__Header-akkdcx-3"></header><header class="Ver4__TitleVer4-d1i4tu-0 kNwzQK " style=" padding: 35px 20px 0px;
+    font-size: 22px; line-height: 30px;color: rgb(51, 61, 75); font-weight: bold;">자유게시판 활용법</header>
+                <div class="WhatIsActionSheet__Body-sc-10e5q0f-0 cblWvR">
+                    <strong class="WhatIsActionSheet__Summary-sc-10e5q0f-1 bAnoxg">자유게시판을 통해 나를 표현하고 <span role="img" aria-label="sunglasses">😎</span><br>
+                        다른 사람들과 마음껏 소통 해보세요.</strong>
+                    <p class="WhatIsActionSheet__Description-sc-10e5q0f-2 dkImul">
+                        자유게시판에서 즐거웠고 행복했던 순간들을 또는 슬프고 속상했던 순간들을 자유롭게 표현하며 나의 속마음을 털어보세요.<br> 그리고 다른 사람들과 나의 마음을 공유해 보세요.
+                    </p>
+                    <p class="WhatIsActionSheet__Comment-sc-10e5q0f-3 cMDWip">
+                        나를 다른 사람들과 비교하지마세요. 충분히 잘해내고 있습니다.
+                    </p>
+                </div>
+                <img src="https://www.frip.co.kr/365535eb402ce8672ce933afcebe47b9.png" class="WhatIsActionSheet__ImageBanner-sc-10e5q0f-4 kYigqi">
+            </div>
+            <div class="ActionSheet__Overlay-akkdcx-1 eCzJv">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 신고 모달-->
+<div id="modal-root">
+    <div>
+        <div class="Dialog__Container-sc-16kwpqb-0 htiyxZ">
+            <div class="BodyScrollLockContainer__Container-sc-19uqzq5-0 idpZym Dialog__StyledBodyScrollLockContainer-sc-16kwpqb-1 dCXZYJ">
+                <div class="Dialog__Content-sc-16kwpqb-5 ibqqJA">
+                    <div class="DialogDelete__Content-p8gubf-0 jZuxbV"><p>해당 게시글을</p>
+                        <p>신고 하시겠습니까?</p></div>
+                </div>
+                <div class="Dialog__ButtonGroup-sc-16kwpqb-6 bZEORB">
+                    <button width="100%" height="auto" color="black" class="Button-bqxlp0-0 Dialog__StyledButton-sc-16kwpqb-7 kXWQPc">
+                        취소
+                    </button>
+                    <button width="100%" height="auto" color="#ff6666" font-weight="bold" class="Button-bqxlp0-0 Dialog__StyledButton-sc-16kwpqb-7 bQKwTd">
+                        신고
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/community/communityClick.js"></script>
+
+
+<script th:inline="javascript">
+    //th:inline은 타임리프를 사용할수 있게 해준다.
+    const keyword = [[${keyword}]];
+    globalThis.size = 10;
+    //필터 값을 넘겨주기 위한 배열을 생성한다.
+    globalThis.communityAr = new Array();
+    // 첫 검색결과가 없을 때
+    let firstCheck =false;
+    // 더보기 버튼 체크
+    let lastCheck =false;
+
+
+    show();
+    //ajax 검색 실행
+    function show(){
+        //keyword값을 넘겨주는 이유는 페이지 이동시 keyword, 검색 키워드를 유지하기 위함이다.
+        $.ajax({
+            url:"/community-search/list?page=0&size="+globalThis.size+"&search="+keyword+"&categoriesList="+globalThis.communityAr,
+            type:"post",
+            success:showList
+        })
+    }
+    function showList(result){
+        let text='';
+        if(result.content.length == 0){
+            text += `<div style="display:flex;justify-content: center;width: 100%">`
+            text += `<div class="Filter__Wrapper-sc-1buujtg-0 eqAEeH">`
+            text += `<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`
+            text += `<div class="Empty__Wrapper-sc-3dhj3x-0 kdumyH"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h80v80H0z'/%3E %3Cg transform='translate(10 10)'%3E %3Ccircle cx='26.2' cy='26.2' r='24.6' fill-rule='nonzero' stroke='%23DDD' stroke-width='2'/%3E %3Cpath fill='%23DDD' d='M19.8 24.6a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2zm12.8 0a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z'/%3E %3Cpath stroke='%23DDD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M23 29.4c2.133-2.133 4.267-2.133 6.4 0'/%3E %3Cpath fill-rule='nonzero' stroke='%23DDD' stroke-width='2' d='M43.8 43.8l14.708 14.708'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="Empty__Icon-sc-3dhj3x-1 cwykdT">`
+            text += `<div class="Empty__Text-sc-3dhj3x-2 cVpYem">`
+            text += `<p>검색 결과가 없어요.</p>`
+            text += `<p>다른 검색어로 검색해 주세요!</p>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            // firstCheck=false => 첫 검색!, gRnEmw 필터부분에 text 넣기! => 필터 사라짐.
+            if(!firstCheck){
+                $(".gRnEmw").html(text)
+            // firstCheck=true => 첫 검색 x, koasSX 본문내용에 text 넣기! => 필터 유지.
+            }else{
+                $(".koasSX").html(text);
+            }
+            return;
+        }
+        // 검색결과가 한번이라도 있었다면, firstCheck=true
+        firstCheck=true;
+        // result.content는 slice가 return해준 result에서 내용이 담겨있는 부분이 content이기 때문에 result.content를 반복 돌린다
+        $(result.content).each((i,post)=>{
+            let imageSrc = "/community/display?fileName=" + post.communityFilePath + "/" + post.communityFileUuid + "_" + post.communityFileName;
+            let userImageSrc = "/mypage/display?fileName=" + post.userFilePath + "/" + post.userFileUuid + "_" + post.userFileName;
+
+            // 작성자 프로필 사진, 닉네임
+            text +=`<div><div class="Profile__Wrapper-sc-14xkqhl-0 ePpOcl CardFeed__StyledProfile-sc-1hnsnr8-0 kHXXhk">`;
+            text +=`<div class="Profile__UserProfileWrapper-sc-14xkqhl-1 jHdfwa">`;
+            text += `<div class="Profile__ProfileImageWrapper-sc-14xkqhl-2 kHBCa-D">`;
+            text +=`<div class="Image__Wrapper-v97gyx-0 gDuKGF">`;
+
+            <!--프로필 사진-->
+            text +=`<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`;
+            text +=`<div class="Ratio " style="display: block;">`;
+            text +=`<div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">`;
+            text+=`<div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">`;
+            text +=`<img class="Image__StyledImage-v97gyx-1 hPRDQO" width="36" height="36" src="`;
+            // 프로필 사진 이미지 부분
+            if(post.communityCategory!="고민"){
+                if(post.userFileName){
+                    text+=userImageSrc;
+                } else{
+                    text +=`/imgin/user.png`;
+                }
+            } else{
+                // 고민상담은 무조건 기본 이미지
+                text +=`/imgin/user.png`;
+            }
+
+            text +=`"></div></div></div></div></div></div>`;
+            <!--작성자 아이디, 날짜-->
+            text+=`<div class="Profile__UserTextWrapper-sc-14xkqhl-4 hopp"><p class="Profile__Name-sc-14xkqhl-3 jeiGkC">`;
+            // 아이디
+            if(post.communityCategory!="고민"){
+                text+= post.userNickName;
+            } else{
+                text += "익명 " + post.communityPostId;
+            }
+
+            text+=`</p><div class="Profile__Time-sc-14xkqhl-5 gqDWoy">`;
+            //날짜
+            text+= post.updatedDate;
+            text+=`</div></div></div><button class="Profile__MoreButton-sc-14xkqhl-6 lbwitP" onclick="modalOpen()">`;
+            <!--도시락 버튼 + 신고 버튼-->
+            text+=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='17' viewBox='0 0 4 17'%3E %3Cpath fill='%23999' fill-rule='evenodd' d='M1.57 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3z'/%3E %3C/svg%3E" alt=""></button></div>`;
+            text+=`<a class="goCommunity" href="`+ "/community/read?communityPostId=" + post.communityPostId +`">`;
+            text+=`<div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">`;
+            text+=`<div className = "Ratio-ratio " style = "height: 0px; position: relative; width: 100%; padding-top: 100%;">`;
+            text+=`<div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">`
+            text+=`<div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">`;
+            text+=`<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;"><div><img src="`;
+            // 썸네일 이미지
+            text+=imageSrc;
+            text+=`"></div></div></div></div></div></div>`;
+
+            /*카테고리*/
+            text+=`<div className="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">`;
+            text+=`<div className="ProductLink__Text-sc-1agbsre-1 gNRuxI" style="margin-top: 15px; line-height: 0.5; border: 1px solid rgb(229, 231, 234); border-radius: 22px; padding: 14px;">`
+            text+=`<img style="margin-right: 6px;" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E">`;
+            text+= post.communityCategory + `</div></div>`;
+
+            <!--본문 내용-->
+
+            text+=`<div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj" style="margin-top:10px;">`;
+            text+=`<span class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">`;
+            // 본문 텍스트
+            text+=post.communityTitle;
+            text+=`</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>`;
+            // 좋아요, 댓글
+            text+=`<div class="ActionGroup__Wrapper-sg91np-0 cXiDYn">`;
+            text+=`<a class="ActionGroup__LikeButton-sg91np-1 jxmvcs" onclick="return false" href=""`;
+            text+=post.communityPostId + `">`;
+            // 좋아요 눌렀을 때 이미지
+            if($("input[name='userId']").val()==""){
+                text+=`<img class="checkLike likePlus" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E" alt="좋아요~"><span class="likeNumber">`;
+            }
+
+            else if(!post.checkLike){
+                text+=`<img class="checkLike likeCancel" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='%23F32D2D' d='M19.437 1.589C18.427.564 17.085 0 15.657 0s-2.77.564-3.78 1.589L10.5 2.986 9.124 1.59C8.114.564 6.77 0 5.344 0c-1.429 0-2.771.564-3.78 1.589-2.085 2.115-2.085 5.557 0 7.673l8.379 8.504c.148.15.348.234.557.234.209 0 .41-.084.557-.234l8.38-8.504c2.084-2.116 2.084-5.558 0-7.673z'/%3E %3C/svg%3E" alt="좋아요~"><span>`;
+            }
+            else{
+                // 좋아요 안눌었을 때 이미지
+                text+=`<img class="checkLike likePlus" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E" alt="좋아요~"><span class="likeNumber">`;
+            }
+            // 좋아요 개수
+            text+= post.communityLikeNumber;
+            text+=`</span></a>`;
+            text+=`<a class="goReplyBoard" style="display: flex;margin-top: 1px;" href="/reply/index?communityPostId=`+post.communityPostId+`">`;
+
+            text+=`<img class="ActionGroup__ReplyLink-sg91np-2 grCiwo" src="`;
+            text+=`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E`;
+            text+=`" alt="댓글">`;
+            text+=`<span>`;
+            // 댓글
+            text+=post.communityReplyCount;
+            text+=`</span></img></a></div></div>`;
+        })
+        // 본문 내용을 비워준다. (퍼블리싱이 깨져서 추가해준 부분)
+        $(".koasSX").empty();
+        // 본문 내용 wrapper(div)를 하나 추가해준다.
+        $(".koasSX").append('<div class="view__FeedListWrapper-sc-1fff32g-0 ciajVR">');
+        // 그러고 나서 위의 text를 붙여준다.
+        $(".view__FeedListWrapper-sc-1fff32g-0.ciajVR").html(text);
+
+        // slice 타입은 last라는 변수가 현재 페이지가 마지막 여부인지를 return 해준다.
+        if(result.last) {
+            lastCheck = true;
+        }
+
+    }
+
+    //필터 영역
+    const $filterBtn = $(".childFilter");
+    const $allBtn = $(".allFilter");
+
+    const $cook = $(".cookFilter");
+    const $exercise = $(".exerciseFilter")
+    const $movie = $(".movieFilter")
+    const $book = $(".bookFilter")
+    const $diary = $(".diaryFilter")
+
+    // 전체버튼 자기 자신이 파란불이 들어옴
+    function allCheck(){
+        $allBtn.find("button").removeClass('fFBpBV').addClass("kJEnf");
+        $allBtn.find(".gRNDCb").show();
+    }
+    //  전체버튼 자기 자신이 파란불이 들어와있을 시 원래대로 복구
+    function allCheckCancel(){
+        $allBtn.find("button").removeClass('kJEnf').addClass("fFBpBV");
+        $allBtn.find(".gRNDCb").hide();
+    }
+
+    //전체 필터를 클릭했을시
+    $allBtn.on("click",function () {
+        //size를 초기화 즉 무한스크롤을 재실행시키기 위한 목적
+        //lastcheck도 false로 초기화
+        globalThis.size=10;
+        lastCheck=false;
+        //전체를 클릭하면 나머지 다 체크
+        if($(this).find("button").hasClass("fFBpBV")){
+            allCheck();
+            // 5개의 필터 모두 communityAr배열에 넣기
+            $filterBtn.each((i,item)=>{
+                $(item).find("button").removeClass('fFBpBV').addClass("kJEnf");
+                $(item).find(".gRNDCb").show();
+                globalThis.communityAr.push("EXERCISE");
+                globalThis.communityAr.push("COOK");
+                globalThis.communityAr.push("MOVIE");
+                globalThis.communityAr.push("BOOK");
+                globalThis.communityAr.push("COUNSELING");
+                show();
+            })
+        // 전체다 켜져 있을시 한번 더 클릭시 모두 해제
+        }else{
+            allCheckCancel();
+            //5개의 필터 모두 communityAr배열에 빼기
+            $filterBtn.each((i,item)=>{
+                $(item).find("button").removeClass('kJEnf').addClass("fFBpBV");
+                $(item).find(".gRNDCb").hide();
+                globalThis.communityAr = [];
+                show();
+            })
+        }
+    })
+
+    //요리버튼 클릭시
+    $cook.on("click",function () {
+        // size랑 lastcheck 초기화
+        globalThis.size=10;
+        lastCheck=false;
+
+        // (체크 되어있지 않은 상황)퍼블리싱 파란색으로 불 들어옴과 동시에 globalThis.communityAr에 COOK을 넣어준다.
+        if($(this).find("button").hasClass("fFBpBV")){
+            $(this).find("button").removeClass('fFBpBV').addClass("kJEnf");
+            $(this).find(".gRNDCb").show();
+            globalThis.communityAr.push("COOK");
+            show();
+        //    (체크 되어있는 상황)퍼블리싱 복구와 동시에 globalThis.communityAr에 COOK을 빼준다.
+        }else{
+            $(this).find("button").removeClass('kJEnf').addClass("fFBpBV");
+            $(this).find(".gRNDCb").hide()
+            globalThis.communityAr = globalThis.communityAr.filter((element) => element !=="COOK");
+            show();
+        }
+        //클릭하고 나서 불들어와있는 영역이 10개 즉 5개모두 체크되어있다면 전체버튼도 활성화 시켜준다.
+        if($filterBtn.find(".kJEnf").length==10){
+            allCheck();
+        //클릭하고 나서 불들어와있는 영역이 10개 즉 5개모두 체크되어있지 않다면 전체버튼을 꺼준다.
+        }else{
+            allCheckCancel();
+        }
+    })
+
+    //영화
+    $movie.on("click",function () {
+        globalThis.size=10;
+        lastCheck=false;
+        if($(this).find("button").hasClass("fFBpBV")){
+            $(this).find("button").removeClass('fFBpBV').addClass("kJEnf");
+            $(this).find(".gRNDCb").show();
+            globalThis.communityAr.push("MOVIE");
+            show();
+        }else{
+            $(this).find("button").removeClass('kJEnf').addClass("fFBpBV");
+            $(this).find(".gRNDCb").hide();
+            globalThis.communityAr = globalThis.communityAr.filter((element) => element !=="MOVIE");
+            show();
+        }
+        if($filterBtn.find(".kJEnf").length==10){
+            allCheck();
+        }else{
+            allCheckCancel();
+        }
+    })
+
+    //운동
+    $exercise.on("click",function () {
+        globalThis.size=10;
+        lastCheck=false;
+        if($(this).find("button").hasClass("fFBpBV")){
+            $(this).find("button").removeClass('fFBpBV').addClass("kJEnf");
+            $(this).find(".gRNDCb").show()
+            globalThis.communityAr.push("EXERCISE");
+            show();
+        }else{
+            $(this).find("button").removeClass('kJEnf').addClass("fFBpBV");
+            $(this).find(".gRNDCb").hide()
+            globalThis.communityAr = globalThis.communityAr.filter((element) => element !=="EXERCISE");
+            show();
+        }
+        if($filterBtn.find(".kJEnf").length==10){
+            allCheck();
+        }else{
+            allCheckCancel();
+        }
+    })
+
+    //책
+    $book.on("click",function () {
+        globalThis.size=10;
+        lastCheck=false;
+        if($(this).find("button").hasClass("fFBpBV")){
+            $(this).find("button").removeClass('fFBpBV').addClass("kJEnf");
+            $(this).find(".gRNDCb").show();
+            globalThis.communityAr.push("BOOK");
+            show();
+        }else{
+            $(this).find("button").removeClass('kJEnf').addClass("fFBpBV");
+            $(this).find(".gRNDCb").hide();
+            globalThis.communityAr = globalThis.communityAr.filter((element) => element !=="BOOK");
+            show();
+        }
+        if($filterBtn.find(".kJEnf").length==10){
+            allCheck();
+        }else{
+            allCheckCancel();
+        }
+    })
+    //다이어리 => 이걸 고민상담으로 바꿈
+    $diary.on("click",function () {
+        globalThis.size=10;
+        lastCheck=false;
+        if($(this).find("button").hasClass("fFBpBV")){
+            $(this).find("button").removeClass('fFBpBV').addClass("kJEnf");
+            $(this).find(".gRNDCb").show();
+            globalThis.communityAr.push("COUNSELING");
+            show();
+        }else{
+            $(this).find("button").removeClass('kJEnf').addClass("fFBpBV");
+            $(this).find(".gRNDCb").hide();
+            globalThis.communityAr = globalThis.communityAr.filter((element) => element !=="COUNSELING");
+            show();
+        }
+        if($filterBtn.find(".kJEnf").length===10){
+            allCheck();
+
+        }else{
+            allCheckCancel();
+        }
+    })
+
+    //result.last가 바꿔준, lastcheck가 사용되는 부분
+    //무한 스크롤
+    $(document).ready(function() {
+        var win = $(window);
+
+        win.scroll(function() {
+            //스크롤이 맨밑이니?
+            if ($(document).height() - win.height() == win.scrollTop()) {
+                //lastcheck가 false이니? => 마지막 페이지가 아니니?
+                // 마지막 페이지가 아닐시에만 실행
+                if(!lastCheck){
+                    //10개씩 더보여주기 실행
+                    globalThis.size = globalThis.size+10;
+                    show();
+                }
+            }
+        });
+    });
+
+    // AJAX를 통해 기존 document에서 없었던 element를 추가해줬으므로 기존 이벤트들을 모두 위임해주는 상황.
+    const $modal = $("#modal-root")
+    const $modalCancelBtn = $(".kXWQPc");
+    function modalOpen(){
+        $("#modal-root").css("display","block");
+    }
+
+
+    $(".lbwitP").click(function () {
+        $("#modal-root").css("display","block");
+    })
+
+    $modalCancelBtn.click(function () {
+        $modal.css("display","none");
+    })
+
+    const $pageIntroduceModal = $("#modal-page");
+    const $pageIntroduceBtn = $(".cUtFFV");
+
+    $pageIntroduceBtn.click(function () {
+        $pageIntroduceModal.css("display","block")
+    })
+
+
+    $(".pageIntroduce_modalContainer_1h").click(function (e) {
+        if($(e.target).parents(".pageIntroduce_Container_1h").length < 1){
+            $pageIntroduceModal.css("display","none");
+        }
+    })
+
+
+
+
+</script>
+<script>
+    // 좋아요 버튼 활성화
+    // addLike의 매개변수중 communityPostId를 통해 ajax요청
+    // 선언부 영역
+    let communityService = (function() {
+        //좋아요
+        function addLike(communityPostId, callback, error){
+            $.ajax({
+                url: "/like/addLike/"  + communityPostId,
+                type: "post",
+                success: function(result, status, xhr){
+                    if(callback){
+                        callback(result);
+                    }
+                },
+                error: function(xhr, status, err){
+                    if(error){
+                        error(err);
+                    }
+                }
+            });
+        }
+        // 좋아요해제
+        function minusLike(communityPostId, callback, error){
+            $.ajax({
+                url: "/like/minusLike/"  + communityPostId,
+                type: "post",
+                success: function(result, status, xhr){
+                    if(callback){
+                        callback(result);
+                    }
+                },
+                error: function(xhr, status, err){
+                    if(error){
+                        error(err);
+                    }
+                }
+            });
+        }
+
+        return {addLike: addLike, minusLike: minusLike}
+    })();
+</script>
+<script th:inline="javascript">
+    // 좋아요 버튼 클릭시 (이벤트 위임)
+    $(".koasSX").on("click", ".ActionGroup__LikeButton-sg91np-1", function(e){
+        e.preventDefault();
+        const $img = $(this).find("img");
+        const $span = $(this).find("span");
+        let communityPostId = $(this).attr("href");
+
+        // 로그인이 되어있으면 $("input[name='userId']").val()에 로그인한 유저의 번호가 들어온다.
+        if($("input[name='userId']").val()==""){
+            alert("로그인 후 이용 가능합니다.");
+            return;
+        }
+
+        // 로그인이 되어있다면 해당 게시글의 번호를 넘겨줌으로써 좋아요를 활성화 시킨다.
+        // likePlus 클래스명이 빈하트 모양이다. 따라서 빈하트를 클릭했을 시 좋아요를 실행.
+        if($img.attr("class").includes("likePlus")){
+            communityService.addLike(
+                communityPostId,
+                function(){
+                    console.log("좋아요 성공");
+                }
+            )
+            $img.attr("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='%23F32D2D' d='M19.437 1.589C18.427.564 17.085 0 15.657 0s-2.77.564-3.78 1.589L10.5 2.986 9.124 1.59C8.114.564 6.77 0 5.344 0c-1.429 0-2.771.564-3.78 1.589-2.085 2.115-2.085 5.557 0 7.673l8.379 8.504c.148.15.348.234.557.234.209 0 .41-.084.557-.234l8.38-8.504c2.084-2.116 2.084-5.558 0-7.673z'/%3E %3C/svg%3E");
+            $img.attr("class", "checkLike likeCancel");
+
+            let likeNumber = $span.text();
+
+            $span.text(++likeNumber);
+        } else{
+            communityService.minusLike(
+                communityPostId,
+                function(){
+                    console.log("좋아요 취소 성공");
+                }
+            )
+
+            $img.attr("src", "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E");
+            $img.attr("class", "checkLike likePlus");
+
+            let likeNumber = $span.text();
+            $span.text(--likeNumber);
+        }
+    });
+</script>
+
+
+
+
+</html>

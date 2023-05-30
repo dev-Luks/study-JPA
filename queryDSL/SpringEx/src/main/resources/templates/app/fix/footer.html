@@ -1,0 +1,78 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>footer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+
+<body>
+<footer class="Footer__Wrapper-sc-1pehk7k-0 kITUnH">
+  <div class="Footer__ContentWrapper-sc-1pehk7k-1 bgGVxX">
+
+    <div>
+      <div class="Section__Container-j3p1mm-0 gDzbrF">
+        <strong class="Section__Title-j3p1mm-1 eUqvVP">고객센터</strong>
+        <ul class="Section__DescriptionContainer-j3p1mm-2 eUoKnd">
+          <li class="Section__Subject-j3p1mm-3 fdzxlp">
+
+            <a role="button" href="/questionBoard/myQuestionWrite" target="_blank" class="Section__ChattingButton-j3p1mm-6 bTVfk">
+              <img alt="solid talk icon" src="data:image/svg+xml,%3Csvg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M8.84643 1.08334H4.1536C2.45797 1.08334 1.08334 2.42851 1.08334 4.08781V6.51342C1.08334 8.17272 2.45797 9.51788 4.1536 9.51788H7.15366V9.75674C7.15366 10.6087 8.15098 11.0705 8.80063 10.5192L10.6946 8.91221V8.90829C11.375 8.12501 11.9167 7.49276 11.9167 6.51342V4.08781C11.9167 2.42851 10.5421 1.08334 8.84643 1.08334Z' fill='%23333333'/%3E %3Ccircle cx='4.44166' cy='5.25416' r='0.65' fill='white'/%3E %3Cellipse cx='6.60834' cy='5.25416' rx='0.65' ry='0.65' fill='white'/%3E %3Cellipse cx='8.775' cy='5.25416' rx='0.65' ry='0.65' fill='white'/%3E %3C/svg%3E" class="Section__TalkMoreImage-j3p1mm-8 hCWoSC">
+              <span class="Section__ButtonText-j3p1mm-7 elYalm">문의하기</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="CenterSection__Border-sc-186ddyr-0 kPaBVE"></div>
+      <div class="CenterSection__CSContent-sc-186ddyr-1 KoSNA">
+        <br>
+        <p>운영시간: 평일/주말 10:00 - 17:00 (점심 : 12:00 - 13:00)</p>
+
+      </div>
+      <div class="CenterSection__Border-sc-186ddyr-0 jsCQNQ"></div>
+
+      <div class="Footer__Content-sc-1pehk7k-12 kDFfIu">
+        <div>
+          <span>㈜나의바다</span>
+          <span class="Footer__Divider-sc-1pehk7k-13 hvctRz">|</span>
+          <span>사업자 등록번호 : 123-45-067890</span>
+          <br>
+          <span>통신판매업신고번호 : 2022-서울강남-12345</span>
+        </div>
+        <div>
+          <span>대표 : 홍준성</span>
+          <span class="Footer__Divider-sc-1pehk7k-13 hvctRz">|</span>
+          <span>개인정보 관리 책임자 : 홍준성</span>
+          <br>
+          <span>서울시 강남구 테헤란로 146 현익빌딩 4층 it코리아아카데미</span>
+        </div>
+
+        <p>KAKAOPAY 안전거래 서비스 : 고객님의 안전거래를 위해 현금 결제 시, 저희 사이트에서 가입한 구매안전 서비스를 이용할 수 있습니다.&nbsp;
+
+        </p>
+      </div>
+      <div class="Footer__ContractWrapper-sc-1pehk7k-7 fwZUwy">
+        <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/law/termsofService">
+          <span>이용약관</span>
+        </a>
+        <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/law/privacyPolicy">
+          <strong>개인정보 처리방침</strong>
+        </a>
+        <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/law/locationBasedService">
+          <strong>위치기반 서비스</strong>
+        </a>
+        <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/manager/index" th:if="${session.userId}=='1'">
+          <span>관리자 페이지</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+
+</body></html>

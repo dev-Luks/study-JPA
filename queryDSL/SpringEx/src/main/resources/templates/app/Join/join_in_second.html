@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no,viewport-fit=cover">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <link rel="stylesheet" href="/css/Join/join_in_second.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <title>회원가입 -나의바다(MyOcean)</title>
+</head>
+<body class="fontLoaded">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top: -88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+        <!-- header 추가 부분 -->
+        <div class="PageWrapper-sc-1w87j10-0 RegisterPage__StyledPageWrapper-vqq9hl-0 ghbiEC">
+            <div class="RegisterPage__Wrapper-vqq9hl-1 bvPUqU">
+                <div class="Center__Wrapper-sc-19p29je-0 gVBJBr">
+                    <h3>회원가입</h3>
+                </div>
+                <!-- 메인 페이지로 이동(중간 DB 거쳐야함)-->
+                <form th:action="@{/join/joinOk}" th:object="${userDTO}" class="Form__RegisterPageForm-sc-1l5lis6-0 fLECcs" name="joinForm" method="post">
+                    <div>
+                        <input class="Form__Input-sc-1quypp7-1 iRBMai" type="text" th:field="*{userNickname}" placeholder="닉네임" autofocus="">
+                        <p class="Form__Description-sc-1quypp7-2 bViOzS" style="margin:0 auto"></p>
+                    </div>
+                    <div class="Certification__InputWithButtonWrapper-x9bojy-0 gIqJFQ">
+                        <div>
+                            <input class="Form__Input-sc-1quypp7-1 iRBMai" type="email" th:field="*{userEmail}" placeholder="이메일 주소">
+                        </div>
+                        <button class="Button-bqxlp0-0 gsRKCU" name="sendemail" type="button" width="136px" height="50px" color="#aaa" font-size="14px" disabled="">인증번호 전송</button>
+                    </div>
+                    <p class="Form__Description-sc-1quypp7-2 bViOzSS" style="margin:0 auto"></p>
+                    <div class="Certification__InputWithButtonWrapper-x9bojy-0 cMRMEQ">
+                        <div>
+                            <div>
+                                <input class="Form__Input-sc-1quypp7-1 iRBMai" type="number" name="verificationCode" placeholder="인증번호" pattern="[0-9]*">
+                            </div>
+                        </div>
+                        <button class="Button-bqxlp0-0 jquNPr" name="verify" type="button" width="106px" height="50px" color="#b5c5d6" font-size="14px" disabled="">인증하기</button>
+                    </div>
+                    <input type="hidden" th:field="*{userPassword}"/>
+                    <p class="Form__Description-sc-1quypp7-2 bViOzSSS" style="margin:0 auto"></p>
+                    <p class="FormWithTimer__TimerWrapper-r6i9el-0 jFLIap" style="margin:0 auto"></p>
+                    <button class="Button-bqxlp0-0 SubmitButton__RegisterPageSubmitButton-np91gr-0 chSrfn" name="join" type="button" width="100%" height="56px" color="#f4f4f4" font-size="16px" disabled="">가입하기</button>
+                    <!--                    <input type="hidden" name="password" value="">-->
+                </form>
+            </div>
+        </div>
+        <!-- footer 추가 부분 -->
+    </div>
+</div>
+<!-- modal창 시작 -->
+<div id="modal-root">
+    <div class="BodyScrollLockContainer__Container-sc-19uqzq5-0 idpZym SheetLayout__Container-sc-1icxv92-0 bcRvxi" style="display:none;">
+        <div class="SheetLayout__Content-sc-1icxv92-2 kvwOiO">
+            <div class="AcceptTermsSheet__Sheet-sc-1rvqxwq-0 bRnlKp">
+                <header class="AcceptTermsSheet__Header-sc-1rvqxwq-1 kTUHhc">본인확인 약관</header>
+                <div class="ListTerms__Wrapper-sc-1ppvlln-0 bbbigv">
+                    <label class="ItemTerms__Wrapper-sc-1nxa079-0 jxPesJ">
+                        <button id="btn1" class="ItemTerms__CheckArea-sc-1nxa079-1 csrOqO">
+                            <div class="ItemTerms__CheckBox-sc-1nxa079-2 gkwqJT">
+                                <div style="width:24px; height:24px; overflow:hidden;margin:0px auto; outline: none;" title="" role="checkbox" aria-label="animation" tabindex="0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="width:100%; height:100%; transform: translate3d(0px, 0px, 0px);" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <clipPath id="__lottie_element_34">
+                                                <rect width="24" height="24" x="0" y="0"></rect>
+                                            </clipPath>
+                                        </defs>
+                                        <g id="g1" clip-path="url(#__lottie_element_34)">
+                                            <g style="display:block;" transform="matrix(1,0,0,1,3.5,6)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,4.468999862670898)"></g>
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,5.681000232696533)">
+                                                    <path fill="rgb(221,221,221)" fill-opacity="1" d="M-2.25,5.681000232696533 C-2.25,5.681000232696533 -8.178000450134277,0.20800000429153442 -8.178000450134277,0.20800000429153442 C-8.583999633789062,-0.16599999368190765 -8.609000205993652,-0.7990000247955322 -8.234999656677246,-1.2050000429153442 C-7.860000133514404,-1.6089999675750732 -7.228000164031982,-1.6349999904632568 -6.822000026702881,-1.2610000371932983 C-6.822000026702881,-1.2610000371932983 -2.25,2.9579999446868896 -2.25,2.9579999446868896 C-2.25,2.9579999446868896 6.821000099182129,-5.414999961853027 6.821000099182129,-5.414999961853027 C7.2270002365112305,-5.789000034332275 7.861000061035156,-5.763999938964844 8.234000205993652,-5.359000205993652 C8.609000205993652,-4.953000068664551 8.583999633789062,-4.320000171661377 8.178999900817871,-3.944999933242798 C8.178999900817871,-3.944999933242798 -2.25,5.681000232696533 -2.25,5.681000232696533z"></path>
+                                                </g>
+                                            </g>
+                                            <g style="display:none;" transform="matrix(1,0,0,1,12,12)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,117,239)" stroke-opacity="1" stroke-width="2.7" d=" M-7.875,-1.5015418529510498 C-7.875,-1.5015418529510498 -7.587780475616455,-1.1761153936386108 -7.587780475616455,-1.1761153936386108 C-7.587780475616455,-1.1761153936386108 -7.448124408721924,-0.9752898216247559 -7.448124408721924,-0.9752898216247559"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="ItemTerms__Title-sc-1nxa079-3 gWNsJT">이용약관 필수 동의</span>
+                        </button>
+                        <a href="./termsOfService.html" target="_blank">
+                            <img src="data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M1 11L6 6L1 1' stroke='%23CCCCCC' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E" alt="/static-info/agreement">
+                        </a>
+                    </label>
+                    <label class="ItemTerms__Wrapper-sc-1nxa079-0 jxPesJ">
+                        <button id="btn2" class="ItemTerms__CheckArea-sc-1nxa079-1 csrOqO">
+                            <div class="ItemTerms__CheckBox-sc-1nxa079-2 gkwqJT">
+                                <div style="width:24px; height:24px; overflow:hidden; margin:0px auto; outline:none;" title="" role="checkbox" aria-label="animation" tabindex="0">
+                                    <svg smlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="width:100%; height:100%; transform:translate3d(0px, 0px, 0px);" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <clipPath id="__lottie_element_42">
+                                                <rect width="24" height="24" x="0" y="0"></rect>
+                                            </clipPath>
+                                        </defs>
+                                        <g id="g2" clip-path="url(#__lottie_element_42)">
+                                            <g style="display:block;" transform="matrix(1,0,0,1,3.5,6)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,4.468999862670898)"></g>
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,5.681000232696533)">
+                                                    <path fill="rgb(221,221,221)" fill-opacity="1" d=" M-2.25,5.681000232696533 C-2.25,5.681000232696533 -8.178000450134277,0.20800000429153442 -8.178000450134277,0.20800000429153442 C-8.583999633789062,-0.16599999368190765 -8.609000205993652,-0.7990000247955322 -8.234999656677246,-1.2050000429153442 C-7.860000133514404,-1.6089999675750732 -7.228000164031982,-1.6349999904632568 -6.822000026702881,-1.2610000371932983 C-6.822000026702881,-1.2610000371932983 -2.25,2.9579999446868896 -2.25,2.9579999446868896 C-2.25,2.9579999446868896 6.821000099182129,-5.414999961853027 6.821000099182129,-5.414999961853027 C7.2270002365112305,-5.789000034332275 7.861000061035156,-5.763999938964844 8.234000205993652,-5.359000205993652 C8.609000205993652,-4.953000068664551 8.583999633789062,-4.320000171661377 8.178999900817871,-3.944999933242798 C8.178999900817871,-3.944999933242798 -2.25,5.681000232696533 -2.25,5.681000232696533z"></path>
+                                                </g>
+                                            </g>
+                                            <g  style="display:none;" transform="matrix(1,0,0,1,12,12)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,117,239)" stroke-opacity="1" stroke-width="2.7" d=" M-7.875,-1.5015418529510498 C-7.875,-1.5015418529510498 -7.587780475616455,-1.1761153936386108 -7.587780475616455,-1.1761153936386108 C-7.587780475616455,-1.1761153936386108 -7.448124408721924,-0.9752898216247559 -7.448124408721924,-0.9752898216247559"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="ItemTerms__Title-sc-1nxa079-3 gWNsJT">개인정보 처리방침 필수 동의</span>
+                        </button>
+                        <a href="./personalInformation.html" target="_blank">
+                            <img src="data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M1 11L6 6L1 1' stroke='%23CCCCCC' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E" alt="/static-info/privacy">
+                        </a>
+                    </label>
+                    <label class="ItemTerms__Wrapper-sc-1nxa079-0 jxPesJ">
+                        <button id="btn3" class="ItemTerms__CheckArea-sc-1nxa079-1 csrOqO">
+                            <div class="ItemTerms__CheckBox-sc-1nxa079-2 gkwqJT">
+                                <div style="width: 24px;height:24px; overflow:hidden; margin:0px auto; outline:none;" title="" role="checkbox" aria-label="animation" tabindex="0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="width:100%; height:100%; transform:translate3d(0px, 0px, 0px);" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <clipPath id="__lottie_element_50">
+                                                <rect width="24" height="24" x="0" y="0"></rect>
+                                            </clipPath>
+                                        </defs>
+                                        <g id="g3" clip-path="url(#__lottie_element_50)">
+                                            <g style="display:block;" transform="matrix(1,0,0,1,3.5,6)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,4.468999862670898)"></g>
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,5.681000232696533)">
+                                                    <path fill="rgb(221,221,221)" fill-opacity="1" d=" M-2.25,5.681000232696533 C-2.25,5.681000232696533 -8.178000450134277,0.20800000429153442 -8.178000450134277,0.20800000429153442 C-8.583999633789062,-0.16599999368190765 -8.609000205993652,-0.7990000247955322 -8.234999656677246,-1.2050000429153442 C-7.860000133514404,-1.6089999675750732 -7.228000164031982,-1.6349999904632568 -6.822000026702881,-1.2610000371932983 C-6.822000026702881,-1.2610000371932983 -2.25,2.9579999446868896 -2.25,2.9579999446868896 C-2.25,2.9579999446868896 6.821000099182129,-5.414999961853027 6.821000099182129,-5.414999961853027 C7.2270002365112305,-5.789000034332275 7.861000061035156,-5.763999938964844 8.234000205993652,-5.359000205993652 C8.609000205993652,-4.953000068664551 8.583999633789062,-4.320000171661377 8.178999900817871,-3.944999933242798 C8.178999900817871,-3.944999933242798 -2.25,5.681000232696533 -2.25,5.681000232696533z"></path>
+                                                </g>
+                                            </g>
+                                            <g style="display:none;" transform="matrix(1,0,0,1,12,12)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,117,239)" stroke-opacity="1" stroke-width="2.7" d=" M-7.875,-1.5015418529510498 C-7.875,-1.5015418529510498 -7.587780475616455,-1.1761153936386108 -7.587780475616455,-1.1761153936386108 C-7.587780475616455,-1.1761153936386108 -7.448124408721924,-0.9752898216247559 -7.448124408721924,-0.9752898216247559"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="ItemTerms__Title-sc-1nxa079-3 gWNsJT">위치기반 서비스 이용약관 필수 동의</span>
+                        </button>
+                        <a href="./locationBasedService.html" target="_blank">
+                            <img src="data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M1 11L6 6L1 1' stroke='%23CCCCCC' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E" alt="/static-info/geoLocationAgreement">
+                        </a>
+                    </label>
+                    <label class="ItemTerms__Wrapper-sc-1nxa079-0 jxPesJ">
+                        <button id="btn4"class="ItemTerms__CheckArea-sc-1nxa079-1 csrOqO">
+                            <div class="ItemTerms__CheckBox-sc-1nxa079-2 gkwqJT">
+                                <div style="width:24px; height:24px; overflow:hidden; margin:0px auto; outline:none;" title="" role="checkbox" aria-label="animation" tabindex="0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="width:100%; height:100%; transform:translate3d(0px, 0px, 0px);" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <clipPath id="__lottie_element_58">
+                                                <rect width="24" height="24" x="0" y="0"></rect>
+                                            </clipPath>
+                                        </defs>
+                                        <g id="g4" clip-path="url(#__lottie_element_58)">
+                                            <g style="display:block;" transform="matrix(1,0,0,1,3.5,6)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,4.468999862670898)"></g>
+                                                <g opacity="1" transform="matrix(1,0,0,1,8.5,5.681000232696533)">
+                                                    <path fill="rgb(221,221,221)" fill-opacity="1" d=" M-2.25,5.681000232696533 C-2.25,5.681000232696533 -8.178000450134277,0.20800000429153442 -8.178000450134277,0.20800000429153442 C-8.583999633789062,-0.16599999368190765 -8.609000205993652,-0.7990000247955322 -8.234999656677246,-1.2050000429153442 C-7.860000133514404,-1.6089999675750732 -7.228000164031982,-1.6349999904632568 -6.822000026702881,-1.2610000371932983 C-6.822000026702881,-1.2610000371932983 -2.25,2.9579999446868896 -2.25,2.9579999446868896 C-2.25,2.9579999446868896 6.821000099182129,-5.414999961853027 6.821000099182129,-5.414999961853027 C7.2270002365112305,-5.789000034332275 7.861000061035156,-5.763999938964844 8.234000205993652,-5.359000205993652 C8.609000205993652,-4.953000068664551 8.583999633789062,-4.320000171661377 8.178999900817871,-3.944999933242798 C8.178999900817871,-3.944999933242798 -2.25,5.681000232696533 -2.25,5.681000232696533z"></path>
+                                                </g>
+                                            </g>
+                                            <g style="display:none;" transform="matrix(1,0,0,1,12,12)" opacity="1">
+                                                <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(0,117,239)" stroke-opacity="1" stroke-width="2.7" d=" M-7.875,-1.5015418529510498 C-7.875,-1.5015418529510498 -7.587780475616455,-1.1761153936386108 -7.587780475616455,-1.1761153936386108 C-7.587780475616455,-1.1761153936386108 -7.448124408721924,-0.9752898216247559 -7.448124408721924,-0.9752898216247559"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="ItemTerms__Title-sc-1nxa079-3 gWNsJTT">마케팅 수신 선택 동의</span>
+                        </button>
+                    </label>
+                </div>
+                <button class="Button-bqxlp0-0 eMDzoo" type="button" name="confrimjoin" width="100%" color="white" font-size="16px" height="56px" value="모두 동의하고 가입하기"></button>
+            </div>
+        </div>
+        <div class="SheetLayout__Overlay-sc-1icxv92-1 kgegLu"></div>
+    </div>
+</div><!-- modal창 끝 -->
+<div id="dnd-root"></div>
+<!-- <div class="modal">
+    <div class="modal_content" title="클릭하면 창이 닫힙니다.">
+        여기에 모달창 내용을 적어줍니다.<br>이미지여도 좋고 글이어도 좋습니다.
+    </div>
+</div> -->
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+<script src="/js/Join/join_in_second.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    emailjs.init("VPTiIAAgeT4A2QNeZ");
+    //"user_xxxxx"이 부분은 사용자마다 다르니 반드시 emailJS의 installation 화면을 확인
+    $('button[name=sendemail]').on("click",function(){
+
+        var templateParams = {
+            //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+            email : $('input[name=userEmail]').val(),
+            number: saveNumber,
+        };
+        emailjs.send('gmail', 'template_5dc3u2z', templateParams)
+            //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+    });
+</script>
+
+</html>

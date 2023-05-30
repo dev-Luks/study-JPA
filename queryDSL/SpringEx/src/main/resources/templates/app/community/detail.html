@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세페이지</title>
+    <link rel="stylesheet" href="/css/community/detail.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+</style>
+<body>
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+
+<div class="ProductDetailPage__Wrapper-sc-126q1k2-0 CijWU">
+    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+        <div class="ProductDetailPage__ContentWrapper-sc-126q1k2-1 eNYAxQ">
+            <div class="ProductDetailPage__ProductDetailContainer-sc-126q1k2-2 jAFMyC" th:object="${communityPostDTO}">
+                <div class="HeadSection__Wrapper-ty4t88-0 fZHPAt">
+                    <div class="RepresentationImageSection__Wrapper-mdp59s-0 cTEgEx">
+                        <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 dueCVJ">
+                            <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cOsMnB slick-initialized" dir="ltr">
+                                <div class="slick-list">
+                                    <div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 2625px;">
+                                        <div data-index="5" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width: 375px;">
+                                            <div>
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="상품 이미지" class="Image__StyledImage-v97gyx-1 VUNpz" width="768" th:src="@{/community/display(fileName=${communityPostDTO.communityFilePath} + '/' + ${communityPostDTO.communityFileUuid} + '_' + ${communityPostDTO.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--썸네일 옆 요약 설명 부분-->
+                    <div class="HeadSection__InfoSectionWrapper-ty4t88-1 iCZkhh">
+                        <section class="Section__Wrapper-sc-15fmp0p-0 kfLoin BasicInfoSection-sc-1f238bn-0 dZdXkF">
+                            <div class="BasicInfoSection__TitleWrapper-sc-1f238bn-2 cSlmkE">
+                                <div class="BasicInfoSection__Row-sc-1f238bn-1 lgXxUu">
+                                    <hgroup class="BasicInfoSection__TitleContainer-sc-1f238bn-3 rUBYB">
+                                        <!--제목-->
+                                        <h1 th:text="*{communityTitle}" class="BasicInfoSection__Title-sc-1f238bn-5 cWsrnE" style="margin-bottom:5px;"></h1>
+                                    </hgroup>
+                                    <div class="BasicInfoSection__ActionButtonContainer-sc-1f238bn-6 fOXNjA">
+                                        <!--게시글 작성 당사자일 경우에만 상단 도시락 버튼이 나옴-->
+                                        <button th:if="${session.userId == communityPostDTO.userId}" class="Profile__MoreButton-sc-14xkqhl-6 lbwitP">
+                                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='17' viewBox='0 0 4 17'%3E %3Cpath fill='%23999' fill-rule='evenodd' d='M1.57 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3z'/%3E %3C/svg%3E" alt="">
+                                        </button>
+                                    </div>
+                                    <!-- 수정,삭제 모달-->
+                                    <div class="loungeCardContentsComponents_loungeContentsMoreButtonBox__2jERo">
+                                        <div class="selectBox2 exchange_filter_1h active" style="display: block;">
+                                            <ul class="optionList">
+                                                <input type="hidden" class="exchange_filter_input" value="교환 일기">
+                                                <li class="optionItem" style="border-bottom: 1px solid rgb(220 215 215);">
+                                                    <a class="goUpdateCommunity" th:href="*{communityPostId}">수정</a>
+                                                </li>
+                                                <li class="optionItem">
+                                                    <a class="goDeleteCommunity" th:href="*{communityPostId}">삭제</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--댓글, 좋아요-->
+                        <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn" style="display: inline-flex; margin: 10px 0 10px 0;">
+                            <!--로그인한 상태일 때-->
+                            <a th:if="${session.userId}" class="ActionGroup__LikeButton-sg91np-1 jxmvcs" onclick="return false" th:href="@{*{communityPostId}}">
+                                <img th:if="*{checkLike}" class="checkLike likePlus" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E" alt="좋아요~">
+                                <img th:unless="*{checkLike}" class="checkLike likeCancel" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='%23F32D2D' d='M19.437 1.589C18.427.564 17.085 0 15.657 0s-2.77.564-3.78 1.589L10.5 2.986 9.124 1.59C8.114.564 6.77 0 5.344 0c-1.429 0-2.771.564-3.78 1.589-2.085 2.115-2.085 5.557 0 7.673l8.379 8.504c.148.15.348.234.557.234.209 0 .41-.084.557-.234l8.38-8.504c2.084-2.116 2.084-5.558 0-7.673z'/%3E %3C/svg%3E" alt="좋아요~">
+                                <span class="likeNumber" th:text="*{communityLikeNumber}"></span>
+                            </a>
+                            <a th:unless="${session.userId}" class="ActionGroup__LikeButton-sg91np-1 jxmvcs" onclick="return false" th:href="@{*{communityPostId}}">
+                                <img class="checkLike likePlus" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E" alt="좋아요~">
+                                <span class="likeNumber" th:text="*{communityLikeNumber}"></span>
+                            </a>
+                            <a class="goReplyBoard" style="display: flex;margin-top: 1px;" th:href="@{*{communityPostId}}">
+                                <img class="ActionGroup__ReplyLink-sg91np-2 grCiwo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E" alt="댓글">
+                                <span th:text="*{communityReplyCount}"></span>
+                            </a>
+                        </div>
+
+
+                        <section class="Section__Wrapper-sc-15fmp0p-0 kfLoin HostProfileSection__SectionWrapper-sc-1408l89-0 jFAUTZ">
+                        <div class="Profile__Wrapper-sc-18xe7ny-0 gVwBVO">
+                            <div class="Profile-sc-18xe7ny-1 hZQCDJ">
+                                <div class="Profile__Info-sc-18xe7ny-2 ixjLkJ">
+                                    <div class="Profile__ProfileImage-sc-18xe7ny-3 hEglGi">
+                                        <a href="">
+                                            <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                                <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="56" height="56" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,q_auto,w_56/mosawXKomb_1559867469010">
+                                                <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                    <div class="Ratio " style="display: block;">
+                                                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                            <div th:if="${communityPostDTO.communityCategory.toString().equals('고민')}" class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                <img th:src="@{/imgin/user.png}" class="Image__StyledImage-v97gyx-1 VUNpu" width="56" height="56">
+                                                            </div>
+                                                            <div th:unless="${communityPostDTO.communityCategory.toString().equals('고민')}" class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                <img th:if="*{userFileName}" th:src="@{/mypage/display(fileName=${communityPostDTO.userFilePath} + '/' + ${communityPostDTO.userFileUuid} + '_' + ${communityPostDTO.userFileName})}" class="Image__StyledImage-v97gyx-1 VUNpu" width="56" height="56">
+                                                                <img th:unless="*{userFileName}" th:src="@{/imgin/user.png}" class="Image__StyledImage-v97gyx-1 VUNpu" width="56" height="56">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="Profile__ProfileContent-sc-18xe7ny-5 fMiunS">
+                                        <div class="Profile__HostNameWrapper-sc-18xe7ny-6 jYAYJP">
+                                            <span class="Profile__NickName-sc-18xe7ny-7 cZgpqN">
+                                                <!--유저 닉네임-->
+                                                <span th:if="${communityPostDTO.communityCategory.toString().equals('고민')}" th:text="|익명 *{communityPostId}|"></span>
+                                                <span th:unless="${communityPostDTO.communityCategory.toString().equals('고민')}" th:text="*{userNickName}"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+                </div>
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa">
+                    <article>
+                        <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 cGKzvC"></section>
+                        <header class="Article__Header-sc-1mmkltm-0 fCwkht">
+                            <hgroup>
+                                <h2 class="Article__Title-sc-1mmkltm-1 bZNoYF">커뮤니티 정보</h2>
+                            </hgroup>
+                        </header>
+                        <dl class="InfoSection__InfoContainer-yf02u4-0 dbbJUL">
+                            <div>
+                                <dt>카테고리</dt>
+                                <dd th:text="*{communityCategory}"></dd>
+                            </div>
+                            <div>
+                                <dt>최근 수정일</dt>
+                                <dd th:text="*{updatedDate}"></dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 cGKzvC"></section>
+                <div class="ProductDetailPage__SectionWrapper-sc-126q1k2-3 jLKVwS">
+                    <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa"><article><header class="Article__Header-sc-1mmkltm-0 blaApX"><hgroup>
+                        <h2 class="Article__Title-sc-1mmkltm-1 bZNoYF" th:text="|*{communityCategory} 이야기|"></h2>
+                    </hgroup></header>
+
+                        <!--본문 내용-->
+                        <div class="DescriptionSection__DescriptionContainer-sc-1vvzceq-0 edqUZK">
+                            <style type="text/css">
+                                .product-description {
+                                    padding: 0 20px;
+                                    margin: 0;
+                                }
+                                .product-description img {
+                                    width: calc(100% + 40px);
+                                    max-width: calc(100% + 40px);
+                                    margin-left: -20px;
+                                }
+                                .product-description li {
+                                    list-style-position: inside;
+                                }
+                                .product-description p {
+                                    margin: 0;
+                                }
+                                .product-description span.fr-emoticon.fr-emoticon-img {
+                                    min-width: 20px;
+                                    min-height: 20px;
+                                    display: inline-block;
+                                }
+                            </style>
+                            <!--본문 내용-->
+                            <div th:utext="*{communityContent}" class="product-description"></div>
+                        </div>
+                        <div class="DescriptionSection__ButtonContainer-sc-1vvzceq-1 dvQeHx">
+                            <button type="button" class="ButtonMore__Button-sc-1xa20cg-0 jJfiPr">
+                                <span>더보기</span>
+                                <div class="ButtonMore__IconContainer-sc-1xa20cg-1 QiNdM">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E %3Cpath fill='%23333' fill-rule='evenodd' d='M3.21 5.203c.28-.27.735-.27 1.015 0L8.5 9.329l4.275-4.126c.28-.27.735-.27 1.015 0 .28.27.28.708 0 .979l-4.783 4.615c-.28.27-.734.27-1.014 0L3.21 6.182c-.28-.27-.28-.709 0-.98z' clip-rule='evenodd'/%3E %3C/svg%3E" alt="상세정보 arrow icon">
+                                </div>
+                            </button>
+                        </div>
+                    </article></section>
+                </div>
+                <section class="ProductDetailPage__SectionContainer-sc-126q1k2-4 bremOa">
+                    <article>
+                        <div class="LinkAccordion__AccordionContainer-sc-1o112j5-1 cJPEOD">
+                            <div id="noticeWrap" class="Accordion__Container-sc-1jd6vdl-0 eGMegW">
+                                <div>
+                                    유의 사항
+                                </div>
+                                <div class="Accordion__IconContainer-sc-1jd6vdl-1 kOAmkm">
+                                    <img src="data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M1 11L6 6L1 1' stroke='%23CCCCCC' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E" alt="Arrcodion arrow" class="Accordion__IconArrow-sc-1jd6vdl-2 ewyXrB">
+                                </div>
+                            </div>
+                            <div id="notice" class="Accordion__Content-sc-1jd6vdl-3 zRWUs">
+                                · 커뮤니티 성격과 상이한 내용이 기재될 경우, 예고없이 삭제 조치 될 수 있습니다. <br> ·&nbsp;바르고 고운 말을 사용해주세요.
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/community/detail.js"></script>
+</html>

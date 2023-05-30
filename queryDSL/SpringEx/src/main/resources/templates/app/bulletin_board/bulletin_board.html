@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임 목록</title>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+    <link rel="stylesheet" href="/css/bulletin_board/bulletin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+    .kdumyH {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+
+    .cVpYem {
+        font-size: 11px;
+        font-weight: 300;
+        line-height: 18px;
+        text-align: center;
+        color: rgb(155, 155, 155);
+        margin-top: 10px;
+    }
+</style>
+<body>
+
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<div th:replace="/app/fix/chattingAll.html:: chattingAll"></div>
+<div class="PageWrapper-sc-1w87j10-0 bScXKt">
+    <input style="display:none;" name="userId" th:value="${session.userId}">
+    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+        <div class="sc-AxgMl fFPQpk">이번주 모임 추천👍🏻<span class="sc-AxheI eXzlnr" th:text="${#lists.size(groupDTOs)}"></span>
+            <a href="/host/index" class="goHostBtn">
+                <div class="writeMoveBtn" style="position: relative; float: right;" >
+                    <button class="PlusLink__IconBtn-sc-7f77eh-0 faWmEE">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='20' viewBox='0 0 18 20'%3E %3Cpath fill='%234E5968' fill-rule='evenodd' d='M9 .765c.552 0 1 .447 1 1v7.392h7c.552 0 1 .448 1 1v.098c0 .552-.448 1-1 1h-7v7.392c0 .552-.448 1-1 1s-1-.448-1-1v-7.392H1c-.552 0-1-.448-1-1v-.098c0-.552.448-1 1-1h7V1.765c0-.553.448-1 1-1z'/%3E %3C/svg%3E" alt="+">
+                    </button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!--전체 리스트 부분-->
+    <div class="sc-Axmtr hBVTtp">
+        <div class="ProductList__ProductWrapper-sc-1lo0q2y-0 jjtvVw"></div>
+    </div>
+
+    <!--페이징처리-->
+    <footer class="Wrapper__PaginationWrapper-fk4uv4-0 hBVRcD"></footer>
+</div>
+</div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/chatting.js"></script>
+<script src="/js/bulletin_board/bulletin_board.js"></script>
+<script>
+    let page = 1;
+    let keyword = 'null';
+    let $pages = $("a.changePage");
+
+
+
+    // 화면에 모임 리스트 출력
+    function show(){
+        console.log("show 함수 ");
+        groupService.getList({
+            page: page,
+            keyword : keyword
+        }, getList);
+    }
+    show();
+
+    // 페이지 버튼 클릭 시
+    function changePage(href){
+        page = href;
+        show();
+    }
+
+
+
+    /*리스트 출력*/
+    function getList(groupDTO){
+        let text = "";
+        groupDTO.groupList.forEach(group => {
+            thumbnailImage = "/host/display?fileName=" + group.groupFilePath + "/" + group.groupFileUuid + "_" + group.groupFileName;
+
+            <!--각 게시글 wrap 시작-->
+            text +=`<div class="CardProduct__Wrapper-a817d1-0 ijdqTp">`;
+            <!--세부 게시글로 넘어가는 부분-->
+            text +=`<a class="withLink__StyledLink-zuberk-0 lQqkn detailGroup" href="`;
+            text +=group.groupId +`">`;
+            text +=`<div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">`;
+            text +=`<div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">`;
+            <!--썸네일 이미지 감싸고 있는 부분-->
+            text +=`<div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">`;
+            text +=`<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`;
+            text +=`<div class="Ratio " style="display: block;">`;
+            text +=`<div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">`;
+            text +=`<div class="Ratio-content" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">`;
+            <!--썸네일 이미지-->
+            text +=`<img src="`;
+            text +=thumbnailImage;
+            text +=`" class="Image__StyledImage-v97gyx-1 VUNpu" width="192">`;
+            text +=`</div></div></div></div></div></div>`;
+            text +=`<div class="CardProduct__DetailContainer-a817d1-6 iDZoyW">`;
+            /*지역명*/
+
+            text +=`<span class="CardProduct__Location-a817d1-7 hgalyK">`;
+            if(!group.groupLocationName){
+                text += "온라인";
+            }
+            else{
+                text +=group.groupLocationName;
+            }
+            text +=`</span>`;
+            <!--제목-->
+            text +=`<div class="CardProduct__Title-a817d1-8 kxyGXE">`;
+            text +=group.groupName;
+            text +=`</div>`;
+            text +=`<hr type="Line" size="16" class="Border-sc-1bzcz1p-0 eXQzbT">`;
+            text +=`<div class="CardProduct__PriceContainer-a817d1-11 gyjVwY">`;
+            text +=`<div class="CardProduct__DiscountRateContainer-a817d1-13 figzTw">`;
+            <!--포인트-->
+            text +=`<div class="CardProduct__SalePrice-a817d1-12 fEyOLH">`;
+            text +=group.groupPoint + "POINT";
+            text +=`</div></div></div></div></div></a></div>`;
+        });
+
+        /*출력 부분에 넣기*/
+        $(".ProductList__ProductWrapper-sc-1lo0q2y-0").html(text);
+
+        /*페이징 처리 부분 추가*/
+        showPage(groupDTO.endPage);
+    }
+
+
+    /*페이지*/
+    function showPage(endPage){
+        let endNumber = Math.ceil(page / 10) * 10;
+        let realEnd = endPage;
+        let startNumber = endNumber -9;
+        if(endNumber > realEnd){
+            endNumber = realEnd ==0? '1' : realEnd;
+        }
+
+        let text = '';
+        /*페이징처리*/
+        text+= `<div class="PaginationButtonGroup__PrevButtonWrapper-x0iffd-0 gIsDDT">`;
+
+        /*페이지 << 이미지*/
+        if(page===1){
+            text+= `<button width="40px" height="40px" font-size="18px" disabled="" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            /*페이지 << 이미지*/
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        } else{
+            text+= `<button onclick="changePage(${startNumber == 1? 1: startNumber-1})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        text+= `</button>`;
+
+        /* < 이미지 */
+        if(page===1){
+            text+= `<button width="40px" height="40px" font-size="18px" disabled="" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        else{
+            text+= `<button onclick="changePage(${page>1? page-1 : page})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        text+= `</button></div>`;
+        /*실제 숫자*/
+        for (let i = startNumber; i<=endNumber; i++){
+            /*현재 페이지*/
+            if(page ===i){
+                text += `<a class="page active" width="40px" height="40px" color="#3397ff" font-size="18px" font-weight="bold" style="cursor:pointer;" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 RPlDq">${i}</a>`;
+                continue;
+            }
+            /*해당 페이지단에 있는 다른 페이지*/
+            text += `<a class="page changePage" onclick="changePage(${i})" width="40px" height="40px" color="#3397ff" font-size="18px" font-weight="bold" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 RPlDq">${i}</a>`;
+        }
+        /*다음 페이지 */
+        text+= `<div class="PaginationButtonGroup__NextButtonWrapper-x0iffd-1 eNIHag">`;
+
+        /* > 이미지 */
+        if(page === realEnd){
+            text+= `<button disabled="" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        else {
+            text+= `<button onclick="changePage(${page + 1 > realEnd? realEnd : page+1})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        text+= `</button>`;
+        /*>> 이미지*/
+        if(page === realEnd){
+            text+=`<button disabled="" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        else{
+            text +=`<button onclick="changePage(${endNumber == realEnd ? realEnd : endNumber+1})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        text+= `</button></div>`;
+
+        $('.Wrapper__PaginationWrapper-fk4uv4-0').html(text);
+    }
+
+</script>
+<!--손호현 모임 검색-->
+<script th:inline="javascript">
+    // 헤더의 검색 form의 기능을 막는다 (모임 검색을 하기 위함)
+    // 기존 헤더의 검색바는 페이지 이동, 즉 커뮤니티 검색인데 모임페이지에서는 모임만 검색을 하기 위해 rest방식으로 구현하기 위한 기초작업.
+    $("form.dLgpzE").attr('onsubmit','return false;');
+
+    //전역 변수 설정
+    globalThis.searchPage = 1;
+    globalThis.keyword = '';
+
+
+    // 헤더의 input태그에 엔터이벤트 추가
+    $("input.KfNMI").on("keyup",function(key){
+
+        // 엔터를 눌렀을 시 , 페이지 초기화와 keyword, input태그의 값을 저장한다.
+        if(key.keyCode==13) {
+            if($(this).val()){
+                var search = $(this).val();
+                globalThis.keyword = search;
+                globalThis.searchPage = 1;
+                searchShow(globalThis.keyword);
+
+            }
+
+        }
+
+    });
+
+    //검색 시작
+    function searchShow(obj){
+        //전역변수인 globalThis.keyword 값
+        var keyword = obj
+        //pageable의 page값은 0부터시작.
+        $.ajax({
+            url:"/search-host/"+keyword+"?page="+(globalThis.searchPage-1),
+            type:"get",
+            success:showList
+
+        })
+    }
+
+    // searchShow의 success시 실행되는 함수
+    function showList(result){
+        let text ='';
+        //검색 총 결과 갯수
+        var count= result.totalElements;
+        //검색 시 pageable이 구해준 총 페이지 갯수
+        var end = result.totalPages;
+        console.log(result)
+
+        //검색 결과가 0일 시
+        if(result.content.length == 0){
+
+            text += `<div style="display:flex;justify-content: center;width: 100%">`
+            text += `<div class="Filter__Wrapper-sc-1buujtg-0 eqAEeH">`
+            text += `<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`
+            text += `<div class="Empty__Wrapper-sc-3dhj3x-0 kdumyH"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h80v80H0z'/%3E %3Cg transform='translate(10 10)'%3E %3Ccircle cx='26.2' cy='26.2' r='24.6' fill-rule='nonzero' stroke='%23DDD' stroke-width='2'/%3E %3Cpath fill='%23DDD' d='M19.8 24.6a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2zm12.8 0a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2z'/%3E %3Cpath stroke='%23DDD' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M23 29.4c2.133-2.133 4.267-2.133 6.4 0'/%3E %3Cpath fill-rule='nonzero' stroke='%23DDD' stroke-width='2' d='M43.8 43.8l14.708 14.708'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="Empty__Icon-sc-3dhj3x-1 cwykdT">`
+            text += `<div class="Empty__Text-sc-3dhj3x-2 cVpYem">`
+            text += `<p>검색 결과가 없어요.</p>`
+            text += `<p>다른 검색어로 검색해 주세요!</p>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            text += `</div>`
+            $(".jjtvVw").css("justify-content","center")
+            $(".ProductList__ProductWrapper-sc-1lo0q2y-0").html(text);
+            $(".hBVRcD").hide();
+            $(".eXzlnr").text(count);
+            return;
+
+        }
+        //검색 결과 있을 시
+        $(result.content).each((i,group)=>{
+            thumbnailImage = "/host/display?fileName=" + group.groupFilePath + "/" + group.groupFileUuid + "_" + group.groupFileName;
+
+            <!--각 게시글 wrap 시작-->
+            text +=`<div class="CardProduct__Wrapper-a817d1-0 ijdqTp">`;
+            <!--세부 게시글로 넘어가는 부분-->
+            text +=`<a class="withLink__StyledLink-zuberk-0 lQqkn detailGroup" href="`;
+            text +=group.groupId +`">`;
+            text +=`<div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">`;
+            text +=`<div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">`;
+            <!--썸네일 이미지 감싸고 있는 부분-->
+            text +=`<div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">`;
+            text +=`<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`;
+            text +=`<div class="Ratio " style="display: block;">`;
+            text +=`<div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">`;
+            text +=`<div class="Ratio-content" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">`;
+            <!--썸네일 이미지-->
+            text +=`<img src="`;
+            text +=thumbnailImage;
+            text +=`" class="Image__StyledImage-v97gyx-1 VUNpu" width="192">`;
+            text +=`</div></div></div></div></div></div>`;
+            text +=`<div class="CardProduct__DetailContainer-a817d1-6 iDZoyW">`;
+            /*지역명*/
+
+            text +=`<span class="CardProduct__Location-a817d1-7 hgalyK">`;
+            if(!group.groupLocationName){
+                text += "온라인";
+            }
+            else{
+                text +=group.groupLocationName;
+            }
+            text +=`</span>`;
+            <!--제목-->
+            text +=`<div class="CardProduct__Title-a817d1-8 kxyGXE">`;
+            text +=group.groupName;
+            text +=`</div>`;
+            text +=`<hr type="Line" size="16" class="Border-sc-1bzcz1p-0 eXQzbT">`;
+            text +=`<div class="CardProduct__PriceContainer-a817d1-11 gyjVwY">`;
+            text +=`<div class="CardProduct__DiscountRateContainer-a817d1-13 figzTw">`;
+            <!--포인트-->
+            text +=`<div class="CardProduct__SalePrice-a817d1-12 fEyOLH">`;
+            text +=group.groupPoint + "POINT";
+            text +=`</div></div></div></div></div></a></div>`;
+        })
+
+        $(".ProductList__ProductWrapper-sc-1lo0q2y-0").html(text);
+        $(".eXzlnr").text(count);
+        $(".hBVRcD").show();
+        //검색 시 pageable이 구해준 총 페이지 갯수를 통해 페이지네이션 구현.
+        showSearchPage(end);
+    }
+
+    // 페이지네이션 구현함수
+    function showSearchPage(endPage){
+        //화면에서 보여질 페이지 갯수
+        let endNumber = Math.ceil(globalThis.searchPage / 10) * 10;
+        //실제 페이지 총 갯수.
+        let realEnd = endPage;
+        //화면에서 보여질 시작점은 총페이지 갯수에서 -9한 값
+        let startNumber = endNumber -9;
+        //만약 realEnd값이 0이라면, 즉 검색결과가 없다면 화면에 1페이지만 띄운다.
+        if(endNumber > realEnd){
+            endNumber = realEnd ==0? '1' : realEnd;
+        }
+
+        let text = '';
+        /*페이징처리*/
+        text+= `<div class="PaginationButtonGroup__PrevButtonWrapper-x0iffd-0 gIsDDT">`;
+
+        /*페이지 << 이미지*/
+        if(globalThis.searchPage===1){
+            text+= `<button width="40px" height="40px" font-size="18px" disabled="" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            /*페이지 << 이미지*/
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        } else if(globalThis.searchPage < 10 && globalThis.searchPage > 0){
+            text+= `<button onclick="searchPageChange(${startNumber})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        } else{
+            text+= `<button onclick="searchPageChange(${startNumber})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        text+= `</button>`;
+
+        /* < 이미지 */
+        if(globalThis.searchPage===1){
+            text+= `<button width="40px" height="40px" font-size="18px" disabled="" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        else{
+            text+= `<button onclick="searchPageChange(${globalThis.searchPage>1? globalThis.searchPage-1 : globalThis.searchPage})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 iItkLq">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        }
+        text+= `</button></div>`;
+        /*실제 숫자*/
+        for (let i = startNumber; i<=endNumber; i++){
+            /*현재 페이지*/
+            if(globalThis.searchPage ===i){
+                text += `<a class="page active" width="40px" height="40px" color="#3397ff" font-size="18px" font-weight="bold" style="cursor:pointer;" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 RPlDq">${i}</a>`;
+                continue;
+            }
+            /*해당 페이지단에 있는 다른 페이지*/
+            text += `<a class="page changePage" onclick="searchPageChange(${i})" width="40px" height="40px" color="#3397ff" font-size="18px" font-weight="bold" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 RPlDq">${i}</a>`;
+        }
+        /*다음 페이지 */
+        text+= `<div class="PaginationButtonGroup__NextButtonWrapper-x0iffd-1 eNIHag">`;
+
+        /* > 이미지 */
+        if(globalThis.searchPage === realEnd){
+            text+= `<button disabled="" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        else {
+            text+= `<button onclick="searchPageChange(${globalThis.searchPage + 1 > realEnd? realEnd : globalThis.searchPage+1})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        text+= `</button>`;
+        /*>> 이미지*/
+        if(globalThis.searchPage === realEnd){
+            text+=`<button disabled="" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        else{
+            text +=`<button onclick="searchPageChange(${endNumber})" width="40px" height="40px" font-size="18px" class="Button-bqxlp0-0 ButtonPage__StyledButton-k07u44-0 garfld">`;
+            text+= `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 dQqQMu">`;
+        }
+        text+= `</button></div>`;
+
+        $('.Wrapper__PaginationWrapper-fk4uv4-0').html(text);
+    }
+
+    // 화면에 페이지 번호를 클릭했을 시 전역변수 페이지를 변화시킨다.
+    function searchPageChange(href){
+        globalThis.searchPage = href;
+        searchShow(globalThis.keyword);
+    }
+
+</script>
+</html>

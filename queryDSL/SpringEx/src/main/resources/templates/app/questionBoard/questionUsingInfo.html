@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <title>이용 안내 질문 - 나의 바다(MyOcean)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+    <link rel="stylesheet" href="/css/questionBoard/questionBoard.css">
+    <link rel="stylesheet" href="/css/myPage/myPage.css">
+    <link rel="stylesheet" href="/css/myList/myList.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="HelpPage__Wrapper-sc-1624coo-0 bjZuQZ">
+    <section>
+        <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+            <h1 font-size="24px" class="Left__LeftPageTitle-sc-12djr3w-0 cZvMcY">자주 묻는 질문</h1>
+            <!--            <form class="SearchBarFAQ__Wrapper-sc-15f023t-0 vlWra">-->
+            <!--                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cg fill='none' fill-rule='nonzero'%3E %3Cpath d='M0 0h24v24H0z'/%3E %3Ccircle cx='11' cy='11' r='6' stroke='%23000' stroke-width='2'/%3E %3Cpath stroke='%23000' stroke-width='2' d='M15 15l4.95 4.95'/%3E %3C/g%3E %3C/svg%3E" width="24px" height="24px" class="SearchBarFAQ__IconSearch-sc-15f023t-1 ecqnaY">-->
+            <!--                <input type="text" placeholder="키워드를 입력하세요" value="">-->
+            <!--            </form>-->
+            <div class="TabLabels__Wrapper-sc-1i2f4oa-0 cxqTPR">
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke"><a href="/questionBoard/index">전체</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 djWtyM"><a href="/questionBoard/questionUsingInfo">이용안내</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke"><a href="/questionBoard/questionUserInfo">회원정보</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke"><a href="/questionBoard/questionPointInfo">결제/환불</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke"><a href="/questionBoard/questionQuestInfo">퀘스트</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke" th:if="${session.userId}=='1'"><a href="/questionBoard/usersQuestion">회원들의 질문</a></span>
+                <span class="TabLabels__Tab-sc-1i2f4oa-1 eCnPke" th:unless="${session.userId}=='1'"><a href="/questionBoard/myQuestion">나의 질문</a></span>
+            </div>
+            <ul class="HelpPage__FAQListWrapper-sc-1624coo-1 jaTQXA">
+                <div class="content"></div>
+            </ul>
+            <div class="pageBody"></div>
+            <!--            <hr size="40" type="Line" class="Border-sc-1bzcz1p-0 cOSlxV">-->
+        </div>
+    </section>
+    <section>
+        <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+            <div class="HelpPage__QuestionArea-sc-1624coo-3 gSgESD">
+                찾는 질문이 없으신가요?
+                <a href="/questionBoard/myQuestionWrite">
+                    <button class="Secondary__Button-l8jybe-0 jlqpgo">
+                        고객센터 문의
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/questionBoard/questionUsingInfo.js"></script>
+<script>
+    let page = 1;
+    let keyword = 'null';
+    const $pages = $('a.changePage');
+
+    //ajax 호출
+    function show(){
+        askService.getList({
+            page : page,
+            keyword : keyword,
+        }, getList);
+    }
+
+    //    페이지를 들어올 때, ajax로 restController의 데이터를 가져온다
+    show();
+
+    //    리스트 뽑기
+    function getList(askDTO){
+        let text = '';
+
+        askDTO.askList.forEach(ask => {
+            // ISO -> 문자열 형식의 yyyy-MM-dd HH:mm:ss
+            var changeDate = new Date(ask.createDate);
+            changeDate.setHours(changeDate.getHours() + 9);
+            changeDate=changeDate.toISOString().replace('T', ' ').substring(0, 19);
+            console.log(typeof changeDate);
+
+            text += `<ul><li><div class="my_list">`;
+            text += `<div class="badge free">`+ ask.askCategory +`</div>`;
+            text += `<div class="list_title">`+ ask.askTitle +`</div>`;
+            text += `<div class="list_date">`+ ask.createDate +`</div>`;
+            text += `</div><div font-size="14px" class="FAQEntity__Content-cpxlp5-1 fFhAfW"><p>`+ask.askContent+`</p></div></li></ul>`;
+        });
+
+        $(".content").html(text);
+
+        showPage(askDTO.endPage);
+    }
+    //페이징
+    function showPage(endPage){
+        let endNumber = Math.ceil(page / 10) * 10;
+        let realEnd = endPage;
+        let startNumber = endNumber -9;
+        if(endNumber > realEnd){
+
+            endNumber = realEnd == 0 ? '1' : realEnd;
+        }
+
+
+        let text ='';
+        text += `<div id="page_changer_wrapper">`;
+        text += `<div id="previous_button_wrapper">`;
+        text += `<a class="previous_buttons changePage" onclick="changePage(${startNumber == 1? 1: startNumber-1})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `<a class="previous_buttons changePage" onclick="changePage(${page>1? page-1 : page})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `</div>`;
+        for (let i=startNumber; i<=endNumber; i++){
+            if(page === i){
+                text += `<a class="page active">${i}</a>`;
+                continue;
+            }
+            text += `<a class="page changePage" onclick="changePage(${i})">${i}</a>`;
+        }
+        text += `<div id="next_button_wrapper">`;
+        text += `<a class="next_buttons changePage" onclick="changePage(${page + 1 > realEnd? realEnd : page+1})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `<a class="next_buttons changePage" onclick="changePage(${endNumber == realEnd ? realEnd : endNumber+1})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `</div>`;
+
+        $('.pageBody').html(text);
+    }
+
+    //페이지버튼 클릭 시
+    function changePage(href){
+        page = href;
+        show();
+    }
+</script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+  <title>요리 이야기 - 나의 바다(MyOcean)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+  <link rel="stylesheet" href="/css/myList/myList.css">
+  <link rel="stylesheet" href="/css/fix/header.css">
+  <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body style="margin:0;">
+<header th:replace="/app/fix/header.html :: header"></header>
+<div id="list_page_wrapper">
+  <div id="page_title_wrapper">
+    <h1>요리 이야기</h1>
+  </div>
+  <div th:replace="/app/myList/myList.html :: myListCategory"></div>
+  <div id="table_wrapper">
+    <div class="content"></div>
+    <!--    <th:block th:each="book:${books}">-->
+    <!--      <ul th:object="${book}">-->
+    <!--        <li>-->
+    <!--          <a th:href="@{/community/read(communityPostId=${book.communityPostId})}">-->
+    <!--            <div class="my_list">-->
+    <!--              <div class="badge cook" th:text="*{communityCategory}"></div>-->
+    <!--              <div class="list_title" th:text="*{communityTitle}"></div>-->
+    <!--              <div class="list_date" th:text="*{createDate}"></div>-->
+    <!--            </div>-->
+    <!--          </a>-->
+    <!--        </li>-->
+    <!--      </ul>-->
+    <!--    </th:block>-->
+
+    <div class="pageBody">
+    </div>
+  </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myList/myListCookBoard.js"></script>
+<script>
+  let page = 1;
+  let keyword = 'null';
+  const $pages = $('a.changePage');
+
+  //ajax 호출
+  function show(){
+    postService.getList({
+      page : page,
+      keyword : keyword,
+    }, getList);
+  }
+
+  //    페이지를 들어올 때, ajax로 restController의 데이터를 가져온다
+  show();
+
+  //    리스트 뽑기
+  function getList(postDTO){
+    let text = '';
+
+    postDTO.postList.forEach(post => {
+      // console.log("community:"+post);
+      // console.log("community.communityId:"+post.communityId);
+      // console.log("community.createDate:"+post.createDate);
+      // ISO -> 문자열 형식의 yyyy-MM-dd HH:mm:ss
+      var changeDate = new Date(post.createDate);
+      changeDate.setHours(changeDate.getHours() + 9);
+      changeDate=changeDate.toISOString().replace('T', ' ').substring(0, 19);
+      console.log(typeof changeDate);
+
+      text += `<ul><li><a href="/community/read?communityPostId=`+post.communityPostId+`"><div class="my_list">`;
+      text += `<div class="badge cook">`+ post.communityCategory +`</div>`;
+      text += `<div class="list_title">`+ post.communityTitle +`</div>`;
+      text += `<div class="list_date">`+ post.createDate +`</div>`;
+      text += `</div></a></li></ul>`;
+    });
+
+    $(".content").html(text);
+
+    showPage(postDTO.endPage);
+  }
+  //페이징
+  function showPage(endPage){
+    let endNumber = Math.ceil(page / 10) * 10;
+    let realEnd = endPage;
+    let startNumber = endNumber -9;
+    if(endNumber > realEnd){
+
+      endNumber = realEnd == 0 ? '1' : realEnd;
+    }
+
+
+    let text ='';
+    text += `<div id="page_changer_wrapper">`;
+    text += `<div id="previous_button_wrapper">`;
+    text += `<a class="previous_buttons changePage" onclick="changePage(${startNumber == 1? 1: startNumber-1})">`;
+    text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+    text += `</a>`;
+    text += `<a class="previous_buttons changePage" onclick="changePage(${page>1? page-1 : page})">`;
+    text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+    text += `</a>`;
+    text += `</div>`;
+    for (let i=startNumber; i<=endNumber; i++){
+      if(page === i){
+        text += `<a class="page active">${i}</a>`;
+        continue;
+      }
+      text += `<a class="page changePage" onclick="changePage(${i})">${i}</a>`;
+    }
+    text += `<div id="next_button_wrapper">`;
+    text += `<a class="next_buttons changePage" onclick="changePage(${page + 1 > realEnd? realEnd : page+1})">`;
+    text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+    text += `</a>`;
+    text += `<a class="next_buttons changePage" onclick="changePage(${endNumber == realEnd ? realEnd : endNumber+1})">`;
+    text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+    text += `</a>`;
+    text += `</div>`;
+
+    $('.pageBody').html(text);
+  }
+
+  //페이지버튼 클릭 시
+  function changePage(href){
+    page = href;
+    show();
+  }
+</script>
+</html>

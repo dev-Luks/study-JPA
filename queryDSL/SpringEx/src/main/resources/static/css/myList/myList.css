@@ -1,0 +1,332 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: SUIT, "UI Frip", "Noto Sans KR", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    box-sizing: inherit;
+    margin:0;
+}
+
+* {
+    font: inherit;
+    text-decoration: none;
+}
+
+div#list_page_wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 90%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+#page_title_wrapper h1 {
+    margin: 30px 0px 20px;
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.filter.check{
+    font-weight:bold;
+}
+
+#filter_wrapper {
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 20px 0px;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+#list_filter_wrapper {
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.list_filter_wrapper{
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 20px 0px;
+    width: auto;
+    height: auto;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.list_filter_wrapper .filter{
+    width: 111px;
+    border-radius: 5px;
+    height: 30px;
+    border: solid 1px #72b1ef;
+    text-align:center;
+    line-height: 1.9;
+    margin: 0 auto;
+}
+
+.filterMedia:hover{
+    background: rgb(54, 85, 211);
+    color:white;
+}
+
+a {
+    color: inherit;
+}
+
+span.filter {
+    font-size: 14px;
+    font: inherit;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+div#table_wrapper ul {
+    box-sizing: inherit;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+div#table_wrapper li {
+    font: inherit;
+    list-style: none;
+    box-sizing: inherit;
+}
+
+div.my_list {
+    box-sizing: inherit;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 25px;
+    line-height: 24px;
+    padding: 18px 0px;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    width: auto;
+}
+
+div.badge {
+    margin-left: 0px;
+    margin-right: 21px;
+    width: 48px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+}
+
+div.badge.free{
+    background-color: rgb(51, 151, 255);
+}
+div.badge.cook{
+    background-color: rgb(97, 169, 4);
+}
+div.badge.exercise{
+    background-color: rgb(152, 157, 133);
+}
+div.badge.movie{
+    background-color: rgb(121, 50, 39);
+}
+div.badge.book{
+    background-color: rgb(3, 20, 180);
+}
+div.badge.counseling{
+    background-color: rgb(190, 128, 206);
+}
+
+/*====================================================*/
+
+/*====================================================*/
+
+div.list_title {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+}
+
+div.list_date {
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    margin-left: 10px;
+    color: rgb(155, 155, 155);
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#page_changer_wrapper {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 30px 0px;
+    background-color: white;
+}
+
+#previous_button_wrapper {
+    display: flex;
+    margin-right: 10px;
+}
+
+
+a.previous_buttons {
+    transform: scaleX(-1);
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+.page {
+    font: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #c4bec9;
+    font-size: 18px;
+    font-weight: normal;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+.page.active{
+    color: black;
+}
+
+#next_button_wrapper {
+    display: flex;
+    margin-right: 10px;
+}
+
+
+a.next_buttons {
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+
+/*글작성 버튼*/
+.faWmEE {
+    top:-7px;
+    position: relative;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 25px;
+    border: 1px solid rgb(242, 242, 242);
+    box-shadow: rgb(0 0 0 / 10%) 0px 10px 20px 0px;
+    background-color: rgb(255, 255, 255);
+    bottom: calc(34px + env(safe-area-inset-bottom));
+}
+
+
+/*호버*/
+div.my_list:hover{
+    background-color: #F6FAFE;
+}
+
+
+
+/*작성 게시글이 없습니다.*/
+.eOsQaF {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(119, 119, 119);
+    padding: 100px 0px;
+}
+
+.bLfngk {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 24px;
+}
+
+.eFwpFm {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 6px;
+}
+
+/*모임 상태*/
+.groupStatus{
+    margin-right:15px;
+}
+
+.completeGroup{
+    color: coral;
+}
+
+.readyGroup{
+    color: #0314b4;
+}
+
+.denyGroup{
+    color: #062965;
+}
+

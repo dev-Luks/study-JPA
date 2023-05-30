@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 댓글</title>
+    <link rel="stylesheet" href="/css/community/community_comment.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+</style>
+<body>
+
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<div id="modal-root">
+    <div>
+        <div class="Dialog__Container-sc-16kwpqb-0 htiyxZ">
+            <div class="BodyScrollLockContainer__Container-sc-19uqzq5-0 idpZym Dialog__StyledBodyScrollLockContainer-sc-16kwpqb-1 dCXZYJ">
+                <div class="Dialog__Content-sc-16kwpqb-5 ibqqJA">
+                    <div class="DialogDelete__Content-p8gubf-0 jZuxbV"><p>댓글을</p>
+                        <p>삭제 하시겠습니까?</p></div>
+                </div>
+                <div class="Dialog__ButtonGroup-sc-16kwpqb-6 bZEORB">
+                    <button width="100%" height="auto" color="black"
+                            class="Button-bqxlp0-0 Dialog__StyledButton-sc-16kwpqb-7 kXWQPc">취소
+                    </button>
+                    <button width="100%" height="auto" color="#ff6666" font-weight="bold"
+                            class="Button-bqxlp0-0 Dialog__StyledButton-sc-16kwpqb-7 bQKwTd">삭제
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <input th:value="${session.userId}" style="display:none;" name="myId">
+    <div th:object="${communityPostDTO}" class="PageWrapper-sc-1w87j10-0 SocialFeedReplyPage__Wrapper-sc-71bads-0 bQxaVM">
+        <div class="Center__Wrapper-sc-19p29je-0 hcLOFI">
+            <h3>댓글</h3>
+        </div>
+        <!--댓글창 전체 wrap-->
+        <input th:field="*{userId}" name="userId" type="text" class="userId" style="display:none;">
+        <input th:field="*{communityCategory}" name="communityCategory" type="text" class="postCategory" style="display:none;">
+        <input th:field="*{communityPostId}" name="communityPostId" type="text" class="communityPostId" style="display:none;">
+        <div class="SocialFeedReplyList__Wrapper-sc-1vuk2zv-0 eKpsNP">
+            <!--댓글 한 개 wrap-->
+            <div class="replyWrap"></div>
+        </div>
+
+
+        <!--댓글 실제 작성 공간-->
+        <div class="TextAreaSection__Wrapper-h0o51s-0 gjVRLr">
+            <div class="TextAreaSection__Container-h0o51s-1 eKKYQO">
+                <div class="TextAreaSection__Profile-h0o51s-2 dDMiXl">
+                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                            <div class="Ratio " style="display: block;">
+                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;" th:if="${communityPostDTO.communityCategory.toString().equals('고민')}">
+                                        <!--댓글 작성자 기본 이미지-->
+                                        <img th:src="@{/imgin/user.png}" alt="profile-image" class="Image__StyledImage-v97gyx-1 VUNpu" width="45" height="45">
+                                    </div>
+                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;" th:unless="${communityPostDTO.communityCategory.toString().equals('고민')}">
+                                        <!--댓글 작성자 이미지-->
+                                        <img th:if="${userDTO.userFileName}" th:src="@{/mypage/display(fileName=${userDTO.userFilePath} + '/' + ${userDTO.userFileUuid} + '_' + ${userDTO.userFileName})}" alt="profile-image" class="Image__StyledImage-v97gyx-1 VUNpu" width="45" height="45">
+                                        <img th:unless="${userDTO.userFileName}" th:src="@{/imgin/user.png}" alt="profile-image" class="Image__StyledImage-v97gyx-1 VUNpu" width="45" height="45">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="TextAreaSection__TextareaWrapper-h0o51s-3 iYnxZG">
+                    <!--실제 댓글 작성 textarea-->
+                    <textarea placeholder="바르고 고운 말을 사용해주세요" maxlength="500" class="TextAreaSection__Textarea-h0o51s-4 iHQYSd" style="height: 46px;"></textarea>
+                    <button disabled="" class="TextAreaSection__SubmitButton-h0o51s-5 fWXEgN">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/community/comment.js"></script>
+<script src="/js/fix/header.js"></script>
+<script>
+    let postUserId = $("input[name='userId']").val();
+    let postTitle = $("input[name='communityTitle']").val();
+
+    // 화면 출력 함수 호출
+    function show(){
+        replyService.getReplyList({
+            communityPostId: $("input[name='communityPostId']").val()
+        }, getReplyList);
+    }
+
+    show();
+
+    function getReplyList(communityReplyDTO){
+        let text ="";
+        communityReplyDTO.forEach(reply => {
+            let userImageSrc = "/mypage/display?fileName=" + reply.userFilePath + "/" + reply.userFileUuid + "_" + reply.userFileName;
+            text +=`<div><div class="FeedReplyCard__Wrapper-sc-1wg24nj-0 kDLQhH"><div class="FeedReplyCard__Profile-sc-1wg24nj-1 fcEtFP">`;
+            text +=`<div class="Image__Wrapper-v97gyx-0 gDuKGF">`;
+            text +=`<div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">`;
+            text +=`<div class="Ratio " style="display: block;">`;
+            text +=`<div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">`;
+            text +=`<div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">`;
+            text +=`<img class="Image__StyledImage-v97gyx-1 hPRDQO" width="36" height="36" src="`;
+            // 유저 이미지 사진
+            if($("input[name='communityCategory']").val() == '고민'){
+                text +=`/imgin/user.png`;
+            } else{
+                if(reply.userFileName){
+                    text+=userImageSrc;
+                } else{
+                    text +=`/imgin/user.png`;
+                }
+            }
+            text +=`"></div>`;
+            text +=`</div></div></div></div></div>`;
+            text +=`<div class="FeedReplyCard__Container-sc-1wg24nj-2 hjlSSA"><div class="FeedReplyCard__Name-sc-1wg24nj-3 bUesVF">`;
+            // 작성자 닉네임
+            let myId = $("input[name='myId']").val();
+            if(postUserId == reply.userId){
+                if($("input[name='communityCategory']").val() == '고민'){
+                    text += "익명" + reply.communityReplyId + "     (작성자)";
+                } else{
+                    text += reply.userNickName + "     (작성자)";
+                }
+            } else{
+                if($("input[name='communityCategory']").val() == '고민'){
+                    text += "익명" + reply.communityReplyId;
+                } else{
+                    text +=reply.userNickName;
+                }
+            }
+            text +=`</div>`;
+            text +=`<p class="FeedReplyCard__Contents-sc-1wg24nj-4 gDMyOG">`;
+            <!--댓글 작성 내용-->
+            text +=reply.communityReplyContent;
+            text +=`</p><section class="ActionMenu__Section-s8lvsh-0 gzpaSl">`;
+            text +=`<p class="ActionMenu__Time-s8lvsh-1 gwAsrs">`;
+            <!--작성 시간-->
+            text +=reply.updatedDate;
+            text +=``;
+            <!--삭제 버튼-->
+            text +=`</p>`
+            if($("input[name='myId']").val() == reply.userId){
+                text +=`<a class="deleteReply" onclick="return false" href=` + reply.communityReplyId;
+                text +=` class="ActionMenu__TextButton-s8lvsh-2 kosXvh goDelete">삭제</a>`;
+            }
+            text +=`</section></div></div></div></div>`;
+        })
+        $(".replyWrap").html(text);
+    }
+</script>
+</html>

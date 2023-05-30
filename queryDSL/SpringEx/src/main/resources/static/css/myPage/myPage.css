@@ -1,0 +1,784 @@
+/* head에 있는 style 부분 추가 */
+@font-face {
+    font-family: 'SUIT';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+::before, ::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+}
+
+::selection {
+    background-color: #b3d4fc;
+    color: #000000;
+    text-shadow: none;
+}
+
+input:focus {
+    outline: #b3d4fc;
+}
+
+html, body {
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+html {
+    box-sizing: border-box;
+    cursor: default;
+    font-family: sans-serif;
+    line-height: 1.5;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+* {
+    outline: none;
+    font-family: inherit;
+}
+
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+body.fontLoaded {
+    font-family: "SUIT", "UI Frip", "Noto Sans KR", Helvetica, Arial, sans-serif;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+#app {
+    background-color: white;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.idXWQn {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 84vh;
+}
+
+.hKZUBk {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 88px;
+    padding: 48px 0px 16px;
+    background-color: rgb(2, 74, 149);
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    z-index: 4000;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: top 100ms linear 0s;
+}
+
+.boEfOZ {
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    z-index: 4000;
+    bottom: 34px;
+}
+
+.eskQgv {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.bScXKt {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.bukpPo {
+    padding: 24px 20px 36px;
+}
+
+.jgHvjG {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.ijgGxL {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+    margin-right: 16px;
+}
+
+img {
+    border-style: none;
+}
+
+audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+.dPypOl {
+    overflow: hidden;
+}
+
+.hewsYu {
+    margin-bottom: 4px;
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 26px;
+    letter-spacing: -0.54px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hOMBPU {
+    color: rgb(170, 170, 170);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+}
+
+.dduMk {
+    display: flex;
+    gap: 60px;
+    margin-top: 20px;
+    padding: 0px 20px 38px;
+}
+
+.dduMk > * {
+    max-width: 116px;
+}
+
+.eFrFPC {
+    position: relative;
+    color: rgb(119, 119, 119);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+}
+
+.yiVA-d {
+    color: rgb(51, 51, 51);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    letter-spacing: -0.6px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fbNqgy {
+    position: relative;
+    color: rgb(119, 119, 119);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+}
+
+.jBoTV {
+    margin-bottom:20px;
+    padding: 0px 20px 20px;
+}
+
+::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+.juuNtL {
+    position: relative;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 105px;
+    padding: 23px 24px 23px 16px;
+    color: rgb(51, 51, 51);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, select, textarea {
+    background-color: transparent;
+    border-style: none;
+    color: inherit;
+    font-size: 1em;
+    margin: 0;
+}
+
+.eYNaUp {
+    position: absolute;
+    top: -16.25px;
+    left: 20px;
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 110px;
+    padding: 6px 12px 6px 10px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 10px;
+}
+
+.ibIiPD {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+    font-family: "Cafe24 Ohsquare", "SUIT", "UI Frip", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+b, strong {
+    font-weight: inherit;
+}
+
+.ksIvnE {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hOVumI {
+    margin-bottom: 11px;
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: -0.03em;
+}
+
+.ezRosO {
+    display: flex;
+}
+
+.kdLIth {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+}
+
+.fSDzSK {
+    height: 58px;
+    width: 40px;
+    margin-right: 10px;
+}
+/* ====기획 의도에 맞게 삭제한 부분?? ====*/
+.cLsnpe {
+    width: 100%;
+    border-top: 1px solid rgb(238, 238, 238);
+    border-bottom: medium none;
+    margin: 0px 0px 16px;
+}
+
+hr {
+    height: 0;
+    overflow: visible;
+}
+
+.hoWpsw > header {
+    padding: 8px 20px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    color: rgb(204, 204, 204);
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+
+.cEHhVW {
+    width: auto;
+    height: 64px;
+    margin: 0px;
+    padding: 0px 20px;
+    border-bottom: medium none;
+    background-color: rgb(255, 255, 255);
+}
+
+.jfwBqf {
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    height: 100%;
+    padding: 16px 0px;
+}
+
+.Scnkv {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+    color: rgb(51, 51, 51);
+}
+/* ====기획 의도에 맞게 삭제한 부분?? ====*/
+a {
+    color: inherit;
+}
+
+.iUyCXv {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    color: rgb(0, 117, 239);
+}
+
+.hvJfpy {
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    margin: 16px 20px;
+    border-color: rgb(238, 238, 238) currentcolor currentcolor;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+}
+
+/* ==== 기획 의도에 맞게 추가할 부분==== */
+.cLqaPy {
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.fFriVo {
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    margin: 50px 0px 20px;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.fJJorn {
+    color: rgb(51, 51, 51);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+
+.jMUPmW {
+    color: rgb(0, 117, 239);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.khzDiS {
+    margin: 24px 0px 0px;
+}
+
+.iOgbWN {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 0px 0px 16px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.gFQPgt {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.elHCaO {
+    position: absolute;
+    bottom: 0px;
+    right: -3px;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 100%;
+}
+
+.fSxFPc {
+    display: none;
+}
+
+.epcUtq {
+    width: 18px;
+    height: 16px;
+}
+
+.dVaxhg > div {
+    margin: 0px 0px 16px;
+}
+
+.fPrGda {
+    display: block;
+    margin-bottom: 6px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+p, label {
+    margin: 0px;
+}
+
+.gldLBs {
+    position: relative;
+}
+
+.gGztpV::placeholder {
+    color: rgb(170, 170, 170);
+}
+
+.gGztpV {
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 14px 14px 12px;
+    background: rgb(250, 250, 250);
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.cZDino {
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+}
+
+.cZDino > div:first-child {
+    width: 100%;
+    margin: 0px 8px 0px 0px;
+}
+
+.dkRCby {
+    display: flex;
+    align-items: flex-end;
+}
+
+.dkRCby > button {
+    width: 87px;
+    height: 50px;
+}
+
+.eAbBXA {
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    display: inline-flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.gGztpV:disabled {
+    color: rgb(170, 170, 170);
+    background: rgb(238, 238, 238);
+}
+
+input:disabled {
+    -webkit-text-fill-color: currentcolor;
+    opacity: 1;
+}
+
+.juuNtL:hover{
+    background-color: #F6FAFE;
+}
+
+/* ==== 기획 의도에 맞게 추가할 부분==== */
+.dDCuWg {
+    width: 95%;
+    height: 56px;
+    line-height: 24px;
+    padding: 16px;
+    background-color: rgb(0, 117, 239);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin: 33px 0px 48px 15px;
+}
+
+/*=======================================================================*/
+a, area, button, input, label, select, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+#app, .modal {
+    font-family: Noto Sans KR,sans-serif;
+    letter-spacing: -.5px;
+    color: #333;
+}
+
+.fade {
+    transition: opacity .15s linear;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    overflow-y: auto;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+.modal.fade .modal-dialog {
+    transition: transform .3s ease-out;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+
+@Media(min-width:576px){
+    .modal-dialog {
+        margin: 1.75rem auto;
+    }
+
+    .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+
+    .modal-content {
+        box-shadow: 0 15px 35px rgb(50 50 93 / 20%), 0 5px 15px rgb(0 0 0 / 17%);
+    }
+
+    .container {
+        max-width: 540px;
+    }
+
+}
+
+@Media(min-width:768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0 solid rgba(0,0,0,.2);
+    border-radius: 0.4375rem;
+    box-shadow: 0 15px 35px rgb(50 50 93 / 20%), 0 5px 15px rgb(0 0 0 / 17%);
+    outline: 0;
+    top: 50%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    margin-top: 35%;
+}
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 0;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.p-3 {
+    padding: 1rem!important;
+}
+
+.mt-3, .my-3 {
+    margin-top: 1rem!important;
+}
+
+.text-frip-primary {
+    color: #5682ad!important;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-frip-primary, .btn-frip-primary:hover {
+    color: #fff;
+    background-color: #6985a0;
+    border-color: #6985a0;
+}
+
+.btn-tab {
+    padding-inline: 2rem;
+}
+
+.btn {
+    border-radius: 0.25rem;
+    padding: 14px;
+    position: relative;
+    text-transform: none;
+    transition: all .15s ease;
+    letter-spacing: -.025em;
+    font-size: .8125rem;
+    will-change: transform;
+}
+
+.frip-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+
+/*=======================================================================*/

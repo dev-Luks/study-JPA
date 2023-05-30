@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <link rel="stylesheet" href="/css/Join/before_join.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <title>시작하기 - 나의 바다(MyOcean)</title>
+</head>
+<body class="fontLoaded" style="margin:0">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top:-88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+        <!-- header 추가 부분 -->
+        <div class="PageWrapper-sc-1w87j10-0 IntroPage__Wrapper-sc-2ms2nt-0 cDxxJv">
+            <div class="Banner__Wrapper-sc-13uuyx6-0 egtVMY">
+                <div class="Banner__BackgroundWrapper-sc-13uuyx6-1 hsSkXH">
+                    <div class="Banner__Cover-sc-13uuyx6-3 hoYWgp"></div>
+                    <img class="Banner__BackgroundImage-sc-13uuyx6-2 hpebkH" src="https://www.frip.co.kr/e469d19f1b13a3a49fe5329feaf778cd.png" alt="bavkground-image">
+                    <img class="Banner__BackgroundImage-sc-13uuyx6-2 fMxjfF" src="https://www.frip.co.kr/693729b5b09fd80c83969d334e9fd5ef.png" alt="bavkground-image">
+                    <img class="Banner__BackgroundImage-sc-13uuyx6-2 fMxjfF" src="https://www.frip.co.kr/91e7f86b2f2a8ffb7772efaf0094980b.png" alt="bavkground-image">
+                    <img class="Banner__BackgroundImage-sc-13uuyx6-2 fMxjfF" src="https://www.frip.co.kr/cf56e736426192118cda074bf84740dc.png" alt="bavkground-image">
+                    <img class="Banner__BackgroundImage-sc-13uuyx6-2 fMxjfF" src="https://www.frip.co.kr/2421ac1d135b2f30dac78f51c34ea92b.png" alt="bavkground-image">
+                </div>
+                <div class="Banner__Content-sc-13uuyx6-4 geOdYS">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFofLvfPx4SZl_X65UiXRNS8ECiMUGfZCBM7tLTetkJ6SifEjIoFZ43IZSeYM8hKnXkeTq-TrfT0H5TT3gvHs3dIDmd1e_WumiB8Vxu-JHqzeZr_KfOmngugrKa8U07nqREu0nWSl98dqCdDVWRjYUQjOwwgP0ZFDMNppiSFnmuXxx22n-bJ25PsDdYA/s1600/myoceanlogowb.png" alt="logo-whitestyle=" style="width:50px;height:50px;">
+                    <span style="color:white;font-weight:600;font-size:30px;">나의 바다</span>
+                    <p>세상 모든 소통 공간의 시작</p>
+                </div>
+            </div>
+            <div class="IntroPage__RegisterHomeWrapper-sc-2ms2nt-1 itbwCK">
+                <h2 class="IntroPage__Title-sc-2ms2nt-2 bQDUOZ">반가워요!</h2>
+                <p class="IntroPage__Description-sc-2ms2nt-3 fCOzti">
+                    가입하면 바로 쓸 수 있는 웰컴 쿠폰을 드려요!<br>오늘부터 #나의바다 하자
+                </p>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=e95b1771a295ce3312e3c0ef9a45a424&redirect_uri=
+http://localhost:15000/join/kakaoJoin&response_type=code&prompt=login" class="Button-bqxlp0-0 WideTextButton__KakaoButton-sc-1o3i5qv-0 fgMqqR">카카오톡으로 시작</a>
+                <div class="IntroPage__SubButtonWrapper-sc-2ms2nt-4 fyOiRy">
+                    <!--회원가입 2페이지로 이동-->
+                    <a href="/join/joinTwo">
+                        <button class="Button-bqxlp0-0 IntroPage__NormalButton-sc-2ms2nt-5 bMLRoT" width="48px" height="48px">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='14' fill='none' viewBox='0 0 18 14'%3E %3Cpath fill='%23333' d='M1.35 0C1.086 0 .84.082.633.227L8.339 7.68c.409.395.898.395 1.308 0l7.72-7.453C17.16.082 16.914 0 16.65 0H1.35zM.077 1.016C.031 1.168 0 1.329 0 1.5v11c0 .831.602 1.5 1.35 1.5h15.3c.748 0 1.35-.669 1.35-1.5v-11c0-.17-.03-.332-.077-.484L10.238 8.43c-.717.691-1.773.692-2.49 0L.078 1.016z'/%3E %3C/svg%3E" alt="email-icon">
+                        </button>
+                    </a>
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth?
+			client_id=79401094773-mfgm1b7o40nlokabvnvbai14rllf9bf2.apps.googleusercontent.com&
+			redirect_uri=http://localhost:15000/join/googleJoin&
+			response_type=code&
+			scope=email%20profile%20openid&
+			access_type=offline&prompt=consent" class="Button-bqxlp0-0 ImageButton__FacebookRegisterButton-sc-1gujkoj-0 hWMKcf" width="48px" height="48px" >
+                        <img src="https://banner2.cleanpng.com/20180324/iww/kisspng-google-logo-g-suite-google-5ab6f1cee66464.5739288415219388949437.jpg" style="width:21px;height:21px;" alt="구글로 시작">
+                    </a>
+                    <a href="https://nid.naver.com/oauth2.0/authorize?client_id=dF32vzYf2D0cYGgonhWY&response_type=code&redirect_uri=http://localhost:15000/naver-join/join"
+                       class="Button-bqxlp0-0 ImageButton__FacebookRegisterButton-sc-1gujkoj-0 hWMKcf" width="48px" height="48px">
+                        <img src="https://play-lh.googleusercontent.com/Kbu0747Cx3rpzHcSbtM1zDriGFG74zVbtkPmVnOKpmLCS59l7IuKD5M3MKbaq_nEaZM" style="width:21px;height:21px;" alt="네이버로 시작">
+                    </a>
+                    <a href="/login/index">
+                        <button class="Button-bqxlp0-0 IntroPage__NormalButton-sc-2ms2nt-5 hvCDRQ">로그인</button>
+                    </a>
+                </div>
+                <p class="GlobalNavigationBar__SpeechBubbleContainer-og74wb-18 ierGsl generalJoinMsgWrap">
+                <div class="SpeechBubble__Container-sc-19cq08p-0 eBDrIh generalJoinMsg">일반 회원가입 시 5,000 포인트 및 <br>회원가입 뱃지 증정!</div>
+                </p>
+                <p class="IntroPage__RecentLogin-sc-2ms2nt-6 lduEbR">최근 로그인은 이메일입니다.</p>
+            </div>
+        </div>
+        <!-- 카카오 로그인 히든 폼 -->
+        <form method="post" name="frm_login_kakao" id="frm_login_kakao" action="/join/kakaoLoginOk">
+            <input type="hidden" name="kakaoLoginForm" id="kakaoLoginForm" value="">
+            <input type="hidden" name="kakaoNameForm" id="kakaoNameForm" value="">
+        </form>
+
+        <!-- 구글 로그인 히든 폼 -->
+        <form method="post" name="frm_login_google" id="frm_login_google" action="/join/googleLoginOk">
+            <input type="hidden" name="googleLoginForm" id="googleLoginForm" value="">
+            <input type="hidden" name="googleNameForm" id="googleNameForm" value="">
+        </form>
+        <!-- footer 추가 부분 -->
+    </div>
+</div>
+<div id="modal-root"></div>
+<div id="dnd-root"></div>
+<div id="fb-root" class="fb_reset">
+    <div style="position: absolute; top: -10000px; width: 0px; height:0px;">
+        <div></div>
+    </div>
+</div>
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+    <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <span tabindex="0"></span>
+            <!--저장 확인-->
+            <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+                <!---->
+                <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                    <div class="text-center p-3"><div class="text-frip-primary my-3">
+                        <i class="" style="font-size: 2.5rem;"></i>
+                    </div>
+                        <h2>로그인 실패</h2>
+                        <div>
+                            <div></div>
+                            <div>
+                                <div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                    <div class="text-center p-3 container">
+                        <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                            확인
+                        </button>
+                    </div>
+                </footer>
+            </div>
+            <span tabindex="0"></span>
+        </div>
+    </div>
+    <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+<script src="/js/Join/before_join.js"></script>
+<script>
+    var notjoinFlagkakao=new URL(location.href).searchParams.get("kakaonotjoin");
+    var notjoinSecurekakao=new URL(location.href).searchParams.get("securekakao");
+    var notjoinFlaggoogle=new URL(location.href).searchParams.get("googlenotjoin");
+    var notjoinFlagnaver=new URL(location.href).searchParams.get("navernotjoin");
+    if(notjoinFlagkakao){
+        $("div.modal-content").find("span").text("카카오 회원가입을 진행해주십시오.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("카카오 회원가입을 진행해주십시오.");
+    }
+    if(notjoinFlaggoogle){
+        $("div.modal-content").find("span").text("구글 회원가입을 진행해주십시오.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("구글 회원가입을 진행해주십시오.");
+    }
+    if(notjoinSecurekakao){
+        $("div.modal-content").find("span").text("카카오 2단계 인증의 이메일 제공 동의를 진행하고 회원가입을 진행해주십시오.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("카카오 2단계 인증의 이메일 제공 동의를 진행하고 회원가입을 진행해주십시오.");
+    }
+
+    if(notjoinFlagnaver){
+        alert("네이버 회원가입을 진행해주십시오.")
+    }
+</script>
+</html>

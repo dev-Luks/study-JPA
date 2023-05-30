@@ -1,0 +1,575 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    outline: none;
+    font-family: inherit;
+}
+
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+::before, ::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+html {
+    box-sizing: border-box;
+    cursor: default;
+    font-family: sans-serif;
+    line-height: 1.5;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+    background-color: #b3d4fc;
+    color: #000000;
+    text-shadow: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    touch-action: manipulation;
+    background-color: transparent;
+    outline: none;
+    font-family: inherit;
+}
+
+
+img {
+    border-style: none;
+    vertical-align: middle;
+}
+
+p, label {
+    margin: 0px;
+}
+
+
+.bScXKt {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+
+/*참여방법*/
+.cKeGEu {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 9px 20px 0px;
+}
+
+.lhKOdR {
+    background-color: rgb(253, 253, 253);
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 26px;
+    padding: 7px 18px;
+}
+
+/*몰입도는?*/
+.ecJFAa {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 375px;
+    margin: 0px auto;
+}
+
+.efsGfN {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.jlZyVs {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 75%;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: -0.03em;
+    font-family: "Cafe24 Ohsquare", SUIT, "UI Frip", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.eYeQw {
+    max-width: 60%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dsbtQA {
+    display: block;
+    margin: 4px 0px 0px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.03em;
+    font-family: "Cafe24 Ohsquare", "UI Frip", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.gToUoh {
+    display: block;
+    margin-top: 6px;
+    color: rgb(119, 119, 119);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: pre-line;
+}
+
+/*프로필 사진*/
+.dOjjp {
+    position: relative;
+    margin-top: 24px;
+}
+
+.bByObR {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.eAawup {
+    stroke-linecap: round;
+    stroke-width: 2;
+    fill: none;
+    stroke: rgb(221, 221, 221);
+}
+
+.eXPdAe {
+    stroke-linecap: round;
+    stroke-width: 2;
+    fill: none;
+    stroke: rgb(51, 51, 51);
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: 2s cubic-bezier(0, 0.62, 0.49, 1) 0s 1 normal none running strokeAnimation;
+}
+
+.eBTIQt {
+    position: absolute;
+    width: 91px;
+    height: 91px;
+    margin-top: 3px;
+    border-radius: 100%;
+}
+
+.gTUfMO {
+    position: absolute;
+    top: 43px;
+    right: -53px;
+    display: flex;
+    width: 47px;
+    height: 23px;
+    padding: 3px 7px 4px 15px;
+    border-radius: 2px;
+    background: linear-gradient(50deg, transparent 7px, rgb(51, 51, 51) 0px) left bottom / 100% 50% no-repeat, linear-gradient(130deg, transparent 7px, rgb(51, 51, 51) 0px) left top;
+    background-repeat: no-repeat;
+    animation: 2s cubic-bezier(0, 0.62, 0.49, 1) 0s 1 normal none running topToDown;
+}
+
+.jnGcVC {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+}
+
+.zPlvc {
+    max-width: 60%;
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cvlxSQ {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 70%;
+    margin-top: 4px;
+    color: rgb(153, 153, 153);
+}
+
+.FhfWX {
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.ictrNd {
+    display: flex;
+    width: 375px;
+    margin: 22px 0px 46px;
+}
+
+.fnyfze {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 50%;
+}
+
+.ktGTEM {
+    color: rgb(51, 51, 51);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.03em;
+}
+
+.gTgJJd {
+    display: block;
+    color: rgb(51, 51, 51);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+}
+
+.fnyfze:first-child::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    width: 1px;
+    height: 24px;
+    border-right: 1px solid rgb(238, 238, 238);
+    z-index: 100;
+}
+
+
+/*뱃지 부분*/
+.dXLcNp {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dXLcNp > div {
+    width: 50%;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.jRRktc {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 32px 30px;
+    height: 144px;
+    background-color: rgb(253, 253, 253);
+}
+
+.jPdICC {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 26px;
+}
+
+.cLFwqh {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: -0.03em;
+    font-family: "Cafe24 Ohsquare";
+}
+
+.cLFwqh > span {
+    display: block;
+    height: 24px;
+}
+
+.byykUC {
+    display: block;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+}
+
+.bjLkAM {
+    display: flex;
+}
+
+.iialDB {
+    position: relative;
+    width: 80px;
+    height: 85px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
+.iialDB:last-child {
+    margin-right: 0px;
+}
+
+.dXLcNp > div:nth-child(2n+1)::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    bottom: 17px;
+    height: 147px;
+    width: 1px;
+    border-right: 1px solid rgb(238, 238, 238);
+    z-index: 100;
+}
+
+.dXLcNp > div:nth-child(2n+1):last-child {
+    border-right: none;
+}
+
+.dXLcNp > div {
+    width: 50%;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.bGrYtg {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 32px 30px;
+    height: 181px;
+    background-color: rgb(248, 248, 248);
+}
+
+.goTodayQuestBtn:hover {
+    background-color: #F6FAFE;
+}
+
+.jRRktc:hover{
+    background-color: #F6FAFE;
+}
+
+
+.addBadgeList{
+    display:grid;
+    grid-template-columns: 10% 10% 10% 10% 10%;
+    gap:12.5%;
+    height: auto;
+    margin: 12px 136px 29px;
+}
+
+.addBadgeList.Second{
+    margin-top:20px;
+}
+
+.badgeList{
+    cursor:pointer;
+}
+
+
+/*모달창*/
+.cMKqKB {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.lfbJGw {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 31%;
+    width: 100%;
+    min-height: 443px;
+    margin: 0px auto -100px;
+    padding-bottom: 100px;
+    z-index: 3001;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    animation: 0.3s ease 0s 1 normal none running gDIGGC;
+    max-width: 375px;
+}
+
+.fJydEv:hover{
+    background-color: #F6FAFE;
+}
+
+.bXCiMF {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 19px 23px 21px 20px;
+}
+
+.haGJUN {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.oFqnL {
+    display: block;
+    margin-right: 8px;
+    color: rgb(51, 51, 51);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: -0.03em;
+}
+
+.dgBmbY {
+    background-color: rgb(51, 51, 51);
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 26px;
+    padding: 1px 10px 3px;
+    color: rgb(255, 255, 255);
+    cursor: default;
+}
+
+.jgCMle {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+}
+
+.fTfJGA img {
+    width: 100%;
+}
+
+.cYNgOe {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.hkNEqU {
+    width: 141px;
+    height: 203px;
+    align-items: center;
+    display: flex;
+}
+
+.jZwSMv {
+    display: block;
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+}
+
+.iEGbSF {
+    margin-top: 32px;
+}
+
+.fJydEv {
+    background-color: rgb(253, 253, 253);
+    border: 1px solid rgb(51, 51, 51);
+    border-radius: 0px;
+    width: 279px;
+    height: 56px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 1px;
+}
+
+.gTmuEm {
+    font-family: "Cafe24 Ohsquare";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+}
+
+.bOPHSQ {
+    display: block;
+    margin-top: 12px;
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.kJOGKh {
+    position: absolute;
+    inset: 0px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: 0.3s ease 0s 1 normal none running jBcSpD;
+}
+
+.uncheckedBadge{
+    filter: grayscale(100%);
+}

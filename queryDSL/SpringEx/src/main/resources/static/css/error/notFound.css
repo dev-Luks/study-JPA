@@ -1,0 +1,221 @@
+body {
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body, button, input, select, textarea {
+    font-family: Roboto,Noto Sans KR,-apple-system,Dotum,sans-serif;
+    font-weight: 400;
+}
+
+article, blockquote, body, dd, div, dl, dt, h1, h2, h3, h4, html, li, main, ol, p, section, table, tbody, td, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    -webkit-text-size-adjust: none;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+#page-container, #wadizTopBanner, body > #root {
+    transform-origin: 50% 0;
+    transition-property: opacity,transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-out;
+}
+
+#wz-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+article, aside, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+body a {
+    text-decoration: none;
+}
+
+.errorpage {
+    margin: 0 auto;
+    padding: 60px 20px;
+    min-width: 250px;
+    max-width: 580px;
+    text-align: center;
+    line-height: 1.7em;
+    color: #44484b;
+    font-size: 15px;
+}
+
+.errorpage .icon {
+    margin-bottom: 20px;
+}
+
+.icon-error::before, .wz.form .field.error i.icon.wz.input::before, i.icon.error::before, i.wadizicon.wa-error::before {
+    content: "\0021";
+}
+
+[class*="icon-"]::before, i.icon::before, i.wadizicon {
+    display: inline-block;
+    margin-top: -.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: wadizicon !important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+}
+
+.errorpage .icon > i {
+    color: rgb(0, 117, 239);
+    font-size: 80px;
+}
+
+em, i {
+    font-style: normal;
+}
+
+.errorpage > h1 {
+    line-height: 1em;
+    font-size: 48px;
+    font-weight: 300;
+}
+
+.errorpage .message {
+    margin: 20px 0;
+}
+
+.wz.button.primary {
+    background-color: rgb(0, 117, 239);
+    color: #fff;
+}
+
+.wz.button.primary, .wz.button.primary-outline {
+    border-color: rgb(0, 117, 239);
+}
+
+.wz.button[href] {
+    line-height: 46px;
+}
+
+.wz.button {
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    color: rgba(0,0,0,.54);
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box !important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: .07em;
+    text-decoration: none;
+}
+
+body, body button, body input, body select, body textarea {
+    font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+}
+
+button {
+    background: none;
+    color: inherit;
+}
+
+.FloatingContainer_container__2sa3D {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    transition-property: transform,scale;
+    transition-duration: .25s;
+    transform: translateY(0) scale(0);
+    opacity: 0;
+    z-index: 1200;
+}
+
+.RecentView_container__3kfAg {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #dde2e6;
+    transition-property: transform;
+    transition-duration: .25s;
+    transform: translateY(0);
+    overflow: hidden;
+    z-index: 1200;
+    box-shadow: 0 6px 6px -1px rgba(10,22,70,.1),0 0 5px 0 rgba(10,22,70,.06);
+    cursor: pointer;
+}
+
+.RecentView_container__3kfAg .RecentView_thumbnail__1i_dn {
+    border-radius: 50%;
+}
+
+.RecentView_container__3kfAg * {
+    pointer-events: none;
+}
+
+.CardThumbnail_thumbnail__sw2ym {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: .25s;
+    background: no-repeat 50%/cover border-box;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 10px;
+}
+

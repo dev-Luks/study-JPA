@@ -1,0 +1,409 @@
+@font-face {
+    font-family: 'SUIT';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    outline: none;
+    font-family: inherit;
+}
+
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+::before, ::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    font-size: 14px;
+    color: black;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+html {
+    box-sizing: border-box;
+    cursor: default;
+    font-family: sans-serif;
+    line-height: 1.5;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+    background-color: #b3d4fc;
+    color: #000000;
+    text-shadow: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    touch-action: manipulation;
+    background-color: transparent;
+    outline: none;
+    font-family: inherit;
+}
+
+
+img {
+    border-style: none;
+    vertical-align: middle;
+}
+
+p, label {
+    margin: 0px;
+}
+
+/*본문 시작*/
+.dqLSTf {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px;
+    min-height: 1px;
+}
+
+/*본문 카테고리 제목*/
+
+.NavigationWrapper-z696u8-0.ijXgoc{
+    margin-bottom:20px;
+}
+
+.ijXgoc {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin: 20px 20px 0px;
+}
+
+.ijXgoc > * {
+    margin-right: 60px;
+}
+
+
+/*카테고리 첫 번째*/
+.Ppvwe {
+    width: auto;
+    height: 60px;
+    line-height: 20px;
+    padding: 0px 0px 26px;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 0px;
+}
+
+.Ppvwe::after {
+    content: "";
+    display: block;
+    margin: 9px auto 0px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgb(51, 151, 255);
+}
+
+
+/* 카테고리 두 번째*/
+.NbmIN {
+    width: auto;
+    height: 60px;
+    line-height: 20px;
+    padding: 0px 0px 26px;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 0px;
+}
+
+/*페이징처리*/
+.hBVRcD {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 30px 0px;
+    background-color: white;
+    border-bottom: solid 1px #ebe9e9;
+}
+.gIsDDT {
+    display: flex;
+    margin-right: 10px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.jVxRns {
+    transform: rotate(180deg);
+}
+
+.iItkLq {
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    /*cursor: not-allowed;*/
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+}
+
+.RPlDq {
+    width: 19.77px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    color: rgb(51, 151, 255);
+    /* font-size: 18px; */
+    font-weight: bold;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+}
+
+.eNIHag {
+    display: flex;
+    margin-left: 10px;
+}
+
+
+/*하단부 버튼*/
+.completeWrap {
+    position: relative;
+    text-align:right;
+    margin-top:15px;
+}
+
+.completeQuest {
+    position:relative;
+    right:0px;
+    color:white;
+    display: inline-flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 85px;
+    padding: 6px 12px 6px 17px;
+    background-color: rgb(94 94 94);
+    border-radius: 10px;
+}
+
+.completeQuest:hover{
+    background-color: #171e25;
+}
+
+.juuNtL:hover{
+    background-color: #F6FAFE;
+}
+
+.uncheckedBadge{
+    filter: grayscale(100%);
+}
+
+div#page_changer_wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 0;
+    background-color: white;
+}
+
+#previous_button_wrapper {
+    display: flex;
+    margin-right: 10px;
+}
+
+
+a.previous_buttons {
+    transform: scaleX(-1);
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+.page {
+    font: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #c4bec9;
+    font-size: 18px;
+    font-weight: normal;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+.page.active{
+    color: black;
+}
+
+#next_button_wrapper {
+    display: flex;
+    margin-right: 10px;
+}
+
+
+.next_buttons {
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+.modal-content-alert {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 15%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0 solid rgba(0,0,0,.2);
+    border-radius: 0.4375rem;
+    box-shadow: 0 15px 35px rgb(50 50 93 / 20%), 0 5px 15px rgb(0 0 0 / 17%);
+    outline: 0;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#__BVID__123___BV_modal_content_ {
+    height: 180px;
+}
+
+.modal-body {
+    position: relative;
+    padding: 18px;
+    text-align: center;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+.btn-frip-primary, .btn-frip-primary:hover {
+    color: #fff;
+    background-color: #6985a0;
+    border-color: #6985a0;
+}
+.btn-tab {
+    padding-inline: 2rem;
+}
+.btn {
+    border-radius: 0.25rem;
+    padding: 14px;
+    position: relative;
+    text-transform: none;
+    transition: all .15s ease;
+    letter-spacing: -.025em;
+    font-size: .8125rem;
+    will-change: transform;
+}
+.frip-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 61px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    overflow-y: auto;
+}

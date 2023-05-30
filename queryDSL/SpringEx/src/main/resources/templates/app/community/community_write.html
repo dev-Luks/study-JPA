@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h.hyeoniya 커뮤니티 글작성</title>
+    <link rel="stylesheet" href="/css/community/community_write.css">
+
+    <link rel="stylesheet" href="/css/community/bundle.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+    <script charset="utf-8" src="https://codex.so/public/build/editor.bundle.js?h=223d8eb43073a38b4278"></script>
+</head>
+<body>
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<form onsubmit="return false;">
+    <div class="SocialFeedPage__Wrapper-ky5ymg-0 fzBbGO">
+        <div class="SocialFeedPage__Header-ky5ymg-1 jIjcTX">
+            <div style="padding-left: 20px; padding-right: 20px;">
+                <input type="text" class="SocialFeedPage__Title-ky5ymg-2 gVPyuz" placeholder="제목을 작성해 주세요" style="border: none">
+            </div>
+        </div>
+        <!-- 카테고리 필터 -->
+        <div class="filter_wrapper">
+            <div class="selectBox2 post_filter ">
+                <button class="label">요리</button>
+                <ul class="optionList">
+                    <input type="hidden" name="post_filter_input" class="post_filter_input" value="요리">
+                    <li class="optionItem">요리</li>
+                    <li class="optionItem">운동</li>
+                    <li class="optionItem">영화</li>
+                    <li class="optionItem">책</li>
+                    <li class="optionItem">일기</li>
+                </ul>
+            </div>
+            <div class="selectBox2 exchange_filter_1h ">
+                <button class="label">교환 일기</button>
+                <ul class="optionList">
+                    <input type="hidden" name="exchange_filter_input" class="exchange_filter_input" value="교환 일기">
+                    <li class="optionItem">교환 일기</li>
+                    <li class="optionItem">나의 일기</li>
+                </ul>
+            </div>
+            <div class="FilterAll__Wrapper-tqa6fq-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 30px 0">
+        <div class="editor-landing__demo" data-module="editorLanding">
+                <textarea name="module-settings" hidden="">            {
+                        "output_id" : "output",
+                        "blocks" : []
+                    }
+                </textarea>
+
+            <div class="editor-landing__demo-inner">
+                <div id="summernote"></div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+
+</body>
+<script onload = "codex.init();" src="/js/community/communityEdit.js" th:defer></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script>
+    const $labelBtn = $(".label");
+    $labelBtn.click(function () {
+        if( $(this).parent().hasClass('active')){
+            $(this).parent().removeClass('active');
+        }else{
+            $(this).parent().addClass('active');
+        }
+    })
+</script>
+<script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/js/community/communityWrite.js"></script>
+</html>

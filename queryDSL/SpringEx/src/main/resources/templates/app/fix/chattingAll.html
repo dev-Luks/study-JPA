@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅창</title>
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+</head>
+<body>
+<div th:fragment="chattingAll">
+    <div class="chattingWrap2">
+        <div class="chattingToggle active callChatNormal"></div>
+    </div>
+
+    <div class="chattingWrap listOff" id="chattingList">
+        <div class="chattingContentWrap ">
+            <div class="chattingHeader">
+                <div class="left leftHead">
+                    <p>채팅 목록</p>
+                </div>
+                <div class="right active rightHead">
+                    <a class="backBtn"></a>
+                    <div class="thumbWrap">
+                        <div class="thumb">
+                            <img loading="lazy" src="/imgin/chat/logo.png" alt="chat_image">
+                        </div>
+                    </div>
+                    <div class="userIdAndTimeInfo">
+                        <p class="userId chattingRoomName" id = "userId" th:href="${session.userId}" th:text="${session.userNickname}"></p>
+                        <div class="morAndFoldBtnWrap">
+                            <!--                            <div class="moreBtn"></div>-->
+                            <div class="foldChatBtn"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--                <div class="foldChatBtn"></div>-->
+            </div>
+            <div class="chattingSection">
+                <div class="list left leftBody">
+                    <ul id = "groupList">
+                        <!--                            <li class="active leftChattingList" th:object="${groupList}" th:href="*{groupId}">-->
+                        <!--                                <div class="thumb chatThumb">-->
+                        <!--                                    <img src="/imgin/chat/logo.png" alt="chat_image">-->
+                        <!--                                </div>-->
+                        <!--                                <div class="chatInfo">-->
+                        <!--                                    <div class="userIdAndBeforeTime">-->
+                        <!--                                        <div class="right">-->
+                        <!--                                            <span class="userId" th:text="*{groupName}"></span>-->
+                        <!--                                        </div>-->
+                        <!--                                        <div class="left" id = "alarmSpace">-->
+
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <p class="chatInfoTxt" th:text="*{groupContent}">-->
+                        <!--                                    </p>-->
+                        <!--                                    <p class="endTime">채팅 기한: 22-11-23 21:00:00</p>-->
+                        <!--                                </div>-->
+                        <!--                            </li>-->
+                    </ul>
+                </div>
+                <div class="chattingRoom right active rightBody">
+                    <div class="chattingRoomWrap" id = "chattingRoom" style="height: 490px;">
+                    </div>
+                    <div class="chatInputArea">
+                        <div class="mentions mentions--multiLine"
+                             style="position: relative; overflow-y: visible; height: 24px;">
+                            <div class="mentions__control">
+                                <div class="mentions__highlighter"
+                                     style="position: relative; box-sizing: border-box; width: 100%; color: transparent; overflow: hidden; white-space: pre-wrap; overflow-wrap: break-word; border: 1px solid transparent; text-align: start;"></div>
+                                <textarea rows="5" cols="40" id = "msg" class="mentions__input" style="display: block; width: 100%; position: absolute; margin: 0px; top: 0px; left: 0px; box-sizing: border-box; background-color: transparent; font-family: inherit; font-size: inherit; letter-spacing: inherit; height: 100%; bottom: 0px; overflow: hidden; resize: none; padding-top: 6px; outline: none;"></textarea>
+                            </div>
+                        </div>
+                        <button id= "sendButton" class="buttonComponents_button__1hvQa buttonComponents_circle__2iQ3w buttonComponents_blueBlack__2HIFu  buttonComponents_lgImg__2-hZO " style="width:55px;box-shadow: 0px 3px 16px -1px darkgrey;">
+                            전송
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chatExitModal">
+        <div class="commonModal chatExit">
+            <div class="inputChattingName">
+
+            </div>
+            <button class="closeBtn"><img loading="lazy" src="https://www.freeiconspng.com/thumbs/sms-icon/sms-icon-16.png" alt="close">
+            </button>
+            <!--            <div class="commonModalContent"><p>원하실때 다시 들어올 수 있습니다</p>-->
+            <!--                <p>기다리고 있을게요</p></div>-->
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn">예</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="request_chat">
+        <div class="commonModal">
+            <p class="modalTit">1 네오력</p>
+            <p class="modalTit">사용하시겠습니까?</p>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close">
+            </button>
+            <div class="commonModalContent"></div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn chatStart">예</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="already_chat">
+        <div class="commonModal">
+            <div class="tit">
+
+            </div>
+            <button class="closeBtn"><img loading="lazy" src="https://letspl.me/assets/icon/ic-close.svg" alt="close"></button>
+            <div class="commonModalContent"><p>예를 누르시면 대화창을 엽니다.</p></div>
+            <div class="btnWrap doubleBtnWrap">
+                <button class="btn whiteBtn">아니오</button>
+                <button class="btn redBtn chatStart">예</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--<script th:inline="javascript">-->
+<!--    const groupDTOList = [[${groupDTOList}]];-->
+<!--</script>-->
+<script src="/js/fix/chatting.js"></script>
+</html>

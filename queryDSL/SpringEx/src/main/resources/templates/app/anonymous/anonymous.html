@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h.hyeoniya_고민상담게시판</title>
+    <link rel="stylesheet" href="/css/anonymous/anonymous.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    *{
+        font-family: "Noto Sans KR" !important;
+    }
+</style>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+    <div class="SocialFeedPage__Wrapper-ky5ymg-0 fzBbGO">
+        <div class="SocialFeedPage__Header-ky5ymg-1 jIjcTX">
+            <div style="padding-left: 20px; padding-right: 20px;">
+                <span class="SocialFeedPage__Title-ky5ymg-2 gVPyuz">고민을 털어놓아 보세요</span>
+                <button class="SocialFeedPage__TooltipButton-ky5ymg-3 cUtFFV">
+                    <img style="padding-bottom: 4px"; src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17' viewBox='0 0 17 17'%3E %3Cpath fill='%23CCC' d='M8.5 0C13.194 0 17 3.806 17 8.5S13.194 17 8.5 17 0 13.194 0 8.5 3.806 0 8.5 0zm0 1.5c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm-.09 9.22c.613 0 .92.32.92.96 0 .64-.307.96-.92.96-.607 0-.91-.32-.91-.96 0-.64.303-.96.91-.96zm.15-5.95c.627 0 1.123.157 1.49.47.393.333.59.81.59 1.43 0 .313-.09.62-.27.92-.073.113-.163.24-.27.38l-.47.54c-.053.06-.1.12-.14.18-.107.133-.19.26-.25.38-.16.293-.223.597-.19.91H7.77c-.053-.367-.01-.717.13-1.05.053-.133.13-.273.23-.42.073-.113.167-.24.28-.38l.56-.68c.173-.247.26-.473.26-.68 0-.547-.283-.82-.85-.82-.38 0-.75.187-1.11.56l-.81-.74c.273-.313.58-.553.92-.72.367-.187.76-.28 1.18-.28z'/%3E %3C/svg%3E" alt="고민게시판?"></button>
+                <a th:href="@{/templates/app/community/register}">
+                <div class="writeMoveBtn" style="position: relative; float: right;" >
+                    <button class="PlusLink__IconBtn-sc-7f77eh-0 faWmEE">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='20' viewBox='0 0 18 20'%3E %3Cpath fill='%234E5968' fill-rule='evenodd' d='M9 .765c.552 0 1 .447 1 1v7.392h7c.552 0 1 .448 1 1v.098c0 .552-.448 1-1 1h-7v7.392c0 .552-.448 1-1 1s-1-.448-1-1v-7.392H1c-.552 0-1-.448-1-1v-.098c0-.552.448-1 1-1h7V1.765c0-.553.448-1 1-1z'/%3E %3C/svg%3E" alt="+">
+                    </button>
+                </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 피드 -->
+        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+            <div class="view__FeedListWrapper-sc-1fff32g-0 ciajVR">
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1281499_20221111211620711_cc181f6ddcb2d26ee42f2c27e385d1727ee9b38535ae1c83ec1ade79322f515d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div>
+                                            <img src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1281499_20221111211620711_cc181f6ddcb2d26ee42f2c27e385d1727ee9b38535ae1c83ec1ade79322f515d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="2030 루프탑지니 와인파티~">2030 루프탑지니 와인파티~</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="2030 루프탑지니 와인파티~">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">처음 온거라 어색했는데 재밌게
+                            놀다 가요!!
+                            장소도 너무 아늑하고 맛있고 즐거웠습니다😊</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='%23F32D2D' d='M19.437 1.589C18.427.564 17.085 0 15.657 0s-2.77.564-3.78 1.589L10.5 2.986 9.124 1.59C8.114.564 6.77 0 5.344 0c-1.429 0-2.771.564-3.78 1.589-2.085 2.115-2.085 5.557 0 7.673l8.379 8.504c.148.15.348.234.557.234.209 0 .41-.084.557-.234l8.38-8.504c2.084-2.116 2.084-5.558 0-7.673z'/%3E %3C/svg%3E" alt="좋아요~"><span>1</span>
+                    </button><a th:href="@{/templates/app/community/comment}" class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                ><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/ios_image_456009_20221111201218834_a7779d47d0dc2b63b1689471889799a06e72f072ba3321f70a7cdd83bf983d6d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_456009_20221111201218834_a7779d47d0dc2b63b1689471889799a06e72f072ba3321f70a7cdd83bf983d6d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고려대卒![기간한정 50%▼ 2023년운세]">고려대卒![기간한정 50%▼ 2023년운세]</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고려대卒![기간한정 50%▼ 2023년운세]">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">개인적으로 힘든 일이 있어서
+                            사건이 어떻게 마무리되는지 여쭤봤어요. 잠도 못자고 밥도 못 먹을 정도로 스트레스 받아서 일상을 유지하기가 어려웠는데요. 이렇게 삶에 위기가 찾아올 때..다른 사람한테
+                            "괜찮다"는 말을 듣고 싶었나봐요. 선생님이 제 사주와 주역을 분석했을 때, 별일 없을거라고 해주셔서 많이 위로가 되네요.😭 pdf 째로 주시니까 보기도 편하고 넘
+                            좋았어요.</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a th:href="@{/templates/app/community/comment}" class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 ><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/1667649819271_1c3af13ae3e2d181f89f0a1526e59c21b89d701ba7f0a610affc0816c564a5c4">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/1667649819271_1c3af13ae3e2d181f89f0a1526e59c21b89d701ba7f0a610affc0816c564a5c4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런">[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런">
+                </a>
+                    <a  th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">서소문-광화문광장 코스도
+                            좋고, 같이 뛰는 멤버들은 더 좋고💗 뒷풀이까지 알찬 한양시티런 최고🥰👍👍👍</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a th:href="@{/templates/app/community/comment}" class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 ><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;"></div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런">[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[런플루언서] 러닝의 시작은 한양시티런! 가을에 즐기는 한양시티런">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">날씨가 엄청 추웠는데도
+                            뛰고나니 땀나고 뿌듯했어요ㅎㅎㅎㅎ 한양도심은 언제 달려도 힐링입니닷😊</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a th:href="@{/templates/app/community/comment}" class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                ><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 688px;">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_314884_20221111194446507_b7b20d4147d1d1c24d5b8c315617a6fb192e53fda0c1f36f2012c3555c3fd154">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_314884_20221111194446507_b7b20d4147d1d1c24d5b8c315617a6fb192e53fda0c1f36f2012c3555c3fd154">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_314884_20221111194446508_e6e84d1aec314f2a4b888db4651eefb5c91ddc75762698482e4cb5f5fca83675">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_314884_20221111194446508_e6e84d1aec314f2a4b888db4651eefb5c91ddc75762698482e4cb5f5fca83675">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[초코폭탄]쫀득고소 브라우니 (예약 가능)">[초코폭탄]쫀득고소 브라우니 (예약 가능)</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[초코폭탄]쫀득고소 브라우니 (예약 가능)">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">쫀득보다는 머랭이 들어가서
+                            진짜 부드러운 브라우니예요! 선생님께서 친절하게 알려주셔서 쉽게 만들 수 있어요:) 개별 포장지도 챙겨주시고 좋아요!</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a th:href="@{/templates/app/community/comment}" class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                ><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 1032px;">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412885_8ae44db40e549d107ea9fd93b27de2daa2f0e32dc9da3aef2376c5c5297d79b4">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412885_8ae44db40e549d107ea9fd93b27de2daa2f0e32dc9da3aef2376c5c5297d79b4">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412890_30cb41260ed9f1a2441f1dfd756b79424668a3b98d981c3f9ae0efb6ea722593">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412890_30cb41260ed9f1a2441f1dfd756b79424668a3b98d981c3f9ae0efb6ea722593">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412890_07f6de2826264381dfa82ac2945326de9f77eb53a1fbc2eac5cac74de9c36ec4">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1275786_20221111194412890_07f6de2826264381dfa82ac2945326de9f77eb53a1fbc2eac5cac74de9c36ec4">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                            <li class=""><button>3</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[서울] 롱보드 원데이 기초 클래스_성인반(Lv.1)">[서울] 롱보드 원데이 기초 클래스_성인반(Lv.1)</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[서울] 롱보드 원데이 기초 클래스_성인반(Lv.1)">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">날씨는 안따라주는 날이었지만
+                            쌤도 친절하고 모르는 부분 질문하면 추가적으로 붙어서 알려주셔가지고 너무 좋았어요~
+                            레벨2단계도 들어보고싶네요 ㅎㅎ</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button>
+                    </div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668161982750_3596e7d9894794779f4e0779ad2ad5184f7349f3cd6b1d5f649dbaa4fa8d3ba6">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668161982750_3596e7d9894794779f4e0779ad2ad5184f7349f3cd6b1d5f649dbaa4fa8d3ba6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를 배워봅니다 (예약 가능)">고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를
+                        배워봅니다 (예약 가능)</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를 배워봅니다 (예약 가능)">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">비포와 애프터를 확실히 느낄
+                            수 있는 강좌였습니다. 편안한 분위기에서 쉽고 자세하게 알려 주셔서 좋았습니다.</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 1032px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915463_a864272310e68a670389ef84c499128fba38ab9bfa663fcdb1d066ff933f7c74">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915463_a864272310e68a670389ef84c499128fba38ab9bfa663fcdb1d066ff933f7c74">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915465_d1dfb1b0c233eebd5265761f65765c44b6732c9d648154b76efe4e2c3184a9cd">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915465_d1dfb1b0c233eebd5265761f65765c44b6732c9d648154b76efe4e2c3184a9cd">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915466_e481a1c0ecfafa2e55f050c71a351d01fcb1d15325209c401894c4dad6ae3d4d">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915466_e481a1c0ecfafa2e55f050c71a351d01fcb1d15325209c401894c4dad6ae3d4d">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                            <li class=""><button>3</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">쉽고 빠르게 잘가르쳐
+                            주신것같아요~
+                            친구랑 빼빼로 데이겸 재밌는 경험 했습니당</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 1032px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805457_e778fb2b3a225d5a9a4f7d7f470566b7d8eafe9153b4aa4aacae0059646c0301">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805457_e778fb2b3a225d5a9a4f7d7f470566b7d8eafe9153b4aa4aacae0059646c0301">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805459_e9fef1ad759251c20e48448942cdf1ff4de7ef5e67ee1fe634802e7b0b083c97">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805459_e9fef1ad759251c20e48448942cdf1ff4de7ef5e67ee1fe634802e7b0b083c97">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805460_381ad0f8909022abc8ece79860ccc5cdec20fdbb2bc180ee59406b7efbb41b50">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805460_381ad0f8909022abc8ece79860ccc5cdec20fdbb2bc180ee59406b7efbb41b50">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                            <li class=""><button>3</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">처음해보는거였눈데
+                            살다보니 이런것도 해보구
+                            행복하네여 ㅎㅎ 선생님이 친절하게 잘가르쳐 주시고
+                            사진도찍어주시고 쉽거 재밌게 첫 베이킹을햐봤네욤
+                            담에또 해보려구요~감사했습니당</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button>
+                    </div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158538266_9978492945cd8b04567e263c93e1677081e0420d1ad8e29cd422e6bb1f177f1d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158538266_9978492945cd8b04567e263c93e1677081e0420d1ad8e29cd422e6bb1f177f1d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[서촌] 사장님 요리교실">[서촌] 사장님 요리교실</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[서촌] 사장님 요리교실">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">요리교실 아이디어 조은것같아용
+                            먹고 마시고 만드는데 이러케 좋은가격이라니</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158480565_716e639252ff66d4878f43d96b7106ad2744bfca87ec2b5fe3c2f81bf3675e4d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158480565_716e639252ff66d4878f43d96b7106ad2744bfca87ec2b5fe3c2f81bf3675e4d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[광주체험관광]시그니처 디자인 향수 만들기">[광주체험관광]시그니처 디자인 향수 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[광주체험관광]시그니처 디자인 향수 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">오홍홍 키트 6개중에 선택해서
+                            하는데요
+                            인생향수 만났어요
+                            정말 키트아이디어 너무 조은것같아요
+                            주차장 생각보다 주차어려워서 옆에 농협에 댔어용
+                            뭐사면 1시간 무료에요</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 688px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530374_5d4c4dafbd3e934b75747ac08d4a518409a09db2749ac042f313995d62465c68">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530374_5d4c4dafbd3e934b75747ac08d4a518409a09db2749ac042f313995d62465c68">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530376_ba1e7b10a327c2e55dd468b777414856bf8ce46112ce60ef01b22f00a6408f4b">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530376_ba1e7b10a327c2e55dd468b777414856bf8ce46112ce60ef01b22f00a6408f4b">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[반포] 펑리수 만들기">[반포] 펑리수 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[반포] 펑리수 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">친구랑 만들었는데 제가 더
+                            잘만든 것 같습니다…!
+                            이제 랑그드샤까지 하면 제이몬티 베이킹 완등!!
+
+                            넘 맛있고 예뻐요😚😚😚</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button>
+                    </div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668161982750_3596e7d9894794779f4e0779ad2ad5184f7349f3cd6b1d5f649dbaa4fa8d3ba6">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668161982750_3596e7d9894794779f4e0779ad2ad5184f7349f3cd6b1d5f649dbaa4fa8d3ba6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를 배워봅니다 (예약 가능)">고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를
+                        배워봅니다 (예약 가능)</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고궁 및 서울 사진명소에서 함께 출사를 통해 뷰포인트와 구도를 배워봅니다 (예약 가능)">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">비포와 애프터를 확실히 느낄
+                                수 있는 강좌였습니다. 편안한 분위기에서 쉽고 자세하게 알려 주셔서 좋았습니다.</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 1032px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915463_a864272310e68a670389ef84c499128fba38ab9bfa663fcdb1d066ff933f7c74">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915463_a864272310e68a670389ef84c499128fba38ab9bfa663fcdb1d066ff933f7c74">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915465_d1dfb1b0c233eebd5265761f65765c44b6732c9d648154b76efe4e2c3184a9cd">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915465_d1dfb1b0c233eebd5265761f65765c44b6732c9d648154b76efe4e2c3184a9cd">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915466_e481a1c0ecfafa2e55f050c71a351d01fcb1d15325209c401894c4dad6ae3d4d">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185915466_e481a1c0ecfafa2e55f050c71a351d01fcb1d15325209c401894c4dad6ae3d4d">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                            <li class=""><button>3</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">쉽고 빠르게 잘가르쳐
+                                주신것같아요~
+                                친구랑 빼빼로 데이겸 재밌는 경험 했습니당</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 1032px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805457_e778fb2b3a225d5a9a4f7d7f470566b7d8eafe9153b4aa4aacae0059646c0301">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805457_e778fb2b3a225d5a9a4f7d7f470566b7d8eafe9153b4aa4aacae0059646c0301">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805459_e9fef1ad759251c20e48448942cdf1ff4de7ef5e67ee1fe634802e7b0b083c97">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805459_e9fef1ad759251c20e48448942cdf1ff4de7ef5e67ee1fe634802e7b0b083c97">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805460_381ad0f8909022abc8ece79860ccc5cdec20fdbb2bc180ee59406b7efbb41b50">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_892660_20221111185805460_381ad0f8909022abc8ece79860ccc5cdec20fdbb2bc180ee59406b7efbb41b50">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                            <li class=""><button>3</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="고소한 버터의 풍미가 가득! 휘낭시에 12개/24개 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">처음해보는거였눈데
+                                살다보니 이런것도 해보구
+                                행복하네여 ㅎㅎ 선생님이 친절하게 잘가르쳐 주시고
+                                사진도찍어주시고 쉽거 재밌게 첫 베이킹을햐봤네욤
+                                담에또 해보려구요~감사했습니당</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button>
+                    </div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158538266_9978492945cd8b04567e263c93e1677081e0420d1ad8e29cd422e6bb1f177f1d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158538266_9978492945cd8b04567e263c93e1677081e0420d1ad8e29cd422e6bb1f177f1d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[서촌] 사장님 요리교실">[서촌] 사장님 요리교실</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[서촌] 사장님 요리교실">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">요리교실 아이디어 조은것같아용
+                                먹고 마시고 만드는데 이러케 좋은가격이라니</span><button
+                            class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                    <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc"><img
+                                            src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158480565_716e639252ff66d4878f43d96b7106ad2744bfca87ec2b5fe3c2f81bf3675e4d">
+                                    </div>
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div><img
+                                                src="https://res.cloudinary.com/frientrip/image/upload/photo_1668158480565_716e639252ff66d4878f43d96b7106ad2744bfca87ec2b5fe3c2f81bf3675e4d">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[광주체험관광]시그니처 디자인 향수 만들기">[광주체험관광]시그니처 디자인 향수 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[광주체험관광]시그니처 디자인 향수 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">오홍홍 키트 6개중에 선택해서
+                                하는데요
+                                인생향수 만났어요
+                                정말 키트아이디어 너무 조은것같아요
+                                주차장 생각보다 주차어려워서 옆에 농협에 댔어용
+                                뭐사면 1시간 무료에요</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button></div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+                <div>
+                    <div class="Ratio ImageBanner__Wrapper-dpw3a4-0 jZxoCa" style="display: block;">
+                        <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                            <div class="Ratio-content "
+                                 style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cyQYNE slick-initialized"
+                                         dir="ltr"><img data-role="none"
+                                                        class="ImageSlider__PrevArrow-sc-1obm2ug-2 hPYdgj slick-arrow slick-prev slick-disabled"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                        style="display: block;">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 688px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false" style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530374_5d4c4dafbd3e934b75747ac08d4a518409a09db2749ac042f313995d62465c68">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530374_5d4c4dafbd3e934b75747ac08d4a518409a09db2749ac042f313995d62465c68">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
+                                                     style="outline: none; width: 344px;">
+                                                    <div>
+                                                        <div class="FeedImage__Wrapper-sc-1g1oaf4-0 jGjBCL">
+                                                            <div class="FeedImage__ImageLoaderWrapper-sc-1g1oaf4-1 gVvWKc">
+                                                                <img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530376_ba1e7b10a327c2e55dd468b777414856bf8ce46112ce60ef01b22f00a6408f4b">
+                                                            </div>
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX"
+                                                                 style="opacity: 1; display: block;">
+                                                                <div><img
+                                                                        src="https://res.cloudinary.com/frientrip/image/upload/ios_image_390245_20221111175530376_ba1e7b10a327c2e55dd468b777414856bf8ce46112ce60ef01b22f00a6408f4b">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><img data-role="none"
+                                                   class="ImageSlider__NextArrow-sc-1obm2ug-3 gEcnJA slick-arrow slick-next"
+                                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%23FFF' stroke-width='2' d='M21 17l8 8.014L21.028 33'/%3E %3C/svg%3E"
+                                                   style="display: block;">
+                                        <ul class="slick-dots" style="display: block;">
+                                            <li class="slick-active"><button>1</button></li>
+                                            <li class=""><button>2</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a th:href="@{/templates/app/community/detail}"
+                        class="ProductLink__Wrapper-sc-1agbsre-0 ittDAj CardFeed__StyledProductLink-sc-1hnsnr8-1 ePVeWN">
+                    <div class="ProductLink__Text-sc-1agbsre-1 gNRuxI"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
+                            alt="[반포] 펑리수 만들기">[반포] 펑리수 만들기</div><img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11' viewBox='0 0 7 11'%3E %3Cpath fill='none' fill-rule='evenodd' stroke='%230574E6' stroke-width='1.5' d='M298 71L291 71 291 64' transform='scale(-1 1) rotate(45 221.84 -319.597)'/%3E %3C/svg%3E"
+                        alt="[반포] 펑리수 만들기">
+                </a>
+                    <a th:href="@{/templates/app/community/detail}">
+                    <div class="Description__Wrapper-ogh69p-0 lhIpIh CardFeed__StyledDescription-sc-1hnsnr8-2 eOhuaj"><span
+                            class="SpanLineClamp-my36n9-0 Description__StyledSpanLineClamp-ogh69p-2 dwGwRt">친구랑 만들었는데 제가 더
+                                잘만든 것 같습니다…!
+                                이제 랑그드샤까지 하면 제이몬티 베이킹 완등!!
+
+                                넘 맛있고 예뻐요😚😚😚</span><button class="Description__ExpandButton-ogh69p-1 djffyn"></button>
+                    </div></a>
+                    <div class="ActionGroup__Wrapper-sg91np-0 cXiDYn"><button type="button"
+                                                                              class="ActionGroup__LikeButton-sg91np-1 jxmvcs"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M15.657.75c-1.226 0-2.379.485-3.246 1.365l-1.91 1.94-1.912-1.94C7.722 1.235 6.57.75 5.343.75s-2.378.485-3.245 1.365C1.198 3.028.75 4.227.75 5.425c0 1.199.448 2.398 1.348 3.31l8.425 8.504 8.379-8.504c.9-.912 1.348-2.111 1.348-3.31 0-1.198-.448-2.397-1.347-3.31-.867-.88-2.02-1.365-3.246-1.365z'/%3E %3C/svg%3E"
+                            alt="좋아요~"><span>0</span></button><a class="ActionGroup__ReplyLink-sg91np-2 grCiwo"
+                                                                 th:href="@{/templates/app/community/comment}"><img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
+                            alt="댓글"><span>0</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 페이지 설명 모달 -->
+<div id="modal-page">
+    <div>
+        <div class="ActionSheet__Container-akkdcx-0 jgFMVr pageIntroduce_modalContainer_1h">
+            <div class="ActionSheet__Content-akkdcx-2 cyEVkt pageIntroduce_Container_1h">
+                <header class="ActionSheet__Header-akkdcx-3 dNCiPY"></header><header class="Ver4__TitleVer4-d1i4tu-0 kNwzQK " style=" padding: 35px 20px 0px;
+    font-size: 22px; line-height: 30px;color: rgb(51, 61, 75); font-weight: bold;">고민상담 게시판이란?</header>
+                <div class="WhatIsActionSheet__Body-sc-10e5q0f-0 cblWvR">
+                    <strong class="WhatIsActionSheet__Summary-sc-10e5q0f-1 bAnoxg">익명으로 나를 표현하고 <span role="img" aria-label="sunglasses">😎</span><br>
+                        다른 사람들에게 공감과 위로를 받아보세요.</strong>
+                    <p class="WhatIsActionSheet__Description-sc-10e5q0f-2 dkImul">
+                        나의 공간에서 함께하는 사람들을 벗어나 고민상담 게시판에서 이야기를 털어놓고, 이야기를 들어보세요. <br>
+                        나를 잘 아는 사람들의 위로와는 또 다른 방식의 위로와 공감이 당신에게 힘이 될 것 입니다.
+                    </p>
+                    <p class="WhatIsActionSheet__Comment-sc-10e5q0f-3 cMDWip">
+                        지금은 많이 힘들지라도, 지나고보면 또 하나의 경험과 추억이 되기를.
+                    </p>
+                </div>
+                <img src="/imgin/community/condoLence.png" style="height: 240px; width: 685px;" class="WhatIsActionSheet__ImageBanner-sc-10e5q0f-4 kYigqi">
+            </div>
+            <div class="ActionSheet__Overlay-akkdcx-1 eCzJv">
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/community/anonymous.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/community/communityClick.js"></script>
+
+</html>

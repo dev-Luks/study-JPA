@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+  <title>관리자 답변 - 나의 바다(MyOcean)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+  <link rel="stylesheet" href="/css/questionBoard/managerAnswer.css">
+  <link rel="stylesheet" href="/css/myPage/myPage.css">
+  <link rel="stylesheet" href="/css/fix/header.css">
+  <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="HelpPage__Wrapper-sc-1624coo-0 bjZuQZ">
+  <section>
+    <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+      <h1 font-size="24px" class="Left__LeftPageTitle-sc-12djr3w-0 cZvMcY">유저 문의 사항</h1>
+      <th:block th:each="managerAnswer:${managerAnswers}">
+        <ul class="HelpPage__FAQListWrapper-sc-1624coo-1 jaTQXA" style="margin-bottom:20px;">
+          <li th:object="${managerAnswer}">
+            <div class="FAQEntity__TitleWrapper-cpxlp5-0 gvlnCr" th:text="*{askTitle}"></div>
+            <div font-size="14px" class="FAQEntity__Content-cpxlp5-1 fFhAfW" style="display:block" th:utext="*{askContent}"></div>
+
+            <!--관리자 답변 내역-->
+            <div class="managerAnswerWrap">
+              <!--제목-->
+              <div font-size="14px" class="FAQEntity__Content-cpxlp5-1 fFhAfW" style="display:block; font-weight:700; background: #ededff;">
+                <div class="managerTitleArea" style="">
+                  <span class="answerTitle">관리자 답변</span>
+                  <span class="modify" style="font-weight:400;">수정</span>
+                </div>
+                <!--내용-->
+                <div class="managerAnswerContent" style="font-weight:400;">
+                  <div th:if="*{answer}"><p th:utext="*{answer}"></p></div>
+                  <div th:unless="*{answer}"><p th:utext="*{answer}"></p></div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </th:block>
+      <!--아직 관리자 답변 없을 때 나오는 페이지-->
+      <div class="managerWrap" style="display:none;">
+        <div class="managerTitle">
+          <span class="managerAnswerTitle">관리자 답변
+            <span class="answerApply">
+              <input type="button" value="등록" class="applyButton"></button>
+            </span>
+          </span>
+        </div>
+        <div class="editor" name="editor" id="tinymceEditor"></div>
+        <br>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+  <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <span tabindex="0"></span>
+      <!--저장 확인-->
+      <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+        <!---->
+        <div id="__BVID__123___BV_modal_body_" class="modal-body">
+          <div class="text-center p-3"><div class="text-frip-primary my-3">
+            <i class="" style="font-size: 2.5rem;"></i>
+          </div>
+            <h2></h2>
+            <div>
+              <div></div>
+              <div>
+                <div>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+          <div class="text-center p-3 container">
+            <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+              확인
+            </button>
+          </div>
+        </footer>
+      </div>
+      <span tabindex="0"></span>
+    </div>
+  </div>
+  <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/7g9q3f9jluo7zuzu3l7othnpiuw6r6krxchn5gn33j1c8mp1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/questionBoard/managerAnswer.js"></script>
+
+</html>

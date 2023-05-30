@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <title>나의 포인트 - 나의 바다(MyOcean)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+    <link rel="stylesheet" href="/css/myQuest/todayQuest.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myPage/myPage.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myPoint/myPoint.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div>
+
+    <div class="PcTop__Content-sc-1mni0hl-1 iKjpvd">
+        <div class="PcTop__Title-sc-1mni0hl-2 epAnZX">포인트 충전</div>
+    </div>
+    <div class="PcTop__Content-sc-1mni0hl-1 iKjpvd">
+        <input type="number" class="gGztpV" placeholder="충전금액" pattern="[0-9]*" style="-webkit-appearance: none;">
+        <button type="button" class="Outlined__Button-qqupyj-0 kpRdoO" style="line-height:0.5" onclick="requestPay()">충전</button>
+        <button class="Outlined__Button-qqupyj-0 kpRdoO" style="line-height:0.5" onclick="location.href='/myPoint/myPointRefund'">환불</button>
+    </div>
+    <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+        <form class="MyCoupons__InputWrapper-sc-1c3qwij-0 fmHjaT">
+            <div>
+                <div class="TextField__InputWrapper-sc-1l9o56e-1 gldLBs">
+                    포인트 충전을 원하신다면 우측의 충전 버튼을 클릭해주세요.
+                </div>
+            </div>
+        </form>
+        <hr size="40" type="Line" class="Border-sc-1bzcz1p-0 cOSlxV">
+
+        <!--모달 추가-->
+        <div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+            <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <span tabindex="0"></span>
+                    <!--저장 확인-->
+                    <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+                        <!---->
+                        <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                            <div class="text-center p-3"><div class="text-frip-primary my-3">
+                                <i class="" style="font-size: 2.5rem;"></i>
+                            </div>
+                                <h2></h2>
+                                <div>
+                                    <div></div>
+                                    <div>
+                                        <div>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                            <div class="text-center p-3 container">
+                                <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                                    확인
+                                </button>
+                            </div>
+                        </footer>
+                    </div>
+                    <span tabindex="0"></span>
+                </div>
+            </div>
+            <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+        </div>
+        <!--모달 추가-->
+
+        <div class="Padded-sc-1mbfr4n-0 KOZDF"><label class="MyEnergy__EnergyLogLabel-sc-3e7d9b-1 cdbJvn">충전 내역</label>
+            <div>
+                <th:block th:each="point:${points}">
+                    <div class="EnergyLog__Wrapper-sc-19yls83-0 hrLllS" th:object="${point}">
+                        <!--*{pointMerchantUid}-->
+                        <div class="EnergyLog__CreateDate-sc-19yls83-1 ckxegI" th:text="${#strings.substring(point.pointMerchantUid,2,13)}"></div>
+                        <div class="EnergyLog__ContentWrapper-sc-19yls83-2 fmfynV">
+                            <div class="EnergyLog__Title-sc-19yls83-3 fGTHSO" th:text="*{pointContent}"></div>
+                            <!--                            <div class="EnergyLog__DescriptionWrapper-sc-19yls83-4 cgVuQs" th:text="*{createDate}"></div>-->
+                            <div th:switch="${#strings.toString(point.pointType)}">
+                                <!--th:text="'-'+*{pointAmountHistory}"-->
+                                <div th:case="환불대기" class="EnergyLog__Value-sc-19yls83-6 ftNZaKA"></div>
+                                <div th:case="환불승인" class="EnergyLog__Value-sc-19yls83-6 ftNZaK" th:text="|-*{pointAmountHistory}|"></div>
+                                <div th:case="결제" class="EnergyLog__Value-sc-19yls83-6 fwsFdo" th:text="|+*{pointAmountHistory}|"></div>
+                                <div th:case="보상" class="EnergyLog__Value-sc-19yls83-6 fwsFdo" th:text="|+*{pointAmountHistory}|"></div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" type="text/javascript"></script>
+<!-- 아임포트 -->
+<script src ="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myPoint/myPoint.js"></script>
+<script th:inline="javascript">
+
+    var IMP = window.IMP;   // 생략 가능
+    IMP.init("imp44480067"); // 예: imp00000000
+    function requestPay() {
+        var userId=[[${session.userId}]];
+        var userEmail=[[${session.userEmail}]];
+        var userNickname=[[${session.userNickname}]];
+
+        var date = new Date();
+        var isodate=date.toISOString();
+        isodate=isodate.substr(0,23);
+        console.log(isodate);
+        var inputPrice=$("input[type='number']").val();
+        if(!inputPrice){
+            checkValue();
+            return;
+        }
+        var year = date.getFullYear().toString();
+
+        var month = date.getMonth() + 1;
+        month = month < 10 ? '0' + month.toString() : month.toString();
+
+        var day = date.getDate();
+        day = day < 10 ? '0' + day.toString() : day.toString();
+
+        var hour = date.getHours();
+        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+
+        var minutes = date.getMinutes();
+        minutes = minutes < 10 ? '0' + minutes.toString() : minutes.toString();
+
+        var seconds = date.getSeconds();
+        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+
+        var now=year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minutes+"분 "+seconds+"초 ";
+
+        IMP.request_pay({
+            pg : 'kakaopay.TC0ONETIME',
+            pay_method : 'card',
+            merchant_uid: now,
+            name : 'MyOcean 포인트충전',
+            amount : inputPrice,
+            buyer_email : userEmail,
+            buyer_name : userNickname,
+            buyer_tel : '010-9982-3950',
+            buyer_addr : '서울특별시 강남구 삼성동',
+            buyer_postcode : '123-456'
+        },function (rsp) { // callback
+            if (rsp.success) {
+                console.log(rsp);
+                var requestData={"point":rsp.paid_amount,"userId":userId,"merchantUid":rsp.merchant_uid,"impUid":rsp.imp_uid,"content":rsp.name};
+                $.ajax({
+                    url:"savePay",
+                    type:"post",
+                    headers:{"Content-Type":"application/json"},
+                    data:JSON.stringify(requestData),
+                    dataType:"text",
+                    success:checkSuccess,
+                    error:payError
+                })
+            } else {
+                payError();
+            }
+        });
+    }
+
+    function cancelPay(){
+
+        // jQuery.ajax({
+        //     "url":"https://api.iamport.kr/users/getToken",
+        //     "type":"POST",
+        //     "Content-Type":"application/json",
+        //     "data":JSON.stringify({
+        //         imp_key:"3737557062566007",
+        //         imp_secret:"RxUCxBZzHEJ8sVkAQBOg3N5u1oUy5S98P7Pd3E1kRWLbCXXXbZMKVNrUyfHIlzkxt4urUZrnlneq8YCO"
+        //     }),
+        //     "dataType":"json"
+        // }).done(function(result) { // 환불 성공시 로직
+        //     console.log(result);
+        //     alert("환불 성공");
+        // }).fail(function(error) { // 환불 실패시 로직
+        //     console.log(error);
+        //     alert("환불 실패");
+        // });
+        //_token=f7d3a03aa5f0d30188f02d9dfc0f36a463a8e343
+        jQuery.ajax({
+            // 예: http://www.myservice.com/payments/cancel
+            "url": "https://api.iamport.kr/payments/cancel",
+            "type": "POST",
+            "crossDomain":"true",
+            "headers":{"Content-Type": "application/x-www-form-unlencoded",
+                "Authorization": "Bearer f7d3a03aa5f0d30188f02d9dfc0f36a463a8e343"},
+            "async":"false",
+            "data": JSON.stringify({
+                "imp_uid":"imp_183298724446",
+                "merchant_uid":"20221210202138", // 예: ORD20180131-0000011
+                "cancel_request_amount": 15413, // 환불금액
+                "reason": "테스트 결제 환불" // 환불사유
+                // [가상계좌 환불시 필수입력] 환불 수령계좌 예금주
+                // "refund_holder": "홍길동",
+                // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(예: KG이니시스의 경우 신한은행은 88번)
+                // "refund_bank": "88",
+                // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
+                // "refund_account": "56211105948400"
+            }),
+            "dataType": "jsonp",
+        }).done(function(result) { // 환불 성공시 로직
+            console.log(result);
+            alert("환불 성공");
+        }).fail(function(error) { // 환불 실패시 로직
+            console.log(error);
+            alert("환불 실패");
+        });
+    }
+
+    function checkValue(){
+        $("div.modal-content").find("h2").text("충전 오류");
+        $("div.modal-content").find("span").text("충전 금액이 한도를 초과하거나, 잘못된 금액을 입력하셨습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+    }
+
+    function checkSuccess() {
+        $("div.modal-content").find("h2").text("충전 완료");
+        $("div.modal-content").find("span").text("MyOcean 포인트 충전이 완료되었습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click", function () {
+            $("#__BVID__287___BV_modal_outer_").hide();
+            location.href="/myPoint/index";
+            return;
+        });
+    }
+
+    function payError() {
+        $("div.modal-content").find("h2").text("충전 실패");
+        $("div.modal-content").find("span").text("MyOcean 포인트 충전애 실패하셨습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click", function () {
+            $("#__BVID__287___BV_modal_outer_").hide();
+            return;
+        });
+    }
+</script>
+</html>

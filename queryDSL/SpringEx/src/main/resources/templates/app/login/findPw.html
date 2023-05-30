@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scable=no, viewport-fit=cover">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <link rel="stylesheet" href="/css/login/findPw.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <title>비밀번호 찾기 - 나의 바다(MyOcean)</title>
+</head>
+<body class="fontLoaded">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top:-88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+        <!-- header 추가 부분 -->
+        <div class="FindPasswordPage__Wrapper-sc-26m6x7-0 kzcpGk">
+            <div class="Center__Wrapper-sc-19p29je-0 gVBJBr">
+                <h3>비밀번호 찾기</h3>
+            </div>
+            <form class="LoginRegister__LoginRegisterForm-gtp545-0 fjvnva" name="findForm">
+                <div>
+                    <input class="Form__Input-sc-1quypp7-1 iRBMai" type="email" name="email" placeholder="아이디 (이메일)">
+                    <p class="Form__Description-sc-1quypp7-2 cIOZzg">재설정하려는 비밀번호의 아이디(이메일)를 입력해 주세요.</p>
+                    <input type="hidden" name="verificationCode">
+                    <input type="hidden" name="url">
+                </div>
+                <button class="Button-bqxlp0-0 ppTTf" name="sendemail" type="button" width="100%" height="56px" color="#f4f4f4" font-size="16px" disabled="">이메일 발송</button>
+            </form>
+        </div>
+        <!-- footer 추가 부분 -->
+    </div>
+</div>
+<div id="modal-root"></div>
+<div id="dnd-root"></div>
+<div id="fb-root" class="fb_reset"></div>
+<div id="footer"></div>
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+    <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <span tabindex="0"></span>
+            <!--저장 확인-->
+            <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+                <!---->
+                <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                    <div class="text-center p-3"><div class="text-frip-primary my-3">
+                        <i class="" style="font-size: 2.5rem;"></i>
+                    </div>
+                        <h2></h2>
+                        <div>
+                            <div></div>
+                            <div>
+                                <div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                    <div class="text-center p-3 container">
+                        <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                            확인
+                        </button>
+                    </div>
+                </footer>
+            </div>
+            <span tabindex="0"></span>
+        </div>
+    </div>
+    <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+<script src="/js/login/findPw.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    function transferMail() {
+        saveFindData();
+        console.log(uuid);
+        var url = "http://localhost:15000/login/changePassword";
+        emailjs.init("VPTiIAAgeT4A2QNeZ");
+        //"user_xxxxx"이 부분은 사용자마다 다르니 반드시 emailJS의 installation 화면을 확인
+
+
+        var templateParams = {
+            //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+            email: $('input[name=email]').val(),
+            verificationCode: uuid,
+            url: url,
+        };
+        emailjs.send('gmail', 'template_n8h04cp', templateParams, "VPTiIAAgeT4A2QNeZ")
+            //emailjs.send('service ID', 'template ID', 보낼 내용이 담긴 객체)
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                location.href = "/login/findPwComplete";
+            }, function (error) {
+                console.log('FAILED...', error);
+            });
+    }
+</script>
+</html>

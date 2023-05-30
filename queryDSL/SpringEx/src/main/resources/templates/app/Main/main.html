@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <title>메인 페이지 - 나의 바다(MyOcean)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/css/Main/swiper.css">
+    <link rel="stylesheet" href="/css/fix/chatting.css">
+
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide  {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-wrapper-media {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/Main/main.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <!--    <link rel="stylesheet" href="/static/css/slide.css">-->
+</head>
+<body>
+<div th:if="${session.userId}">
+    <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+    <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<div th:replace="/app/fix/chattingAll.html:: chattingAll"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top: -88px;"></div>
+        <div id="test" class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+
+        <div class="HomePage__Wrapper-jao9qf-0 hErPle">
+            <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+
+
+                <!--슬라이드 배너-->
+                <div class="BannerWrapper__HomeBannerWrapper-sc-17qp9bv-0 ljXeaB" style="">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1;display: block;">
+                        <div class="MainBanner__Wrapper-sc-11xszl-0 bxEWSj" style="height: 100%;">
+                            <div class="MainBanner__ImageSliderWrapper-sc-11xszl-1 hprCGA">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 dueCVJ">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cuinM slick-initialized" dir="ltr">
+                                        <div class="slick-list">
+                                            <!--첫번쨰 슬라이드 시작점-->
+                                            <!-- Swiper -->
+                                            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events">
+                                                <div class="swiper-wrapper" id="swiper-wrapper-f10ba2ab650a99373" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-4788px, 0px, 0px);">
+                                                    <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_001.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_002.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_003.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_004.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="4" role="group" aria-label="5 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_005.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="5 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_005.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="color: white;"></div>
+                                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="
+    /* width: 30px; */
+
+    color: white;
+"></div>
+                                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 9"></span></div>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+
+                                            <!--첫번쨰 슬라이드 끝점-->
+                                            <div class="slick-track" style="opacity: 1; transform: translate3d(-2304px, 0px, 0px); width: 17664px;">
+
+                                                <div data-index="20" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width: 768px;">
+                                                    <div><a class="withLink__StyledLink-zuberk-0 lQqkn" href="/collections/995">
+                                                        <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                                            <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                            </div>
+                                                        </div>
+                                                    </a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--슬라이드배너 미디어-->
+                <div class="BannerWrapper__HomeBannerWrapper-sc-17qp9bv-0 ljXeaB slideMedia" style="display:none;">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1;display: block;">
+                        <div class="MainBanner__Wrapper-sc-11xszl-0 bxEWSj" style="height: 100%;">
+                            <div class="MainBanner__ImageSliderWrapper-sc-11xszl-1 hprCGA">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 dueCVJ">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cuinM slick-initialized" dir="ltr">
+                                        <div class="slick-list">
+                                            <!--첫번쨰 슬라이드 시작점-->
+                                            <!-- Swiper -->
+                                            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events">
+                                                <div class="swiper-wrapper" id="swiper-wrapper-f10ba2ab650a993733" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-4788px, 0px, 0px);">
+                                                    <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_001.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_002.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_003.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_004.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="4" role="group" aria-label="5 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_005.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="5 / 5" style="width: 100%; margin-right: 30px;">
+                                                        <img src="/imgin/main/mainbanner/mainbanner_media_005.png" style="width:100%;" class="slidePic">
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="color: white;"></div>
+                                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="
+    /* width: 30px; */
+
+    color: white;
+"></div>
+                                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 9"></span></div>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+
+                                            <!--첫번쨰 슬라이드 끝점-->
+                                            <div class="slick-track" style="opacity: 1; transform: translate3d(-2304px, 0px, 0px); width: 17664px;">
+                                                <div data-index="20" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true" style="width: 768px;">
+                                                    <div>
+                                                        <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/collections/995">
+                                                            <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                                                <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;"></div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ShortcutList__Wrapper-p3h6sa-0 hnZqhV">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <div class="ShortcutList__NodeListWrapper-p3h6sa-1 hnuhJm">
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%E1%84%89%E1%85%AD%E1%86%BA%E1%84%8F%E1%85%A5%E1%86%BA_%E1%84%80%E1%85%AA%E1%84%86%E1%85%A9%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_0400f54dcd0f871b4259d85044b499c06cac78144977f8b85374cddb446997a9">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/diary.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>일기</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%E1%84%89%E1%85%AD%E1%86%BA%E1%84%8F%E1%85%A5%E1%86%BA_%E1%84%87%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B5%E1%86%BC_75b4f6007e454b8732785f1b51b7bbf33005401b84fa303287373b7f7ff33fe8">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/cook.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>요리</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%ED%94%84%EB%A6%BD%EB%B2%84%EC%8A%A4%20(1)_3f603cf214e7faac38defe3f8dbb782147d905f1a87c2da03238c49179c58d43">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/movie.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>영화</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%EC%88%8F%EC%BB%B7_%EA%B4%91%EC%A3%BC_d04d83d7eb2dde14c8a9c95abeb2981ce812026236c7758ddea5193949ce9d05">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/sports.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><span>운동</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%EC%88%8F%EC%BB%B7_%EC%8B%A0%EC%83%81%ED%95%A0%EC%9D%B8_4e2cb10d1196d19f5c201c990fb65dbf205c76e0ce9d2f9d19896c237109baf5">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/book.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>책</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF"><img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/10_ecdd04ba47c853f0597b5f5b694d48b6389a06a63ec963e2108e31cae0f202e0">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/freeboard.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>자유게시판</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/community/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%EC%88%8F%EC%BB%B7_%EC%84%9C%EC%9C%A8%EC%97%AC%EC%84%B1%EA%B3%B5%EC%98%88%EC%84%BC%ED%84%B0_d23cffc8fa73675d1e4e001d5814badbad6652d845f1a61f1cdc4ea2494e21e7">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/consulting.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><span>고민상담</span>
+                                </div>
+                            </a>
+                            <a th:href="@{/host/group-list}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/%E1%84%89%E1%85%AD%E1%86%BA%E1%84%8F%E1%85%A5%E1%86%BA_%E1%84%83%E1%85%B3%E1%86%BC%E1%84%89%E1%85%A1%E1%86%AB_e371195349cd66b56c77b80615c24d6d4e01ed4b34797f61314681be6b78cf0c">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/group.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>모임</span>
+                                </div>
+                            </a><a th:href="@{/myQuest/todayQuest}">
+                            <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                    <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/09_6f5ee6b6b23383ae6555e23106334e5c4f396804f8cb10f81bc1488a0b825e9d">
+                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                        <div class="Ratio " style="display: block;">
+                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                    <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/quest.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>퀘스트</span>
+                            </div>
+                        </a>
+                            <a th:href="@{/myspace/index}">
+                                <div class="ShortcutItem__Wrapper-sc-1mxi63e-0 fFzchN">
+                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF">
+                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="60" height="60" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,h_86,q_auto,w_86/06_a2fce562c9c853fbd6b4330cf3b2bea16e4ae594e8fabb5fff4bdd697cbeaefe">
+                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                            <div class="Ratio " style="display: block;">
+                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                        <img class="Image__StyledImage-v97gyx-1 VUNpu mainCategory" width="60" height="60" src="/imgin/main/todolist.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span>TodoList</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductList__Wrapper-sc-1pj7ods-0 kqydUo">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <section class="CardGroupProduct__Wrapper-sc-1uq4zjb-0 jUxAIa">
+                            <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                                <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                    <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">우리만의 모임을 소개합니다👇</h2>
+                                </div>
+                                <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA">
+                                    <a class="ProductSectionHeader__StyledLink-sc-1lmfow6-5 haoyHh" th:href="@{/host/group-list}">전체보기</a>
+                                </div>
+                            </div>
+                            <div class="CardGroupProduct__Content-sc-1uq4zjb-1 gbEqzo">
+
+                                <th:block th:each="group : ${groupList}">
+                                    <div class="CardProduct__Wrapper-a817d1-0 ijdqTp" th:object="${group}">
+                                        <a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/host/read(groupId=${(group.getGroupId())})}">
+                                            <div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">
+                                                <div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">
+                                                    <div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">
+                                                        <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="192" src="https://res.cloudinary.com/frientrip/image/upload/ar_1:1,c_fill,dpr_2,f_auto,q_auto,w_310/%EC%8D%B8%EB%84%A4%EC%9D%BC_1_9a525f7f236a75f96775958b8cf5a3f527c23535650404351e95eeadb56fc84a">
+                                                        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                            <div class="Ratio " style="display: block;">
+                                                                <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                    <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                        <img alt="이미지" class="Image__StyledImage-v97gyx-1 VUNpu" width="192" th:src="@{/host/display(fileName=${group.groupFilePath} + '/' + ${group.groupFileUuid} + '_' + ${group.groupFileName})}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="CardProduct__DetailContainer-a817d1-6 iDZoyW">
+                                                    <span class="CardProduct__Location-a817d1-7 hgalyK" th:text="*{groupLocationName}"></span>
+                                                    <div class="CardProduct__Title-a817d1-8 kxyGXE" th:text="*{groupName}"></div>
+                                                    <hr type="Line" size="16" class="Border-sc-1bzcz1p-0 eXQzbT">
+                                                    <div class="CardProduct__PriceContainer-a817d1-11 gyjVwY">
+                                                        <div class="CardProduct__DiscountRateContainer-a817d1-13 figzTw">
+                                                            <div class="CardProduct__SalePrice-a817d1-12 fEyOLH"><span th:text="*{groupPoint}"></span><span>point</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a></div>
+
+                                </th:block>
+
+
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <a th:href="@{/myQuest/todayQuest}" class="HostBanner__Wrapper-sc-15wm6s2-0 ikopRC">
+                    <img src="/imgin/main/brandbanner/brandbanner_quest.png" class="HostBanner__BannerImage-sc-15wm6s2-1 eaJzkp">
+                    <img src="/imgin/main/brandbanner/brandbanner_quest.png" class="HostBanner__BannerImage-sc-15wm6s2-1 eaJzkp" style="display:none;">
+                </a>
+                <div class="ProductList__Wrapper-sc-1pj7ods-0 kqydUo">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <section class="CardGroupProduct__Wrapper-sc-1uq4zjb-0 jUxAIa">
+                            <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                                <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                    <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">자유로운 이야기들</h2>
+                                </div>
+                                <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA"><a class="ProductSectionHeader__StyledLink-sc-1lmfow6-5 haoyHh" th:href="@{/community/index}">전체보기</a></div>
+                            </div>
+                            <div class="CardGroupProduct__Content-sc-1uq4zjb-1 gbEqzo">
+                                <th:block th:each="community : ${communityList}">
+                                    <div class="CardProduct__Wrapper-a817d1-0 ijdqTp" th:object="${community}"><a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/community/read(communityPostId=${community.getCommunityPostId()})}">
+                                        <div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">
+                                            <div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">
+                                                    <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="192" th:src="@{/community/display(fileName=${community.communityFilePath} + '/' + ${community.communityFileUuid} + '_' + ${community.communityFileName})}">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="" class="Image__StyledImage-v97gyx-1 VUNpu" width="192" th:src="@{/community/display(fileName=${community.communityFilePath} + '/' + ${community.communityFileUuid} + '_' + ${community.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CardProduct__DetailContainer-a817d1-6 iDZoyW"><span class="CardProduct__Location-a817d1-7 hgalyK" th:text="*{communityCategory}"></span>
+                                                <div class="CardProduct__Title-a817d1-8 kxyGXE" th:text="*{communityTitle}"></div>
+                                                <div class="CardProduct__ReviewContainer-a817d1-9 ftUvAC">
+                                                    <span class="CardProduct__Review-a817d1-10 gsopHh"><span>💕</span><span th:text="*{communityLikeNumber}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></div>
+
+                                </th:block>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="CollectionBannerList__Wrapper-sc-1vost5m-0 GwLTy">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                            <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">모아보기</h2>
+                            </div>
+                            <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA"></div>
+                        </div>
+                        <div class="Banner__Wrapper-dlocnb-0 dIznkQ">
+                            <div class="Banner__ImageSliderWrapper-dlocnb-2 hWqRHN">
+                                <div class="ImageSlider__SliderWrapper-sc-1obm2ug-0 hHiTXT">
+                                    <div class="slick-slider ImageSlider__StyledSlider-sc-1obm2ug-1 cOsMnB slick-initialized" dir="ltr">
+                                        <div class="slick-list">
+                                            <!-- 여기가 두번째 시작점-->
+                                            <!-- Swiper -->
+                                            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events" style="height: 180;">
+                                                <div class="swiper-wrapper" id="swiper-wrapper-f10ba2ab650a993723" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-4788px, 0px, 0px);">
+                                                    <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_freeboard.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="2 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_exercise.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_cook.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_diary.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="5 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_movie.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="5" role="group" aria-label="6 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_book.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="6" role="group" aria-label="7 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/community/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_consulting.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="7" role="group" aria-label="8 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/myspace/index}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_todolist.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="swiper-slide" data-swiper-slide-index="8" role="group" aria-label="9 / 9" style="width: 768px; margin-right: 30px;">
+                                                        <a th:href="@{/host/group-list}">
+                                                            <img src="/imgin/main/sidebanner/sidebanner_gettogether.png" style="width:100%;">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="
+    color: white;
+"></div>
+                                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-f10ba2ab650a99373" style="
+    color: white;
+"></div>
+                                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span>
+                                                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span>
+                                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 9"></span>
+                                                </div>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                            </div>
+                                            <!--여기가 두번쨰 끝점-->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ProductList__Wrapper-sc-1pj7ods-0 kqydUo">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <section class="CardGroupProduct__Wrapper-sc-1uq4zjb-0 jUxAIa">
+                            <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                                <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                    <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">다양한 운동 이야기👍🏻</h2>
+                                </div>
+                                <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA"><a class="ProductSectionHeader__StyledLink-sc-1lmfow6-5 haoyHh" th:href="@{/community/index}">전체보기</a></div>
+                            </div>
+                            <div class="CardGroupProduct__Content-sc-1uq4zjb-1 gbEqzo">
+                                <th:block th:each="exercise : ${exerciseList}">
+                                    <div class="CardProduct__Wrapper-a817d1-0 ijdqTp" th:object="${exercise}"><a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/community/read(communityPostId=${exercise.getCommunityPostId()})}">
+                                        <div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">
+                                            <div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">
+                                                    <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="192" th:src="@{/community/display(fileName=${exercise.communityFilePath} + '/' + ${exercise.communityFileUuid} + '_' + ${exercise.communityFileName})}">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="" class="Image__StyledImage-v97gyx-1 VUNpu" width="192" th:src="@{/community/display(fileName=${exercise.communityFilePath} + '/' + ${exercise.communityFileUuid} + '_' + ${exercise.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CardProduct__DetailContainer-a817d1-6 iDZoyW"><span class="CardProduct__Location-a817d1-7 hgalyK" th:text="*{communityCategory}"></span>
+                                                <div class="CardProduct__Title-a817d1-8 kxyGXE" th:text="*{communityTitle}"></div>
+                                                <div class="CardProduct__ReviewContainer-a817d1-9 ftUvAC">
+                                                    <span class="CardProduct__Review-a817d1-10 gsopHh"><span>💕</span><span th:text="*{communityLikeNumber}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></div>
+
+                                </th:block>
+
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="ProductList__Wrapper-sc-1pj7ods-0 kqydUo">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <section class="CardGroupProduct__Wrapper-sc-1uq4zjb-0 jUxAIa">
+                            <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                                <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                    <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">나의 요리를 자랑해요🌾</h2>
+                                </div>
+                                <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA"><a class="ProductSectionHeader__StyledLink-sc-1lmfow6-5 haoyHh" th:href="@{/community/index}">전체보기</a></div>
+                            </div>
+                            <div class="CardGroupProduct__Content-sc-1uq4zjb-1 gbEqzo">
+                                <th:block th:each="cook : ${cookList}">
+                                    <div class="CardProduct__Wrapper-a817d1-0 ijdqTp" th:object="${cook}"><a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/community/read(communityPostId=${cook.getCommunityPostId()})}">
+                                        <div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">
+                                            <div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">
+                                                    <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="192" th:src="@{/community/display(fileName=${cook.communityFilePath} + '/' + ${cook.communityFileUuid} + '_' + ${cook.communityFileName})}">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="" class="Image__StyledImage-v97gyx-1 VUNpu" width="192" th:src="@{/community/display(fileName=${cook.communityFilePath} + '/' + ${cook.communityFileUuid} + '_' + ${cook.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CardProduct__DetailContainer-a817d1-6 iDZoyW"><span class="CardProduct__Location-a817d1-7 hgalyK" th:text="*{communityCategory}"></span>
+                                                <div class="CardProduct__Title-a817d1-8 kxyGXE" th:text="*{communityTitle}"></div>
+                                                <div class="CardProduct__ReviewContainer-a817d1-9 ftUvAC">
+                                                    <span class="CardProduct__Review-a817d1-10 gsopHh"><span>💕</span><span th:text="*{communityLikeNumber}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                </th:block>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="MagazineSection__Wrapper-sc-1shb4bc-0 cpFNDj">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <div class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                            <div class="MagazineSection__Title-sc-1shb4bc-2 hFErVq">감상평</div><a th:href="@{/community/index}">전체보기</a>
+                        </div>
+                        <section class="CardGroup__Wrapper-l79tlh-0 jMpxaV">
+                            <div class="CardGroup__Content-l79tlh-1 lmxZja">
+                                <th:block th:each="review : ${reviewList}">
+                                    <div class="CardGroup__CardWrapper-l79tlh-2 jCmvf" th:object="${review}"><a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/community/read(communityPostId=${review.getCommunityPostId()})}">
+                                        <div class="CardMagazine__Wrapper-sc-1v8lgcg-0 iptsHz">
+                                            <div>
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF"><img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="256" th:src="@{/community/display(fileName=${review.communityFilePath} + '/' + ${review.communityFileUuid} + '_' + ${review.communityFileName})}">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 79.2079%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="서울 베이킹 프립 빵지순례 지도 썸네일" class="Image__StyledImage-v97gyx-1 VUNpz" width=100% th:src="@{/community/display(fileName=${review.communityFilePath} + '/' + ${review.communityFileUuid} + '_' + ${review.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CardMagazine__InfoWrapper-sc-1v8lgcg-1 fghRNM">
+                                                <div class="CardMagazine__Title-sc-1v8lgcg-2 iyvDaS" th:text="*{communityTitle}"></div>
+                                                <div th:text="*{communityCategory}"></div>
+                                            </div>
+                                        </div>
+                                    </a></div>
+                                </th:block>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="ProductList__Wrapper-sc-1pj7ods-0 kqydUo">
+                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                        <section class="CardGroupProduct__Wrapper-sc-1uq4zjb-0 jUxAIa">
+                            <div font-size="14px" class="ProductSectionHeader__Wrapper-sc-1lmfow6-0 dqWjUS">
+                                <div font-size="18" class="ProductSectionHeader__Header-sc-1lmfow6-1 eQGBlA">
+                                    <h2 class="ProductSectionHeader__Title-sc-1lmfow6-2 jskoxd">우리들의 고민 상담 ~</h2>
+                                </div>
+                                <div class="ProductSectionHeader__LinkWrapper-sc-1lmfow6-4 iQnPKA"><a class="ProductSectionHeader__StyledLink-sc-1lmfow6-5 haoyHh" th:href="@{/community/index}">전체보기</a></div>
+                            </div>
+                            <div class="CardGroupProduct__Content-sc-1uq4zjb-1 gbEqzo">
+                                <th:block th:each="counseling : ${counselingList}">
+                                    <div class="CardProduct__Wrapper-a817d1-0 ijdqTp" th:object="${counseling}"><a class="withLink__StyledLink-zuberk-0 lQqkn" th:href="@{/community/read(communityPostId=${counseling.getCommunityPostId()})}">
+                                        <div class="CardProduct__InfoWrapper-a817d1-1 hPIfDi">
+                                            <div class="CardProduct__ImageContainer-a817d1-2 eEpNrE">
+                                                <div class="Image__Wrapper-v97gyx-0 gDuKGF CardProduct__StyledImage-a817d1-4 fRUJUy">
+                                                    <img class="Image__StyledImageLoader-v97gyx-2 bUFcfh" width="192" th:src="@{/community/display(fileName=${counseling.communityFilePath} + '/' + ${counseling.communityFileUuid} + '_' + ${counseling.communityFileName})}">
+                                                    <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+                                                        <div class="Ratio " style="display: block;">
+                                                            <div class="Ratio-ratio " style="height: 0px; position: relative; width: 100%; padding-top: 100%;">
+                                                                <div class="Ratio-content " style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                                    <img alt="" class="Image__StyledImage-v97gyx-1 VUNpu" width="192" th:src="@{/community/display(fileName=${counseling.communityFilePath} + '/' + ${counseling.communityFileUuid} + '_' + ${counseling.communityFileName})}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="CardProduct__DetailContainer-a817d1-6 iDZoyW"><span class="CardProduct__Location-a817d1-7 hgalyK" th:text="*{communityCategory}"></span>
+                                                <div class="CardProduct__Title-a817d1-8 kxyGXE" th:text="*{communityTitle}"></div>
+                                                <div class="CardProduct__ReviewContainer-a817d1-9 ftUvAC">
+                                                    <span class="CardProduct__Review-a817d1-10 gsopHh"><span>💕</span><span th:text="*{communityLikeNumber}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></div>
+
+                                </th:block>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <a href="#" onClick="javascript:window.scrollTo(0,0)" class="HostBanner__Wrapper-sc-15wm6s2-0 ikopRC">
+                    <img src="/imgin/main/brandbanner/brandbanner_002.png" class="HostBanner__BannerImage-sc-15wm6s2-1 eaJzkp">
+                    <img src="/imgin/main/brandbanner/brandbanner_001.png" class="HostBanner__BannerImage-sc-15wm6s2-1 eaJzkp" style="display:none;">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+    <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <span tabindex="0"></span>
+            <!--저장 확인-->
+            <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+                <!---->
+                <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                    <div class="text-center p-3"><div class="text-frip-primary my-3">
+                        <i class="" style="font-size: 2.5rem;"></i>
+                    </div>
+                        <h2>회원가입 성공</h2>
+                        <div>
+                            <div></div>
+                            <div>
+                                <div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                    <div class="text-center p-3 container">
+                        <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                            확인
+                        </button>
+                    </div>
+                </footer>
+            </div>
+            <span tabindex="0"></span>
+        </div>
+    </div>
+    <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!--<script src="/js/fix/fix.js"></script>-->
+<script src="/js/main/main.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/chatting.js"></script>
+<script type="text/javascript">
+    /* 카테고리 숨김 / 보이기 버튼  */
+
+    function toggleBtn1() {
+
+        // 토글 할 버튼 선택 (serachshowone)
+        const btn1 = document.getElementById('serachshowone');
+
+        // serachshowone 숨기기 (display: none)
+        if(serachshowone.style.display !== 'none') {
+            serachshowone.style.display = 'none';
+        }
+        // serachshowone 보이기 (display: block)
+        else {
+            serachshowone.style.display = 'block';
+        }
+
+    }
+</script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        }
+    });
+</script>
+
+<script>
+    var joinFlagKakao=new URL(location.href).searchParams.get("joinkakao");
+    var joinFlagGoogle=new URL(location.href).searchParams.get("joingoogle");
+    var joinFlagGeneral=new URL(location.href).searchParams.get("joingeneral");
+    if(joinFlagKakao==true){
+        $("div.modal-content").find("span").text("카카오 계정으로 회원가입이 완료되었습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("카카오 계정으로 회원가입이 완료되었습니다.");
+    }
+    if(joinFlagGoogle==true){
+        $("div.modal-content").find("span").text("구글 계정으로 회원가입이 완료되었습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("구글 계정으로 회원가입이 완료되었습니다.");
+    }
+    if(joinFlagGeneral==true){
+        $("div.modal-content").find("span").text("일반 계정으로 회원가입이 완료되었습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("일반 계정으로 회원가입이 완료되었습니다.");
+    }
+</script>
+
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+  <title>자유게시판 - 나의 바다(MyOcean)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+  <link rel="stylesheet" href="/css/myList/myList.css">
+  <link rel="stylesheet" href="/css/fix/header.css">
+  <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body style="margin:0;">
+<header th:replace="/app/fix/header.html :: header"></header>
+<div id="list_page_wrapper">
+  <div id="page_title_wrapper">
+    <h1>자유게시판</h1>
+  </div>
+  <div th:replace="/app/myList/myList.html :: myListCategory"></div>
+  <div id="table_wrapper">
+    <th:block th:each="freeboard:${freeboards}">
+      <ul th:object="${freeboard}">
+        <li>
+          <a th:href="@{/community/read(communityPostId=${freeboard.communityPostId})}">
+            <div class="my_list">
+              <div class="badge free" th:text="*{communityCategory}"></div>
+              <div class="list_title" th:text="*{communityTitle}"></div>
+              <div class="list_date" th:text="*{createDate}"></div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </th:block>
+
+    <div id = "page_changer_wrapper" th:object="${pagination}">
+      <div id="previous_button_wrapper">
+        <a class="previous_buttons changePage"  th:href="${1}">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+               class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">
+        </a>
+        <a class="previous_buttons changePage" th:href="${pagination.getNumber()}">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+               class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">
+        </a>
+      </div>
+      <th:block th:each="page:${#numbers.sequence((endPage == 10 ? endPage - 10 + 1 : 1), endPage)}">
+        <a th:if="${pagination.getNumber()+1 != page}" th:href="${page}" class="page changePage" th:text="${page}"></a>
+        <a th:unless="${pagination.getNumber()+1 != page}" th:href="${page}" class="page active" th:text="${page}"></a>
+      </th:block>
+
+      <div id="next_button_wrapper">
+        <a class="next_buttons changePage" th:href="${(pageable.getPageNumber()+2 > endPage? endPage : pageable.getPageNumber()+2)}">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+               class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">
+        </a>
+        <a class="next_buttons changePage"  th:href="${pagination.getTotalPages()}">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+               class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">
+        </a>
+      </div>
+      <form th:action="@{/myList/myListFree}" th:object="${criteria}" name="pageForm">
+        <input type="hidden" th:field="*{page}">
+        <input type="hidden" th:field="*{keyword}">
+      </form>
+    </div>
+  </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myList/myList.js"></script>
+<script>
+  const $pages = $('a.changePage');
+
+  $("#search_input").on("keyup",function(key){
+    if(key.keyCode === 13) {
+      $(document.pageForm.keyword).val($(this).val());
+      document.pageForm.submit();
+    }
+  });
+
+  $pages.on("click", function(e){
+    e.preventDefault();
+    $(document.pageForm.page).val($(this).attr("href"));
+    document.pageForm.submit();
+  });
+</script>
+</html>

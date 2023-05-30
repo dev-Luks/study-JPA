@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scaleable=no,viewport-fit=cover">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <link rel="stylesheet" href="/css/Join/join_in.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+    <title>회원가입 -나의바다(MyOcean)</title>
+</head>
+<body class="fontLoaded">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top: -88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+        <!-- header 추가 자리 -->
+        <div class="PageWrapper-sc-1w87j10-0 RegisterPage__StyledPageWrapper-vqq9hl-0 ghbiEC">
+            <div class="RegisterPage__Wrapper-vqq9hl-1 bvPUqU">
+                <div class="Center__Wrapper-sc-19p29je-0 gVBJBr">
+                    <h3>회원가입</h3>
+                </div>
+                <form th:action="@{/join/joinThree}" th:object="${userDTO}" class="Form__RegisterPageForm-sc-1l5lis6-0 fLECcs" autocomplete="false" name="loginForm" method="post">
+                    <div id="emaildiv">
+                        <input class="Form__Input-sc-1quypp7-1 iRBMai" type="text" name="email" placeholder="아이디 (이메일)">
+                        <p class="Form__Description-sc-1quypp7-2 bViOzS"></p>
+                    </div>
+                    <div>
+                        <input class="Form__Input-sc-1quypp7-1 iRBMai" th:field="*{userPassword}" type="password" placeholder="비밀번호" autocomplete="new-password">
+                        <p class="Form__Description-sc-1quypp7-2 cIOZzg">
+                            소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자 이상
+                        </p>
+                    </div>
+                    <div>
+                        <input class="Form__Input-sc-1quypp7-1 iRBMai" type="password" name="passwordConfrim" placeholder="비밀번호 한 번 더">
+                        <p class="Form__Description-sc-1quypp7-2 bViOzSS"></p>
+                    </div>
+                    <button class="Button-bqxlp0-0 SubmitButton__RegisterPageSubmitButton-np91gr-0 chSrfn" type="submit" width="100%" height="56px" color="#f4f4f4" font-size="16px" disabled="">다음</button>
+                </form>
+            </div>
+        </div>
+        <!-- footer 추가 자리 -->
+    </div>
+</div>
+<div id="modal-root"></div>
+<div id="dnd-root"></div>
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+<script src="/js/Join/join_in.js"></script>
+</html>

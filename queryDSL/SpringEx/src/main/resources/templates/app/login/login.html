@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <title>로그인 -나의바다(MyOcean)</title>
+    <link rel="stylesheet" href="/css/login/login.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+</head>
+<body class="fontLoaded">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top: -88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ"><!-- 반응형 boEfOZ -> boEfRG -->
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div>
+                    <div class="Bottom__Wrapper-sc-1nltrn7-0 bpzBFC"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <header id="outerheader"/> -->
+        <!-- header 추가 부분 -->
+
+        <!-- 반응형 nav 태그 추가 -->
+        <nav class="BottomMenuBar__Wrapper-sc-3nfr6g-0 ciqvqE">
+            <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/">
+                    <span class="BottomMenuBar__MenuNode-sc-3nfr6g-1 dUVSwM">
+                        <img src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M10 0L2 6.78571V17.5H7.54545V12.2174H12.4545V17.5H18V6.78571L10 0Z' fill='%23CCCCCC'/%3E %3C/svg%3E" alt="홈 메뉴">홈
+                    </span>
+            </a>
+            <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/category">
+                    <span class="BottomMenuBar__MenuNode-sc-3nfr6g-1 dUVSwM">
+                        <img src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Crect x='11.5' y='10.5' width='7' height='7' fill='%23CCCCCC'/%3E %3Crect x='1.5' y='10.5' width='7' height='7' fill='%23CCCCCC'/%3E %3Crect x='1.5' y='0.5' width='7' height='7' fill='%23CCCCCC'/%3E %3Crect x='11.5' y='0.5' width='7' height='7' fill='%23CCCCCC'/%3E %3C/svg%3E" alt="카테고리 메뉴">카테고리
+                    </span>
+            </a>
+            <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/social-feeds">
+                    <span class="BottomMenuBar__MenuNode-sc-3nfr6g-1 dUVSwM">
+                        <img src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Crect x='1' y='0.5' width='18' height='17' fill='%23CCCCCC'/%3E %3Crect x='4.375' y='13.375' width='11.25' height='0.75' stroke='white' stroke-width='0.75'/%3E %3Crect x='4.375' y='10.375' width='7.25' height='0.75' stroke='white' stroke-width='0.75'/%3E %3Cpath d='M8.87786 3.85311C8.63758 3.62543 8.31786 3.5 7.97789 3.5C7.63792 3.5 7.31829 3.62534 7.07783 3.85311L6.75005 4.16359L6.42227 3.85302C6.18189 3.62534 5.86218 3.5 5.5222 3.5C5.18223 3.5 4.86261 3.62534 4.62224 3.85311C4.12592 4.32322 4.12592 5.08808 4.62224 5.55819L6.61734 7.44794C6.65251 7.48126 6.70025 7.5 6.74995 7.5C6.79966 7.5 6.8474 7.48126 6.88257 7.44794L8.87767 5.55819C9.37408 5.08799 9.37408 4.32313 8.87786 3.85311Z' fill='white'/%3E %3C/svg%3E" alt="소셜피드 메뉴">피드
+                    </span>
+            </a>
+            <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/my/wishes/frip">
+                    <span class="BottomMenuBar__MenuNode-sc-3nfr6g-1 dUVSwM">
+                        <img src="data:image/svg+xml,%3Csvg width='21' height='20' viewBox='0 0 21 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M3.66669 0.5H17.6667V17.5L10.6667 11.5L3.66669 17.5V0.5Z' fill='%23CCCCCC'/%3E %3C/svg%3E" alt="저장 프립 메뉴">저장
+                    </span>
+            </a>
+            <div aria-hidden="true">
+                <a class="withLink__StyledLink-zuberk-0 lQqkn" href="/my/frips/upcoming">
+                        <span class="BottomMenuBar__MenuNode-sc-3nfr6g-1 dUVSwM">
+                            <img src="data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M17 11H3L1 17.4H19L17 11Z' fill='%23CCCCCC'/%3E %3Ccircle cx='10' cy='5' r='4.5' fill='%23CCCCCC'/%3E %3C/svg%3E" alt="마이 프로필 메뉴">마이
+                        </span>
+                </a>
+            </div>
+        </nav><!-- 여기서부터 확인 nav까지 반응형 적음 -->
+        <div class="PageWrapper-sc-1w87j10-0 LoginPage__Wrapper-sc-1q7uxne-0 FgkIX">
+            <br>
+            <div class="Center__Wrapper-sc-19p29je-0 gVBJBr">
+                <h3>로그인</h3>
+            </div>
+            <!-- 로그인시 메인 페이지로 이동(중간에 DB 거쳐가야한다.)-->
+            <form th:action="@{/login/loginOk}" th:object="${userDTO}" class="LoginRegister__LoginRegisterForm-gtp545-0 fjvnva" name="loginForm" method="post">
+                <div>
+                    <input class="Form__Input-sc-1quypp7-1 iRBMai" type="text" th:field="*{userEmail}" placeholder="아이디 (이메일)">
+                </div>
+                <p id="emailError" class="Form__Description-sc-1quypp7-2 bViOzS"></p>
+                <div>
+                    <input class="Form__Input-sc-1quypp7-1 iRBMai" type="password" th:field="*{userPassword}" placeholder="비밀번호">
+                </div>
+                <span id="passwordError"></span>
+                <a class="LoginForm__FindPasswordLink-sc-1co2pzc-0 gbyPIP" href="/login/findPw">비밀번호 찾기</a>
+                <button class="Button-bqxlp0-0 iikbgZ" name="logindata" type="button" width="100%" height="56px" font-size="16px" color="#f4f4f4" disabled >로그인</button>
+            </form>
+            <div class="AnotherWayLogin__Wrapper-sc-1u8ecwv-0 MYdft">
+                다른방식으로 로그인
+                <div class="AnotherWayLogin__IconButtonWrapper-sc-1u8ecwv-1 gBvQUd">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=e95b1771a295ce3312e3c0ef9a45a424&redirect_uri=
+http://localhost:15000/login/kakaoLogin&response_type=code&prompt=login" class="Button-bqxlp0-0 WideTextButton__KakaoButton-sc-1o3i5qv-0 fgMqqR">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' viewBox='0 0 48 48'%3E %3Crect width='48' height='48' fill='%23FBE850' rx='10'/%3E %3Cpath fill='%23000' d='M24 14c-6.628 0-12 4.236-12 9.462 0 3.378 2.246 6.342 5.625 8.016-.184.634-1.181 4.078-1.221 4.349 0 0-.024.203.108.28.131.078.286.018.286.018.378-.053 4.378-2.863 5.07-3.35.692.097 1.405.148 2.132.148 6.628 0 12-4.236 12-9.462C36 18.236 30.628 14 24 14z'/%3E %3C/svg%3E" alt="kakao-login-icon">
+                    </a>
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth?
+			client_id=79401094773-mfgm1b7o40nlokabvnvbai14rllf9bf2.apps.googleusercontent.com&
+			redirect_uri=http://localhost:15000/login/googleLogin&
+			response_type=code&
+			scope=email%20profile%20openid&
+			access_type=offline&prompt=consent" >
+                        <img src="http://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5rH/image/aFrEyVpANu07FvoBZQbIB4aF_uc" style="width:48px;height:48px;" alt="google-login-icon">
+                    </a>
+                    <a href="https://nid.naver.com/oauth2.0/authorize?client_id=dF32vzYf2D0cYGgonhWY&response_type=code&redirect_uri=http://localhost:15000/naver-login/login" style="cursor:pointer;">
+                        <img src="https://www.naver.com/favicon.ico?1" style="width:48px;height:48px;border-radius:10px;" alt="naver-login-icon">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <!-- footer 추가 부분 -->
+    </div>
+</div>
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+    <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <span tabindex="0"></span>
+            <!--저장 확인-->
+            <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+                <!---->
+                <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                    <div class="text-center p-3"><div class="text-frip-primary my-3">
+                        <i class="" style="font-size: 2.5rem;"></i>
+                    </div>
+                        <h2>회원가입 실패</h2>
+                        <div>
+                            <div></div>
+                            <div>
+                                <div>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                    <div class="text-center p-3 container">
+                        <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                            확인
+                        </button>
+                    </div>
+                </footer>
+            </div>
+            <span tabindex="0"></span>
+        </div>
+    </div>
+    <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+
+<div id="modal-root"></div>
+<div id="dnd-root"></div>
+<div id="fb-root" class="fb_reset"></div>
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+<script src="/js/login/login.js"></script>
+<script>
+
+    $(document).ready( function(){
+        $("#outerheader").load("header.html");
+    });
+
+    var existUserKakao=new URL(location.href).searchParams.get("existkakao");
+    var secureUserKakao=new URL(location.href).searchParams.get("securekakao");
+    var existUserGoogle=new URL(location.href).searchParams.get("existgoogle");
+    if(existUserKakao==true){
+        $("div.modal-content").find("span").text("카카오 계정으로 가입된 계정이 있습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("카카오 계정으로 가입된 계정이 있습니다.");
+    }
+    if(existUserGoogle==true){
+        $("div.modal-content").find("span").text("구글 계정으로 가입된 계정이 있습니다.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("구글 계정으로 가입된 계정이 있습니다.");
+    }
+    if(secureUserKakao==true){
+        $("div.modal-content").find("span").text("카카오 2단계 인증의 이메일 제공 동의를 진행하고 회원가입을 진행해주십시오.");
+        $("#__BVID__287___BV_modal_outer_").show();
+        $(".btn-tab").on("click",function(){
+            $("#__BVID__287___BV_modal_outer_").hide();
+            // location.href="/myPoint/index";
+            return;
+        });
+        // alert("카카오 2단계 인증의 이메일 제공 동의를 진행하고 회원가입을 진행해주십시오.");
+    }
+</script>
+</html>

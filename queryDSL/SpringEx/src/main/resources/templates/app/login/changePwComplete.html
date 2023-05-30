@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+    <link rel="stylesheet" href="/css/login/changePwComplete.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <title>비밀번호 재설정 완료 - 나의 바다(MyOcean)</title>
+</head>
+<body class="fontLoaded">
+<header th:replace="/app/fix/headerModify.html :: header"></header>
+<div id="header"></div>
+<div id="app">
+    <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+        <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top: -88px;"></div>
+        <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+            <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv">
+                <div></div>
+            </div>
+        </div>
+        <!-- header 추가 부분 -->
+        <div class="FindPasswordPage__Wrapper-sc-26m6x7-0 kzcpGk">
+            <div class="Center__Wrapper-sc-19p29je-0 gVBJBr">
+                <h3>재설정 완료</h3>
+            </div>
+            <div class="CompleteView__Wrapper-h62mbd-0 jjqBFj">
+                <div class="CompleteView__Description-h62mbd-3 beeyWt">
+                    비밀번호 재설정을 완료했습니다.<br>다시 로그인해 주세요.
+                </div>
+                <a class="ButtonStyleLink-fp6fhe-0 CompleteView__LoginLink-h62mbd-4 hXutoe" href="/login/index">
+                    로그인하러 가기
+                </a>
+            </div>
+        </div>
+        <!-- footer 추가 부분 -->
+    </div>
+</div>
+<div id="modal-root"></div>
+<div id="dnd-root"></div>
+<div id="footer"></div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/fix/fix.js"></script>
+</html>

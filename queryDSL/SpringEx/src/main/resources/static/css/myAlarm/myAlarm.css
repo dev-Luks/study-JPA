@@ -1,0 +1,33 @@
+.messageLine{
+    display:grid;
+    grid-template-columns: 80% 20%;
+}
+
+.goAlarm{
+    border-radius: 30px;
+    font-size: 10px;
+    background-color: #0018f7;
+    padding: 5px;
+    position: relative;
+    top: -13px;
+    right: 15px;
+}
+
+.hrLllS{
+    cursor:pointer
+}
+
+.hrLllS:hover{
+    background-color: #F6FAFE;
+}
+
+.cdbJvn {
+    display: block;
+    margin-bottom: 20px;
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 0px;
+    letter-spacing: -0.42px;
+    text-align: left;
+}

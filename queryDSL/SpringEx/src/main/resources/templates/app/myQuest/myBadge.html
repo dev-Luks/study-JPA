@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 뱃지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/myQuest/todayQuest.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myPage/myPage.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myQuest/myBadge.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="PageWrapper-sc-1w87j10-0 dqLSTf">
+    <!--퀘스트 카테고리-->
+    <div class="NavigationWrapper-z696u8-0 ijXgoc">
+        <a href="/myQuest/todayQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="300"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>오늘의 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/completeQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="bold"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>완료한 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/myBadge">
+            <button width="auto" height="60px" font-size="14px" font-weight="300"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 Ppvwe">
+                <div>획득한 뱃지</div>
+            </button>
+        </a>
+    </div>
+
+    <div id="badgeSpace">
+
+
+    </div>
+
+    <!--페이징-->
+    <footer class="Wrapper__PaginationWrapper-fk4uv4-0 hBVRcD">
+
+    </footer>
+
+    <!--월간 뱃지-->
+    <div class="PageWrapper-sc-1w87j10-0 bScXKt" style="margin-top:20px;">
+        <div class="Profile__TopContainer-sc-1rgtq5h-1 cKeGEu">
+            <button class="Button__ButtonContainer-sc-1vo4nc0-0 lhKOdR goTodayQuestBtn">
+                <a href="/myQuest/todayQuest">오늘의 퀘스트</a>
+            </button>
+        </div>
+        <div id="Profile">
+
+        </div>
+
+        <div class="MyBadges__MonthlyBadgeContainer-sc-1luvtmz-0 dXLcNp">
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!--모달화면-->
+<div class="BottomSheet__Container-e2nchk-0 cMKqKB" style="display:none;">
+    <div class="BodyScrollLockContainer__Container-sc-19uqzq5-0 idpZym">
+        <div class="BottomSheet__Content-e2nchk-2 lfbJGw">
+        </div>
+        <div class="BottomSheet__Overlay-e2nchk-1 kJOGKh"></div>
+    </div>
+</div>
+
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myPoint/myPoint.js"></script>
+<script src="/js/myQuest/myBadge.js"></script>
+<script>
+    let page = 1;
+    let keyword = 'null';
+    const $pages = $('a.changePage');
+    let questName;
+    let questContent;
+    let questFileSize;
+    let questFileUuid;
+    let questFilePath;
+
+
+    //ajax 호출
+    function show() {
+        myBadgeService.getBadgeList(getList);
+    }
+
+    //    페이지를 들어올 때, ajax로 restController의 데이터를 가져온다
+    show();
+    showUnder();
+
+
+    function getList(questDTO){
+
+        let text = '';
+        text += `<div class="addBadgeList">`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10001" id = "10001" src="/imgin/myQuest/questBadge/10001.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10002" id = "10002" src="/imgin/myQuest/questBadge/10002.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10003" id = "10003" src="/imgin/myQuest/questBadge/10003.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10004" id = "10004" src="/imgin/myQuest/questBadge/10004.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10005"  id = "10005" src="/imgin/myQuest/questBadge/10005.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `</div>`
+        text += `<div class="addBadgeList">`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10006" id = "10006" src="/imgin/myQuest/questBadge/10006.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10007" id = "10007" src="/imgin/myQuest/questBadge/10007.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10008" id = "10008" src="/imgin/myQuest/questBadge/10008.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10009" id = "10009" src="/imgin/myQuest/questBadge/10009.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10010" id = "10010" src="/imgin/myQuest/questBadge/10010.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `</div>`
+        text += `<div class="addBadgeList">`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10011" id = "10011" src="/imgin/myQuest/questBadge/10011.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10012" id = "10012" src="/imgin/myQuest/questBadge/10012.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10013" id = "10013" src="/imgin/myQuest/questBadge/10013.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10014" id = "10014" src="/imgin/myQuest/questBadge/10014.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10015" id = "10015" src="/imgin/myQuest/questBadge/10015.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `</div>`
+        text += `<div class="addBadgeList">`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10016" id = "10016" src="/imgin/myQuest/questBadge/10016.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10017" id = "10017" src="/imgin/myQuest/questBadge/10017.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10018" id = "10018" src="/imgin/myQuest/questBadge/10018.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10019" id = "10019" src="/imgin/myQuest/questBadge/10019.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `<div class="badgeList">`
+        text += `<img class="uncheckedBadge 10020" id = "10020" src="/imgin/myQuest/questBadge/10020.png" width="100%" height="100%" alt="badge">`
+        text += `</div>`
+        text += `</div>`
+
+        $("#badgeSpace").html(text);
+        getMyBadge(questDTO);
+        // if(callback){
+        //     callback(questDTO);
+        // }
+
+    }
+
+    function getMyBadge(questDTO){
+        questDTO.questList.forEach(quest=>{
+            if($("#badgeSpace").find('#'+quest.questId.toString()).attr('id') == quest.questId.toString()){
+                $("#badgeSpace").find('#'+quest.questId.toString()).removeClass("uncheckedBadge")
+            }
+        })
+        $("#badgeSpace").on("click",".badgeList", function(e){
+            let target = e.target.classList;
+                $.ajax({
+                    url: "/myCompleteQuest/myBadge",
+                    type: "get",
+                    success:showModal(questDTO,target),
+                    error: function (xhr, status, err) {
+                        if (error) {
+                            error(err);
+                        }
+                    }
+                });
+            if(!filterCheck){
+                $(".BottomSheet__Container-e2nchk-0.cMKqKB").show();
+                filterCheck = true;
+            }
+
+        })
+    }
+
+
+
+    function showUnder() {
+        myBadgeService.getMonthlyBadgeList(
+            {
+                page: page
+            }, getUnderList);
+    }
+
+
+    function getUnderList(questDTOList) {
+        console.log(questDTOList);
+        let text = "";
+        let userFileName = questDTOList[0].userFileName;
+        let userFilePath = questDTOList[0].userFilePath;
+        let userFileUuid = questDTOList[0].userFileUuid;
+        let imageSrc = "/mypage/display?fileName=" + userFilePath + "/" + userFileUuid + "_" + userFileName;
+        text += `<div class="Profile__Container-sc-1rgtq5h-0 ecJFAa">`
+        text += `<div class="Profile__DetailContainer-sc-1rgtq5h-2 efsGfN">`
+        text += `<div class="Profile__MonthlyTitleContainer-sc-1rgtq5h-3 jlZyVs">`
+        text += `<strong class="Profile__MonthlyTitle-sc-1rgtq5h-4 eYeQw">`
+        text += questDTOList[0].userNickName + `</strong>님의`
+        text += `</div>`
+        text += `<h3 class="Profile__FripBadgeTitle-sc-1rgtq5h-5 dsbtQA">참여도는?</h3>`
+        text += `<span class="Profile__Description-sc-1rgtq5h-6 gToUoh">매일 찾아오는 색다른 퀘스트!<br>퀘스트 참여하고 뱃지를 모아보세요!</span>`
+        text += `<a href="/myPage/index">`
+        text += `<div class="Profile__ThumbnailContainer-sc-1rgtq5h-7 dOjjp">`
+        text += `<div class="Progressbar__ProgressContainer-yvuku8-0 bByObR">`
+        text += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40.5 -18 120 110" width="120" height="110">`
+        text += `<path d="M70,85 A55,55 0 1,1 130,85" class="Progressbar__Path-yvuku8-1 Progressbar__Greybar-yvuku8-2 eAawup"></path>`
+        text += `<path d="M70,85 A55,55 0 1,1 130,85" class="Progressbar__Path-yvuku8-1 Progressbar__Blackbar-yvuku8-3 eXPdAe"></path>`
+        text += ` </svg>`
+        if (!userFileUuid) {
+            text += `<img src="/imgin/main/logo.png" alt="user thumbnail" class="Profile__Thumbnail-sc-1rgtq5h-8 eBTIQt">`
+        } else {
+            text += `<img src="` + imageSrc + `"alt="user thumbnail" class="Profile__Thumbnail-sc-1rgtq5h-8 eBTIQt">`
+        }
+        text += `</div>`
+        text += `</div>`
+        text += `</a>`
+        text += `<strong class="Profile__ProfileUsername-sc-1rgtq5h-15 zPlvc">`
+        text += `<a href="/myPage/index">` + questDTOList[0].userNickName + `</a>`
+        text += `</strong>`
+        text += ` </div>`
+        text += `<div class="Profile__CountWrapper-sc-1rgtq5h-11 ictrNd">`
+        text += `<div class="Profile__CountContainer-sc-1rgtq5h-12 fnyfze">`
+        if (questDTOList[0].badgeCount == null) {
+            text += `<strong class="Profile__Count-sc-1rgtq5h-13 ktGTEM">0</strong>`
+
+        } else {
+            text += `<strong class="Profile__Count-sc-1rgtq5h-13 ktGTEM">` + questDTOList[0].badgeCount + `</strong>`
+        }
+        text += `<span class="Profile__CountDescription-sc-1rgtq5h-14 gTgJJd">획득한 배지</span>`
+        text += `</div>`
+        text += `<div class="Profile__CountContainer-sc-1rgtq5h-12 fnyfze">`
+        if (questDTOList[0].rewardPointTotal == null) {
+            text += `<strong class="Profile__Count-sc-1rgtq5h-13 ktGTEM">0</strong>`
+        } else {
+            text += `<strong class="Profile__Count-sc-1rgtq5h-13 ktGTEM">` + questDTOList[0].rewardPointTotal + `</strong>`
+        }
+        text += `<span class="Profile__CountDescription-sc-1rgtq5h-14 gTgJJd">획득 포인트</span>`
+        text += `</div>`
+        text += `</div>`
+        text += `</div>`
+        $("#Profile").html(text);
+
+        let realText = "";
+        let i = 0;
+        questDTOList.forEach(questDTO => {
+            i++;
+            let monthFileName = questDTO.userFileName;
+            let monthFilePath = questDTO.userFilePath;
+            let monthFileUuid = questDTO.userFileUuid;
+            let monthFileSize = questDTO.userFileSize;
+            realText += `<div class="Month__Container-sc-10z0ekt-0 jRRktc">`
+            realText += `<div>`
+            realText += `<div class="Month__SuccessContainer-sc-10z0ekt-1 jPdICC">`
+            realText += `<strong class="Month__MonthText-sc-10z0ekt-3 cLFwqh">`
+            realText += `<span>` + i + `월</span>`
+            realText += `</strong>`
+            realText += `</div>`
+            realText += `</div>`
+            realText += `<div class="Month__BadgeContainer-sc-10z0ekt-5 bjLkAM">`
+            realText += `<div class="Month__ImageContainer-sc-10z0ekt-6 iialDB">`
+            if (questDTO.monthlyCount < 14) {
+                console.log(questDTO.monthlyCount);
+                realText += `<img src="/imgin/myQuest/calendar/` + questDTO.month + `.png" width="100%" height="100%" alt="badge" class="monthlyBadge uncheckedBadge">`
+            } else {
+                console.log(questDTO.monthlyCount);
+                realText += `<img src="/imgin/myQuest/calendar/` + questDTO.month + `.png" width="100%" height="100%" alt="badge" class="monthlyBadge">`
+            }
+            realText += `</div>`
+            realText += `</div>`
+            realText += `</div>`
+
+        })
+        $(".MyBadges__MonthlyBadgeContainer-sc-1luvtmz-0").html(realText);
+    }
+
+
+
+</script>
+</html>
+
+
+
+

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/myQuest/todayQuest.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myPage/myPage.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="PageWrapper-sc-1w87j10-0 dqLSTf">
+    <!--퀘스트 카테고리-->
+    <div class="NavigationWrapper-z696u8-0 ijXgoc">
+        <a href="/myQuest/todayQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="300" class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>오늘의 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/completeQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="bold" class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 Ppvwe">
+                <div>완료한 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/myBadge">
+            <button width="auto" height="60px" font-size="14px" font-weight="300" class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>획득한 뱃지</div>
+            </button>
+        </a>
+    </div>
+    <div id = "questWrap">
+
+    </div>
+
+
+    <!--페이징-->
+    <footer class="Wrapper__PaginationWrapper-fk4uv4-0 hBVRcD">
+
+    </footer>
+        </div>
+    </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myPoint/myPoint.js"></script>
+<script src="/js/myQuest/completeQuest.js"></script>
+<script>
+    let page = 1;
+    let keyword = 'null';
+    const $pages = $('a.changePage');
+
+    //ajax 호출
+    function show(){
+        myQuestService.getQuestList({
+            page : page,
+        }, getList);
+    }
+
+    //    페이지를 들어올 때, ajax로 restController의 데이터를 가져온다
+    show();
+
+    //    리스트 뽑기
+    function getList(questDTO){
+        let text = '';
+
+        questDTO.questList.forEach(quest => {
+            questFileName = quest.questFileName;
+            questFilePath = quest.questFilePath;
+            questFileUuid = quest.questFileUuid;
+            questFileSize = quest.questFileSize;
+            let imageSrc = "/quest/display?fileName=" + questFilePath + "/" + questFileUuid + "_" + questFileName;
+            text += `<div class="MyPage__FripBadgeContainer-sc-8hrgc7-2 jBoTV">`
+            text += `<button class="FripBadge__Container-sc-1symmx5-0 juuNtL">`
+            text += `<div class="FripBadge__BadgeMark-sc-1symmx5-1 eYNaUp">`
+            text += `<img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">`
+            text += `<strong class="FripBadge__BadgeTitle-sc-1symmx5-2 ibIiPD">`+quest.questCategory+`</strong>`
+            text += `</div>`
+            text += `<div class="FripBadge__TitleContainer-sc-1symmx5-3 ksIvnE">`
+            text += `<strong class="FripBadge__Title-sc-1symmx5-4 hOVumI">`+quest.questName+`</strong>`
+            text += `<div class="FripBadge__SubTitleContainer-sc-1symmx5-5 ezRosO">`
+            text += `<span class="FripBadge__SubTitle-sc-1symmx5-10 kdLIth">`+quest.questContent+`</span>`
+            text += `</div>`
+            text += `</div>`
+            text += `<img width="55" height="55" src=`+ imageSrc +`>`
+            text += `</button>`
+            text += `</div>`
+        });
+
+        $("#questWrap").html(text)
+
+        showPage(questDTO.endPage);
+    }
+    //페이징
+    function showPage(endPage){
+        let endNumber = Math.ceil(page / 10) * 10;
+        let realEnd = endPage;
+        let startNumber = endNumber -9;
+        if(endNumber > realEnd){
+
+            endNumber = realEnd == 0 ? '1' : realEnd;
+        }
+
+
+        let text ='';
+        text += `<div id="page_changer_wrapper">`;
+        text += `<div id="previous_button_wrapper">`;
+        text += `<a class="previous_buttons changePage" onclick="changePage(${startNumber})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `<a class="previous_buttons changePage" onclick="changePage(${page>1? page-1 : page})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `</div>`;
+        for (let i=startNumber; i<=endNumber; i++){
+            if(page === i){
+                text += `<a class="page active">${i}</a>`;
+                continue;
+            }
+            text += `<a class="page changePage" onclick="changePage(${i})">${i}</a>`;
+        }
+        text += `<div id="next_button_wrapper">`;
+        text += `<a class="next_buttons changePage" onclick="changePage(${page + 1 > realEnd? realEnd : page+1})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `<a class="next_buttons changePage" onclick="changePage(${endPage})">`;
+        text += `<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E" class="PaginationButtonGroup__Icon-x0iffd-2 jVxRns">`;
+        text += `</a>`;
+        text += `</div>`;
+
+        $('.Wrapper__PaginationWrapper-fk4uv4-0').html(text);
+    }
+
+    function changePage(href){
+        page = href;
+        show();
+    }
+
+</script>
+</html>

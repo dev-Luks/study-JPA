@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 공간 - 나의바다</title>
+    <link rel="stylesheet" href="/css/mySpace/mySpace.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+</style>
+<body class="fontLoaded">
+<header th:replace="/app/fix/header.html :: header"></header>
+
+<div id="app">
+    <div class="MySpacePage__Wrapper fzBbGO">
+        <div class="MySpacePage__Header jIjcTX">
+            <div>
+                <span class="MySpacePage__Title gVPyuz">나만의 공간</span>
+            </div>
+        </div>
+        <!-- 등록 form -->
+        <form method="post" name="todoForm" th:action="@{/myspace/index}" style="display: flex;">
+            <div style="width:88%" class="inputWrap" >
+                <input type="hidden" name="userId" th:value="${session.userId}">
+                <!-- 연도-월-일 input -->
+                <input style="display: block;margin-bottom: 8px;" id = "toDoListSelectDateInput_1h" name="toDoListSelectDate" class="toInput" type="date" th:value="${nowTime}" >
+                <!-- 투두리스트 입력 input -->
+                <input style="height: 41px; width:100%; display: block; border: solid 2px #ceddec; padding: 20px;" name="toDoListContent" class="toInput" type="text" placeholder="투두리스트 입력">
+            </div>
+            <!-- 등록 button -->
+            <button type="button" height="auto" color="initial" font-size="14px" font-weight="500" class="sendBtn" style="margin-right: 20px;display: inline;height: 41px;margin-top: 30px;">등록</button>
+        </form>
+        <!--일간,월간 버튼 사용 안함.-->
+        <div class="Filter__FilterButtonWrapper-sc-1buujtg-1 gRnEmw">
+            <div class="FilterAll__Wrapper-tqa6fq-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV selected">일간</button>
+                </div>
+            </div>
+            <div class="FilterCook__Wrapper-sc-1w6ksuy-0 jJIWoq">
+                <div class="FilterOpenButton__Wrapper-sc-91gci-0 NVKNq">
+                    <button height="auto" color="initial" font-size="14px" font-weight="500" class="Button-bqxlp0-0 fFBpBV">월간</button>
+                </div>
+            </div>
+        </div><!-- 버튼 사용 안함. -->
+        <!-- 투두리스트 -->
+        <div class="Fade__Wrapper koasSX" style="opacity:1;display:block;">
+            <div class="view__TodoListWrapper ciajVR">
+                <div class="myTabContents noticeTab active today">
+                    <h3 class="tabCommonTit">📝오늘의 투두리스트</h3>
+                    <!-- 오늘의 투두리스트 -->
+                    <div class="noticeListWrap">
+                        <!-- ul>li -->
+                        <ul class="noticeListTimeLine">
+                            <!-- li 1-> noticeDayWrap -->
+                            <li class="noticeDayWrap">
+                                <span class="day todayList_1h"></span>
+                                <!-- ul>li 리스트목록-->
+                                <ul>
+                                    <!-- li 리스트1 noticeContentWrap-->
+                                    <!--                                    반복문을 사용할때는 th:block 태그를 연다-->
+                                    <!--                                    th:each는 빠른 for문과 같다.-->
+<!--                                    <th:block th:each="list : ${todayList}">-->
+<!--                                        <li class="noticeContentWrap">-->
+<!--                                            <input type="hidden" name="toDoListId" th:value="${list.toDoListId}">-->
+<!--                                            <input type="hidden" name = "toDoListSelectDate" th:value="${list.toDoListSelectDate}">-->
+<!--                                            <input type="hidden" name = "userId" th:value="${list.userId}">-->
+<!--                                            <div class="left">-->
+<!--                                                <p class="categoryAndDate">-->
+<!--                                                    <span th:text="${list.toDoListContent}"></span>-->
+<!--                                                </p>-->
+<!--                                            </div>-->
+<!--                                            <div class="btnWrap right">-->
+<!--                                                <a href="javascript:;" onclick="modifying(this)">수정</a>-->
+<!--                                                <a href="javascript:;" id="todoDeleteBtn_1h">삭제</a>-->
+<!--                                            </div>-->
+<!--                                        </li>-->
+
+<!--                                    </th:block>-->
+                                    <!--                                    <li class="noticeContentWrap">-->
+                                    <!--                                        <div class="left">-->
+                                    <!--                                            <p class="categoryAndDate">-->
+                                    <!--                                                <span>🍖맛있는거 먹기🍖</span>-->
+                                    <!--                                            </p>-->
+                                    <!--                                        </div>-->
+                                    <!--                                        <div class="btnWrap right">-->
+                                    <!--                                            <a href="javascript:;" onclick="modifying(this)">수정</a>-->
+                                    <!--                                            <a href="javascript:;" onclick="removing(this)">삭제</a>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    &lt;!&ndash; li 리스트2 &ndash;&gt;-->
+                                    <!--                                    <li class="noticeContentWrap">-->
+                                    <!--                                        <div class="left">-->
+                                    <!--                                            <p class="categoryAndDate">-->
+                                    <!--                                                <span>💗😚애기 만나기</span>-->
+                                    <!--                                            </p>-->
+                                    <!--                                        </div>-->
+                                    <!--                                        <div class="btnWrap right">-->
+                                    <!--                                            <a href="javascript:;" onclick="modifying(this)">수정</a>-->
+                                    <!--                                            <a href="javascript:;" onclick="removing(this)">삭제</a>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </li>-->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!---->
+                <div>
+                    <div class="myTabContents noticeTab active month">
+                        <h3 class="tabCommonTit">📕월간 투두리스트</h3>
+                        <div data-v-1e397a0c="" class="col">
+                            <!-- 이전버튼 -->
+                            <button data-v-1e397a0c="" type="button" class="prevDay btn frip-button btn-outline-frip-default btn-sm buttonRest">
+                                <img data-v-1e397a0c="" src="https://frip.host/img/left-arrow.04832fdb.svg" width="24" height="24">
+                            </button>
+                            <h2 data-v-1e397a0c="" class="mx-3 dateTitle" style="display: inline;font-size: 19px;"> 2022년 11월 </h2>
+                            <!-- 이후버튼 -->
+                            <button data-v-1e397a0c="" type="button" class="nextDay btn frip-button btn-outline-frip-default btn-sm buttonRest">
+                                <img data-v-1e397a0c="" src="https://frip.host/img/right-arrow.10fee101.svg" width="24" height="24">
+                            </button>
+                        </div>
+                        <!-- 월간 투두리스트 -->
+                        <div class="noticeListWrap">
+                            <!-- ul>li -->
+                            <ul class="noticeListTimeLine" id="monthWrapper_1h">
+                                <!-- li 1-> noticeDayWrap -->
+                                <li class="noticeDayWrap">
+                                    <span class="day" id="day_1h">22.11.15</span>
+                                    <!-- ul>li 리스트목록-->
+                                    <ul>
+                                        <!-- li 리스트1 -->
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>💧🌱화분에 물주기💧🌱</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- li 2-> noticeDayWrap -->
+                                <li class="noticeDayWrap">
+                                    <span class="day">22.11.14</span>
+                                    <ul>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>💧🌱화분에 물주기💧🌱</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>📘스터디 참여하기📘</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>💻JPA복습하기</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- li 3-> noticeDayWrap -->
+                                <li class="noticeDayWrap">
+                                    <span class="day">22.11.10</span>
+                                    <ul>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                        <li class="noticeContentWrap">
+                                            <div class="left">
+                                                <p class="categoryAndDate">
+                                                    <span>[스터디&amp;네트워킹]</span>
+                                                </p>
+                                            </div>
+                                            <div class="btnWrap right">
+                                                <a href="javascript:;" onclick="modifying(this)">수정</a>
+                                                <a href="javascript:;" onclick="removing(this)">삭제</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 오늘의 일기 -->
+            <div class="MySpace__DiaryContainer jBoTV">
+                <a th:href="@{/myList/myDiary}">
+                <button class="Diary__Container juuNtL">
+                    <div class="Diary__Mark eYNaUp">
+                        <img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">
+                        <strong class="Diary__DiaryTitle ibIiPD">나의 바다</strong>
+                    </div>
+                    <div class="Diary__TitleContainer ksIvnE">
+                        <!-- DB에 오늘자 일기가 있으면 일기제목, 없으면 일기 쓰러가기 -->
+                        <strong class="Diary__Title hOVumI">이 달의 나는 어땠을까?</strong>
+                        <div class="Diary__SubTitleContainer ezRosO">
+                            <span>체크리스트를 달성했는지 일기를 통해 확인하세요!</span>
+                        </div>
+                    </div>
+                    <img class="Diary__diaryImage fSDzSK" src="/imgin/myQuest/questBadge/mySpaceDiary.png" alt="일기">
+                </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-root-login" style="display:none;">
+    <div>
+        <div class="Dialog__Container-sc-16kwpqb-0 htiyxZ">
+            <div class="BodyScrollLockContainer__Container-sc-19uqzq5-0 idpZym Dialog__StyledBodyScrollLockContainer-sc-16kwpqb-1 dCXZYJ">
+                <div class="Dialog__Content-sc-16kwpqb-5 ibqqJA">
+                    <div class="DialogDelete__Content-p8gubf-0 jZuxbV">
+                        <p>로그인 후 이용 가능합니다.</p>
+                    </div>
+                </div>
+                <div class="Dialog__ButtonGroup-sc-16kwpqb-6 bZEORB">
+                    <button width="100%" height="auto" color="black" class="Button-bqxlp0-0 Dialog__StyledButton-sc-16kwpqb-7 kXWQPc">
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script th:inline="javascript">
+    let userId = [[${session.userId}]];
+    if(!userId){
+        $("#modal-root-login").css("display","block")
+    }
+
+    $(".bZEORB").on("click",function () {
+        location.href="/login/index"
+    })
+</script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/mySpace/mySpace.js"></script>
+<script>
+    // 미디어쿼리 작용시 일간, 월간
+    $('.gRnEmw').hide();
+    const media = matchMedia("screen and (min-width: 790px)")
+
+    if($(window).width() <= 770)
+    {
+        console.log('dd');
+        $('.gRnEmw').show();
+        $('.month').hide();
+
+    } else {
+        // change functionality for larger screens
+        console.log('ff');
+        $('.gRnEmw').hide();
+        $('.today').show();
+        $('.month').show();
+    }
+
+    media.addListener((a) => {
+        console.log($(window).width());
+        if($(window).width() <= 770)
+        {
+            console.log('dd');
+            $('.gRnEmw').show();
+            $('.month').hide();
+
+        } else {
+            // change functionality for larger screens
+            console.log('ff');
+            $('.gRnEmw').hide();
+            $('.today').show();
+            $('.month').show();
+        }
+    })
+</script>
+<script>
+    // 이전,이후 버튼 , 월별 날짜
+    const $restBtn = $(".buttonRest");
+    const selectDateNow = $(".dateTitle").text();
+
+    function show(){
+        $.ajax({
+            url: "/month/"+selectDateNow+"-01",
+            type: "get",
+            success:showList
+        })
+    }
+
+    show();
+
+    $restBtn.on("click",function () {
+        var $date = $(".dateTitle").text();
+        $.ajax({
+            url: "/month/"+$date+"-01",
+            type: "get",
+            success:showList
+        })
+    })
+
+    function showList(result){
+        let text= "";
+        let inner = "";
+        $(result[1]).each((i,item,v)=>{
+            var selectTime = item.split("T")[0];
+
+            text += `<li class="noticeDayWrap">`;
+            text += `<span class="day selectTimes_1h">`+selectTime +`</span>`;
+            text += `</li>`;
+        })
+
+        $("#monthWrapper_1h").html(text);
+        $(result[0]).each((i,item)=>{
+            inner='';
+            var selectTime2 = item.toDoListSelectDate.split("T")[0];
+            inner += `<ul>`;
+            inner += `<li class="noticeContentWrap">`;
+            inner += `<input type="hidden" name="toDoListId" value="`+item.toDoListId+`">`
+            inner += `<input type="hidden" name="userId" value="`+item.userId+`">`
+            inner += `<input type="hidden" name="toDoListContent" value="`+item.toDoListContent+`">`
+            inner += `<input type="hidden" name="toDoListSelectDate" value="`+item.toDoListSelectDate+`">`
+            inner += `<div class="left">`;
+            inner += `<p class="categoryAndDate">`;
+            inner += `<span>`+item.toDoListContent+`</span>`;
+            inner += `</p>`;
+            inner += `</div>`;
+            inner += `<div class="btnWrap right">`;
+            inner += `<a href="javascript:;" onclick="modifying(this)">수정</a>`;
+            inner += `<a href="javascript:;" id="todoDeleteBtn_1h">삭제</a>`;
+            inner += `</div>`;
+            inner += `</li>`;
+            inner += `</ul>`;
+
+            $(".selectTimes_1h").each((i,item)=>{
+                if($(item).text()==selectTime2){
+                    $(item).after(inner);
+                }
+            })
+        })
+
+    }
+    //수정
+    $(".Fade__Wrapper").on("click","#todoUpdateBtn_1h",function () {
+        // const $btnWrap = $(this).closest('.btnWrap');
+        let bno = $(this).closest(".noticeContentWrap").find("input[name=toDoListId]").val();
+        let toDoListContent = $("#content_1h").val();
+        if(!toDoListContent){
+            alert("변경할 내용이 없습니다.")
+            return;
+        }
+
+        $.ajax({
+            url: "/month/"+bno,
+            data: {toDoListId:bno, toDoListContent:toDoListContent},
+            type:"post",
+            success: function(result){
+                // let aText = '';
+                // let content = '';
+                // aText += `<a href="javascript:;" onclick="modifying(this)">수정</a>`;
+                // aText += `<a href="javascript:;" onclick="removing(this)">삭제</a>`;
+                // $btnWrap.empty();
+                // $btnWrap.append(aText);
+                // $btnWrap.prev().children('.categoryAndDate').html(`<span>`+result.toDoListContent+`</span>`);
+                show();
+                updateShow();
+            }
+
+        })
+    })
+    updateShow()
+    function updateShow(){
+        $.ajax({
+            url: "/month/now",
+            type:"put",
+            success: function(result){
+                let text= '';
+                $(result).each((i,item)=>{
+
+                    text += `<li class="noticeContentWrap">`
+                    text += `<input type="hidden" name="toDoListId" value="`+item.toDoListId+`">`
+                    text += `<input type="hidden" name = "toDoListSelectDate" value="`+item.toDoListSelectDate+`">`
+                    text += `<input type="hidden" name = "userId" value="`+item.userId+`">`
+                    text += `<div class="left">`
+                    text += `<p class="categoryAndDate">`
+                    text += `<span>`+item.toDoListContent+`</span>`
+                    text += `</p>`
+                    text += `</div>`
+                    text += `<div class="btnWrap right">`
+                    text += `<a href="javascript:;" onclick="modifying(this)">수정</a>`
+                    text += `<a href="javascript:;" id="todoDeleteBtn_1h">삭제</a>`
+                    text += `</div>`
+                    text += `</li>`
+                })
+
+                $(".todayList_1h").next().html(text);
+            }
+
+        })
+
+    }
+
+    //    삭제
+    $(".Fade__Wrapper").on("click","#todoDeleteBtn_1h",function () {
+
+        let bno = $(this).closest(".noticeContentWrap").find("input[name=toDoListId]").val();
+
+        $.ajax({
+            url: "/month/"+bno,
+            type: "delete",
+            success:function (result) {
+                if(result=='success'){
+                    alert("삭제 성공!")
+                    show()
+                    updateShow()
+                }
+            }
+        })
+    })
+
+    getToday();
+    function getToday(){
+        $.ajax({
+            url:"/month/now",
+            type:"patch",
+            success:function(result){
+                var today = result;
+                $(".todayList_1h").html(today);
+            }
+        })
+    }
+
+
+
+</script>
+
+</body>
+</html>

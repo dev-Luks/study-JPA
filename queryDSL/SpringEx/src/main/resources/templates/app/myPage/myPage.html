@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIpFwCZ0TNWjZV_oDbG6PttZ-tGS9m-HZRULv9iAT-pEn-hzV88sokgdWw2U_65MkBTbheiqaax2nlIOZkjLm3md7vpmpdVpre9YlzA4iQ7zi4WL7YDXP36A28XAkwZWcYGeq7v7UJ1GHyXVOMvzQxc0LH7Spqe7Ybl31dUqjgDh7oz63ZRaowjl2Mzw/s1600/myoceanlogo.png">
+  <title>마이페이지 - 나의 바다(MyOcean)</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/7f85a56ba4.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700">
+  <link rel="stylesheet" href="/css/myPage/myPage.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/fix/header.css">
+  <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<div th:if="${session.userId}">
+  <header th:replace="/app/fix/header.html :: header"/>
+</div>
+<div th:unless="${session.userId}">
+  <header th:replace="/app/fix/headerModify.html:: header"/>
+</div>
+<body class="fontLoaded">
+<div id="app">
+  <div class="App__AppWrapper-nc5ti6-0 idXWQn">
+    <div class="Top__TopToastMessage-boaj4f-0 ToastContainer__ExtendedTopToastMessage-sqfjqn-2 hKZUBk" style="top:-88px;"></div>
+    <div class="ToastContainer__BottomToastWrapper-sqfjqn-0 boEfOZ">
+      <div class="PageWrapper-sc-1w87j10-0 ToastContainer__ToastPageWrapper-sqfjqn-1 eskQgv"></div>
+    </div>
+    <div class="PageWrapper-sc-1w87j10-0 bScXKt">
+      <a th:if="${session.userId}=='1'" class="MyPage__UserPropertyContainer-sc-8hrgc7-1 dDCuWg" width="100%" height="56px" font-size="16px" color="#f4f4f4" th:href="@{/manager/index}">관리자 페이지</a>
+      <div th:unless="${session.userId}=='1'" class="MyPage__UserPropertyContainer-sc-8hrgc7-1 dduMk">
+        <div>
+          <a href="/myPoint/index">
+            <div class="UserProperty__Title-xpx7mx-0 eFrFPC">포인트</div>
+            <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${userDTO.userTotalPoint}"></div>
+          </a>
+        </div>
+        <a href="/myList/myDiary">
+          <div class="UserProperty__Title-xpx7mx-0 eFrFPC">일기</div>
+          <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${diaryCount}"></div>
+        </a>
+        <a href="/myList/myListTotal">
+          <div class="UserProperty__Title-xpx7mx-0 fbNqgy">커뮤니티</div>
+          <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${communityPostCount}"></div>
+        </a>
+        <a href="/myQuest/completeQuest">
+          <div class="UserProperty__Title-xpx7mx-0 eFrFPC">달성퀘스트</div>
+          <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${questAchievementCount}"></div>
+        </a>
+        <a href="/myGroup/joinGroup">
+          <div class="UserProperty__Title-xpx7mx-0 eFrFPC">모임</div>
+          <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${groupCount}"></div>
+        </a>
+        <a href="/myAlarm/myAlarm">
+          <div class="UserProperty__Title-xpx7mx-0 eFrFPC">알림</div>
+          <div class="UserProperty__Value-xpx7mx-1 yiVA-d" th:text="${alarmCount}"></div>
+        </a>
+      </div>
+      <div class="MyPage__FripBadgeContainer-sc-8hrgc7-2 jBoTV">
+        <a href="/myQuest/todayQuest">
+          <button class="FripBadge__Container-sc-1symmx5-0 juuNtL">
+            <div class="FripBadge__BadgeMark-sc-1symmx5-1 eYNaUp">
+              <img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">
+              <strong class="FripBadge__BadgeTitle-sc-1symmx5-2 ibIiPD">퀘스트</strong>
+            </div>
+            <div class="FripBadge__TitleContainer-sc-1symmx5-3 ksIvnE">
+              <strong class="FripBadge__Title-sc-1symmx5-4 hOVumI">채워나가는 재미! 오늘의 퀘스트</strong>
+              <div class="FripBadge__SubTitleContainer-sc-1symmx5-5 ezRosO">
+                <span class="FripBadge__SubTitle-sc-1symmx5-10 kdLIth">오늘의 퀘스트 깰 사람 손🙋🏻‍♀</span>
+              </div>
+            </div>
+            <img class="FripBadge__BadgeImage-sc-1symmx5-11 fSDzSK" src="https://res.cloudinary.com/frientrip/image/upload/q_auto/11%E1%84%8B%E1%85%AF%E1%86%AF%20%E1%84%87%E1%85%A2%E1%84%8C%E1%85%B5_%E1%84%92%E1%85%B3%E1%86%A8%E1%84%87%E1%85%A2%E1%86%A8_42e6afd5ce1bc133fe3be64da971ce514ff84ff104829898157b9a7aa13f5026" alt="representative badge">
+          </button>
+        </a>
+      </div>
+
+      <header class="MyProfilePage__HeaderContainer-sc-162q6w5-0 cLqaPy">
+        <section class="PageWrapper-sc-1w87j10-0 bScXKt">
+          <article class="PageBetweenTitle__PageBetweenTitleContainer-vzvjj2-0 fFriVo">
+            <h1 class="PageBetweenTitle__Title-vzvjj2-1 fJJorn">내 정보</h1>
+            <button class="PageBetweenTitle__Button-vzvjj2-2 jMUPmW">저장</button>
+          </article>
+        </section>
+      </header>
+      <section class="MyProfilePage__InfoContainer-sc-162q6w5-1 khzDiS">
+        <section class="PageWrapper-sc-1w87j10-0 bScXKt">
+
+          <!--파일 이름-->
+          <input data-v-72dffd28="" th:field="${userDTO.userFileName}" name="userFileName" type="text" maxlength="40" class="form-control userFileName" style="display:none;">
+          <!--파일 경로-->
+          <input data-v-72dffd28="" th:field="${userDTO.userFilePath}" name="userFilePath" type="text" maxlength="40" class="form-control userFilePath" style="display:none;">
+          <!--파일 크기-->
+          <input data-v-72dffd28="" th:field="${userDTO.userFileSize}" name="userFileSize" type="text" maxlength="40" class="form-control userFileSize" style="display:none;">
+          <!--파일 UUID-->
+          <input data-v-72dffd28="" th:field="${userDTO.userFileUuid}" name="userFileUuid" type="text" maxlength="40" class="form-control userFileUuid" style="display:none;">
+
+          <article class="MyProfilePage__ImageContainer-sc-162q6w5-3 iOgbWN" onclick="$('.fSxFPc').click()">
+            <img th:if="${userDTO.userFileName}" th:src="@{/mypage/display(fileName=${userDTO.userFilePath} + '/' + ${userDTO.userFileUuid} + '_' + ${userDTO.userFileName})}" alt="profile-image" class="MyProfilePage__ThumbnailImage-sc-162q6w5-4 gFQPgt">
+            <img th:unless="${userDTO.userFileName}" th:src="@{/imgin/user.png}" alt="profile-image" class="MyProfilePage__ThumbnailImage-sc-162q6w5-4 gFQPgt">
+
+            <div class="MyProfilePage__ImageCameraContainer-sc-162q6w5-5 elHCaO">
+              <img class="MyProfilePage__CameraIamge-sc-162q6w5-6 epcUtq" src="data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.72386 3.05752L10.4714 3.80507C10.5964 3.93009 10.766 4.00032 10.9428 4.00033H12.6667C13.403 4.00033 14 4.59728 14 5.33366V11.3337C14 12.07 13.403 12.667 12.6667 12.667H3.33333C2.59695 12.667 2 12.07 2 11.3337V5.33366C2 4.59728 2.59695 4.00033 3.33333 4.00033H5.05719C5.234 4.00032 5.40357 3.93009 5.52859 3.80507L6.27614 3.05752C6.52619 2.80747 6.86533 2.66699 7.21895 2.66699H8.78105C9.13467 2.66699 9.47381 2.80747 9.72386 3.05752ZM10.6667 8.00033C10.6667 9.47308 9.47276 10.667 8 10.667C6.52724 10.667 5.33333 9.47308 5.33333 8.00033C5.33333 6.52757 6.52724 5.33366 8 5.33366C9.47276 5.33366 10.6667 6.52757 10.6667 8.00033ZM11.5 6.00024C11.7761 6.00024 12 5.77639 12 5.50024C12 5.2241 11.7761 5.00024 11.5 5.00024C11.2239 5.00024 11 5.2241 11 5.50024C11 5.77639 11.2239 6.00024 11.5 6.00024Z' fill='white'/%3E %3C/svg%3E">
+            </div>
+          </article>
+          <input class="MyProfilePage__FileInput-sc-162q6w5-2 fSxFPc" name="fSxFPc" accept="image/*" type="file">
+          <article class="MyProfilePage__InputContainer-sc-162q6w5-7 dVaxhg">
+            <div>
+              <label class="TextField__Label-sc-1l9o56e-0 fPrGda">닉네임</label>
+              <div class="TextField__InputWrapper-sc-1l9o56e-1 gldLBs">
+                <div th:if="${session.userId}">
+                  <input type="text" name="nickname" class="TextField__Input-sc-1l9o56e-2 gGztpV" th:value="${userDTO.userNickname}">
+                </div>
+                <div th:unless="${session.userId}">
+                  <input type="text" name="nickname" class="TextField__Input-sc-1l9o56e-2 gGztpV" th:value="">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="TextField__Label-sc-1l9o56e-0 fPrGda">이메일</label>
+              <div class="TextField__InputWrapper-sc-1l9o56e-1 gldLBs">
+                <div th:if="${session.userId}">
+                  <input class="TextField__Input-sc-1l9o56e-2 gGztpV" disabled="" th:value="${session.userEmail}">
+                </div>
+                <div th:unless="${session.userId}">
+                  <input class="TextField__Input-sc-1l9o56e-2 gGztpV" disabled="" th:value="">
+                </div>
+
+              </div>
+            </div>
+            <div class="MyProfilePage__PasswordInputContainer-sc-162q6w5-8 cZDino">
+              <div>
+                <label class="TextField__Label-sc-1l9o56e-0 fPrGda">비밀번호</label>
+                <div class="TextField__InputWrapper-sc-1l9o56e-1 gldLBs">
+                  <input class="TextField__Input-sc-1l9o56e-2 gGztpV" type="password" disabled="" value="0000000">
+                </div>
+              </div>
+              <div class="MyProfilePage__ButtonContainer-sc-162q6w5-9 dkRCby">
+                <button class="Outlined__Button-qqupyj-0 eAbBXA" type="button"><a href="/myPage/passwordChange">변경하기</a></button>
+              </div>
+            </div>
+          </article>
+
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
+<!--모달 추가-->
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none;">
+  <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show" aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <span tabindex="0"></span>
+      <!--저장 확인-->
+      <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content" style="">
+        <!---->
+        <div id="__BVID__123___BV_modal_body_" class="modal-body">
+          <div class="text-center p-3"><div class="text-frip-primary my-3">
+            <i class="" style="font-size: 2.5rem;"></i>
+          </div>
+            <h2></h2>
+            <div>
+              <div></div>
+              <div>
+                <div>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+          <div class="text-center p-3 container">
+            <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+              확인
+            </button>
+          </div>
+        </footer>
+      </div>
+      <span tabindex="0"></span>
+    </div>
+  </div>
+  <div id="__BVID__287___BV_modal_backdrop_" class="modal-backdrop"></div>
+</div>
+<!--모달 추가-->
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myPage/myPage.js"></script>
+</html>

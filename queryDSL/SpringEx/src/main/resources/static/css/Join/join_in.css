@@ -1,0 +1,295 @@
+::before, ::after {
+	text-decoration: inherit;
+	vertical-align: inherit;
+}
+
+::selection {
+	background-color: #b3d4fc;
+	color: #000000;
+	text-shadow: none;
+}
+
+html, body {
+	width: 100%;
+	font-size: 14px;
+	color: black;
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+html {
+	box-sizing: border-box;
+	cursor: default;
+	font-family: sans-serif;
+	line-height: 1.5;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+* {
+	outline: none;
+	font-family: inherit;
+}
+
+*, ::before, ::after {
+	background-repeat: no-repeat;
+	box-sizing: inherit;
+}
+
+body.fontLoaded {
+	font-family: "SUIT", "UI Frip", "Noto Sans KR", Helvetica, Arial, sans-serif;
+}
+
+body {
+	font-family: "SUIT", "UI Frip", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+	width: 100%;
+	font-size: 14px;
+	color: black;
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+body {
+	margin: 0;
+}
+
+#app {
+	background-color: white;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.idXWQn {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	min-height: 100vh;
+}
+
+.hKZUBk {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 88px;
+	padding: 48px 0px 16px;
+	background-color: rgb(2, 74, 149);
+	color: white;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	z-index: 4000;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition: top 100ms linear 0s;
+}
+
+.boEfOZ {
+	position: fixed;
+	left: 0px;
+	width: 100%;
+	z-index: 4000;
+	bottom: 34px;
+}
+
+.eskQgv {
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: flex-start;
+	margin: 0px auto;
+	max-width: 808px;
+	width: 100%;
+	padding: 0px 20px;
+	min-height: 1px;
+}
+
+.ghbiEC {
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: flex-start;
+	margin: 0px auto;
+	max-width: 808px;
+	width: 100%;
+	padding: 0px;
+	min-height: 653px;
+}
+
+.bvPUqU {
+	margin-top: 20px;
+}
+
+.gVBJBr {
+	width: 100%;
+	display: flex;
+	-moz-box-pack: center;
+	justify-content: center;
+	-moz-box-align: center;
+	align-items: center;
+	height: 50px;
+	position: relative;
+}
+
+.gVBJBr h3 {
+	font-size: 18px;
+	line-height: 26px;
+	letter-spacing: -0.54px;
+	color: rgb(51, 51, 51);
+	text-align: center;
+	font-weight: bold;
+	margin: 0px;
+}
+
+.fLECcs {
+	width: 100%;
+	max-width: 400px;
+	margin: 0px auto 60px;
+	padding: 24px 20px;
+}
+
+.iRBMai {
+	width: 100%;
+	padding: 14px 14px 12px;
+	color: rgb(17, 17, 17);
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: -0.42px;
+	border-radius: 3px;
+	background-color: rgb(250, 250, 250);
+	border: 1px solid rgb(238, 238, 238);
+	margin: 4px 0px 8px;
+	appearance: textfield;
+}
+
+a, area, button, input, label, select, textarea, [tabindex] {
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+button, input {
+	overflow: visible;
+}
+
+button, input, select, textarea {
+	background-color: transparent;
+	border-style: none;
+	color: inherit;
+	font-size: 1em;
+	margin: 0;
+}
+
+.iRBMai::placeholder {
+	color: rgb(170, 170, 170);
+}
+
+.cIOZzg {
+	margin-bottom: 6px;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.36px;
+	color: rgb(153, 153, 153);
+}
+
+p, label {
+	margin: 0px;
+}
+
+button:disabled {
+	cursor: not-allowed;
+}
+
+.chSrfn {
+	width: 100%;
+	height: 56px;
+	line-height: 24px;
+	padding: 0px 13px;
+	background-color: rgb(181, 197, 214);
+	text-align: center;
+	cursor: not-allowed;
+	border-radius: 10px;
+	color: rgb(244, 244, 244);
+	font-size: 16px;
+	margin-top: 44px;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+	-webkit-appearance: button;
+}
+
+button {
+	cursor: pointer;
+}
+
+button, select {
+	text-transform: none;
+}
+
+button, input {
+	overflow: visible;
+}
+
+/* js에서 사용되는 스타일 */
+.bViOzS {
+	margin-bottom: 6px;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.36px;
+	color: rgb(222, 28, 34);
+}
+
+.hYhAPw:focus {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(0, 117, 239);
+}
+
+.hYhAPw {
+	width: 100%;
+	padding: 14px 14px 12px;
+	color: rgb(17, 17, 17);
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: -0.42px;
+	border-radius: 3px;
+	background-color: rgb(250, 250, 250);
+	margin: 4px 0px 8px;
+	border: 1px solid rgb(222, 28, 34);
+	appearance: textfield;
+}
+
+:focus-visible {
+	outline: 1px dotted ButtonText;
+}
+.bViOzSS {
+	margin-bottom: 6px;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.36px;
+	color: rgb(222, 28, 34);
+}
+
+.bViOzSSS {
+	margin-bottom: 6px;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.36px;
+	color: rgb(222, 28, 34);
+}
+
+.foCOgK {
+	width: 100%;
+	height: 56px;
+	line-height: 24px;
+	padding: 0px 13px;
+	background-color: rgb(0, 117, 239);
+	text-align: center;
+	cursor: pointer;
+	border-radius: 10px;
+	color: rgb(255, 255, 255);
+	font-size: 16px;
+	margin-top: 44px;
+}
+/* js에서 사용되는 스타일 */

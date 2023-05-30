@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/myList/myList.css">
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body style="margin:0;">
+<header th:replace="/app/fix/header.html :: header"></header>
+<div id="list_page_wrapper">
+    <div id="page_title_wrapper">
+        <h1>작성된 게시글 없는 페이지 임시용</h1>
+    </div>
+    <div th:replace="/app/myList/myList.html :: myListCategory"></div>
+    <div id="table_wrapper">
+        <div class="Fade__Wrapper-sc-1s0ipfq-0 koasSX" style="opacity: 1; display: block;">
+            <div class="Base__Wrapper-cxjyd-0 eOsQaF"><img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='59' height='58' viewBox='0 0 59 58'%3E %3Cpath fill='%23777' d='M50.065 8.455c-11.272-11.273-29.818-11.273-41.09 0-11.273 11.272-11.273 29.818 0 41.09 11.272 11.273 29.818 11.273 41.09 0 11.273-11.272 11.273-29.454 0-41.09zm-5.814 5.175c7.563 7.738 8.283 19.896 2.16 28.37L16.52 11.051c8.643-6.263 20.168-5.158 27.73 2.58zM13.906 44.37C6.202 36.632 5.469 24.474 11.705 16L42.52 46.949c-9.171 6.263-20.91 5.158-28.614-2.58z'/%3E %3C/svg%3E"
+                    alt="피드가 없습니다."><strong class="Base__Header-cxjyd-1 bLfngk">피드가 없습니다.</strong>
+                <div class="Base__Description-cxjyd-2 eFwpFm">아직 올리신 피드가 없습니다.</div>
+            </div>
+            <div class="view__FeedListWrapper-sc-1fff32g-0 ciajVR"></div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myList/myList.js"></script>
+</html>

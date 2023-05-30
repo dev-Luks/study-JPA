@@ -1,0 +1,273 @@
+.wholeWrap {
+    display: grid;
+    grid-template-columns: 28% 45%;
+    grid-gap: 10px;
+}
+
+.dateForm{
+    grid-template-rows: 74px 450px;
+}
+
+.dateTitle h1 {
+    margin: 30px 0px 20px;
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+/*캘린더*/
+.css-16df71f {
+    flex: 1 1 0%;
+    margin-bottom: 20px;
+    float:right;
+}
+
+.css-8foe98 {
+    position: relative;
+    display: flex;
+    width: 100%;
+    border-width: 1px 1px 0px;
+    border-style: solid solid none;
+    border-top-color: rgb(228, 229, 237);
+    border-right-color: rgb(228, 229, 237);
+    border-left-color: rgb(228, 229, 237);
+    border-image: initial;
+    border-bottom-color: initial;
+}
+
+.css-10lvc7b {
+    flex: 0 0 auto;
+    width: 33.3%;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(48, 52, 65);
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: solid 5px rgb(54, 85, 221);
+}
+
+.css-1pm7srj {
+    flex: 0 0 auto;
+    width: 33.3%;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(154, 155, 167);
+    cursor: pointer;
+}
+
+.dayText{
+    font-size: 10em;
+}
+
+.dayTextArrow{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2px;
+}
+
+.arrow{
+    font:inherit;
+    font-size:12px;
+    cursor:pointer;
+    color: rgb(68, 68, 73);
+}
+
+
+
+.css-zr1uxp {
+    color: rgb(48, 52, 65);
+    border: 1px solid rgb(228, 229, 237);
+    display: block;
+    height:519px;
+}
+
+.css-oys1qn {
+    padding: 8px 24px 0px;
+    margin-bottom: 24px;
+    height: 78%;
+}
+
+.css-vvmm1k {
+    color: rgb(48, 52, 65);
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 15px 0px;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 5px;
+    line-height: 18px;
+    padding: 11px 20px;
+    display: inline-flex;
+}
+
+.css-1ts4mzn {
+    font-size: 12px;
+    color: rgb(114, 117, 133);
+    font-weight: 400;
+}
+
+.css-1pu6uuk {
+    position: relative;
+    margin: 16px 0px;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    background: rgb(250, 250, 252);
+    color: rgb(48, 52, 65);
+}
+
+.css-3hevqo {
+    color: rgb(17, 106, 212);
+    font-weight: 600;
+}
+
+.css-hqpb6q {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 93px;
+    height: 32px;
+    text-indent: -9999px;
+    background: url(https://d2v80xjmx68n4w.cloudfront.net/assets/gig-detail/desktop/btn-gig-coupon-download%403x.png) center center / contain no-repeat;
+    border: 0px;
+    cursor: pointer;
+}
+
+.css-18jj9yv {
+    color: rgb(48, 52, 65);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.css-fzymn {
+    color: rgb(48, 52, 65);
+    font-size: 14px;
+    margin-top: 4px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.css-1wdoso3 {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 16px;
+}
+
+.css-1knubku {
+    color: rgb(48, 52, 65);
+    font-size: 14px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    height: 24px;
+    flex-basis: 50%;
+    margin-top: 4px;
+}
+
+.css-4wb79p {
+    display: inline-block;
+    margin: 6px;
+    width: 12px;
+    height: 2px;
+    background: rgb(228, 229, 237);
+    border-radius: 1px;
+}
+
+
+.css-klg5aa {
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    border-radius: 4px;
+    line-height: 1;
+    font-weight: 500;
+    transition: background-color 0.3s ease 0s, border-color 0.3s ease 0s;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+    height: 52px;
+    font-size: 16px;
+    padding: 0px 24px;
+    min-width: 80px;
+    background-color: rgb(54, 85, 211);
+    border-color: rgb(54, 85, 211);
+    color: rgb(255, 255, 255);
+}
+
+.css-1m0g4m6 {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    margin: 13px 8px 8px;
+}
+
+.css-1kz857u {
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    border-radius: 4px;
+    line-height: 1;
+    font-weight: 500;
+    transition: background-color 0.3s ease 0s, border-color 0.3s ease 0s;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    white-space: nowrap;
+    max-width: 100%;
+    height: 11px;
+    font-size: 12px;
+    padding: 0px 0px;
+    min-width: 48px;
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(48, 52, 65);
+}
+
+.css-16df71f.e12i9j8n0{
+    width:48%;
+    margin-top: 30px;
+}
+
+.e1k52epl0{
+    cursor:pointer;
+    width:48%;
+    justify-content: center;
+}
+
+.e1k52epl0:hover{
+    background-color: #F6FAFE;
+}
+
+.e1k52epl0.check{
+    background-color: rgb(54, 85, 211);
+    color: white;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/myQuest/todayQuest.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/myPage/myPage.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/fix/header.css">
+    <link rel="stylesheet" href="/css/fix/footer.css">
+</head>
+<body>
+<div tabindex="-1" role="dialog" id="__BVID__287___BV_modal_outer_" style="position: absolute; z-index: 1040; display: none">
+    <div id="__BVID__287" role="dialog" aria-describedby="__BVID__287___BV_modal_body_" class="modal fade show"
+         aria-modal="true" style="display: block; padding-left: 17px;background: rgba(0, 0, 0, 0.35);">
+        <div id="__BVID__123___BV_modal_content_" tabindex="-1" class="modal-content-alert">
+            <!---->
+            <div id="__BVID__123___BV_modal_body_" class="modal-body">
+                <div class="text-center p-3">
+                    <div class="text-frip-primary my-3">
+                        <i class="" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h2>이미 달성한 퀘스트예요!</h2>
+                    <div>
+                        <div></div>
+                        <div>
+                            <div>
+                                <span>벌써 오늘의 퀘스트를 끝내셨네요! 부지런쟁이💖!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer id="__BVID__123___BV_modal_footer_" class="modal-footer">
+                <div class="text-center p-3 container">
+                    <button type="button" class="saveRequest btn frip-button btn-frip-primary btn-tab">
+                        닫기
+                    </button>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<header th:replace="/app/fix/header.html :: header"></header>
+<div class="PageWrapper-sc-1w87j10-0 dqLSTf">
+    <!--퀘스트 카테고리-->
+    <div class="NavigationWrapper-z696u8-0 ijXgoc">
+        <a href="/myQuest/todayQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="300"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 Ppvwe">
+                <div>오늘의 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/completeQuest">
+            <button width="auto" height="60px" font-size="14px" font-weight="bold"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>완료한 퀘스트</div>
+            </button>
+        </a>
+        <a href="/myQuest/myBadge">
+            <button width="auto" height="60px" font-size="14px" font-weight="300"
+                    class="Button-bqxlp0-0 NavigationButton__StyledButton-sc-121z7og-0 NbmIN">
+                <div>획득한 뱃지</div>
+            </button>
+        </a>
+    </div>
+    <div id="todayQuest">
+
+    </div>
+    <!--모달창-->
+
+
+</div>
+</div>
+</div>
+<footer th:replace="/app/fix/footer.html :: footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="/js/fix/header.js"></script>
+<script src="/js/myPoint/myPoint.js"></script>
+<script src="/js/myQuest/todayQuest.js"></script>
+<script>
+    show();
+
+    function show() {
+        todayQuestService.getTodayQuest(showTodayQuest);
+    }
+
+
+    function showTodayQuest(questDTO) {
+        console.log(questDTO.questContent)
+        console.log(questDTO.questContent.includes("아직"))
+        if (questDTO.questContent.includes("아직")) {
+            let text = '';
+            text += `<div class="MyPage__FripBadgeContainer-sc-8hrgc7-2 jBoTV">`
+            text += `<button class="FripBadge__Container-sc-1symmx5-0 juuNtL">`
+            text += `<div class="FripBadge__BadgeMark-sc-1symmx5-1 eYNaUp" style="width: 110px">`
+            text += `<img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">`
+            text += `<strong class="FripBadge__BadgeTitle-sc-1symmx5-2 ibIiPD">` + questDTO.questName + `</strong>`
+            text += `</div>`
+            text += `<div class="FripBadge__TitleContainer-sc-1symmx5-3 ksIvnE">`
+            text += `<strong class="FripBadge__Title-sc-1symmx5-4 hOVumI">` + questDTO.questName + `</strong>`
+            text += `<div class="FripBadge__SubTitleContainer-sc-1symmx5-5 ezRosO">`
+            text += `<span class="FripBadge__SubTitle-sc-1symmx5-10 kdLIth">` + questDTO.questContent + `</span>`
+            text += `</div>`
+            text += ` </div>`
+            text += `</button>`
+            text += `<div class="completeWrap" style="display:none;">`
+            text += `</div>`
+            text += `</div>`
+
+            $("#todayQuest").html(text);
+        } else if (questDTO.checkTodayQuestAchievement) {
+            let text = "";
+            text += `<div class="MyPage__FripBadgeContainer-sc-8hrgc7-2 jBoTV">`
+            text += `<button class="FripBadge__Container-sc-1symmx5-0 juuNtL">`
+            text += `<div class="FripBadge__BadgeMark-sc-1symmx5-1 eYNaUp" style="width: 110px">`
+            text += `<img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">`
+            text += `<strong class="FripBadge__BadgeTitle-sc-1symmx5-2 ibIiPD">` + questDTO.questName + `</strong>`
+            text += `</div>`
+            text += `<div class="FripBadge__TitleContainer-sc-1symmx5-3 ksIvnE">`
+            text += `<strong class="FripBadge__Title-sc-1symmx5-4 hOVumI">` + questDTO.questContent + `</strong>`
+            text += `<div class="FripBadge__SubTitleContainer-sc-1symmx5-5 ezRosO">`
+            text += `<span class="FripBadge__SubTitle-sc-1symmx5-10 kdLIth">오늘의 퀘스트 깰 사람 손!🙋🏻‍♀</span>`
+            text += `</div>`
+            text += ` </div>`
+            text += `<img class="FripBadge__BadgeImage-sc-1symmx5-11 fSDzSK uncheckedBadge" src="/imgin/badge.png" alt="representative badge">`
+            text += `</button>`
+            text += `<div class="completeWrap" style="display:none;">`
+            text += `<span class="FripBadge__BadgeMark-sc-1symmx5-1 completeQuest" style="margin-right: 15px;"><a href="/myList/myDiary">일기쓰기</a></span>`
+            text += `<span class="FripBadge__BadgeMark-sc-1symmx5-1 completeQuest"><a href="/myList/myListFree">자랑하기</a></span>`
+            text += `</div>`
+            text += `</div>`
+
+            $("#todayQuest").html(text);
+        } else if (!questDTO.checkTodayQuestAchievement) {
+            let text = '';
+            text += `<div class="MyPage__FripBadgeContainer-sc-8hrgc7-2 jBoTV">`
+            text += `<button class="FripBadge__Container-sc-1symmx5-0 juuNtL">`
+            text += `<div class="FripBadge__BadgeMark-sc-1symmx5-1 eYNaUp" style="width: 110px">`
+            text += `<img src="data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M7.66667 8.39317L8.08667 10.2132C8.15333 10.4998 7.84 10.7265 7.58667 10.5732L6 9.61317L4.40667 10.5732C4.15333 10.7265 3.84 10.4998 3.90667 10.2132L4.33333 8.39984L2.93333 7.19317C2.70667 6.99984 2.82667 6.63317 3.12 6.6065L4.97333 6.4465L5.69333 4.73984C5.80667 4.4665 6.19333 4.4665 6.30667 4.73984L7.02667 6.43984L8.88 6.59984C9.17333 6.6265 9.29333 6.99317 9.06667 7.1865L7.66667 8.39317ZM0.793333 2.97984C0.313333 3.19317 0 3.67317 0 4.19984V7.33317C0 11.0332 2.56 14.4932 6 15.3332C9.44 14.4932 12 11.0332 12 7.33317V4.19984C12 3.67317 11.6867 3.19317 11.2067 2.97984L6.54 0.906504C6.19333 0.753171 5.8 0.753171 5.46 0.906504L0.793333 2.97984Z' fill='white'/%3E %3C/svg%3E" alt="badge icon">`
+            text += `<strong class="FripBadge__BadgeTitle-sc-1symmx5-2 ibIiPD">` + questDTO.questName + `</strong>`
+            text += `</div>`
+            text += `<div class="FripBadge__TitleContainer-sc-1symmx5-3 ksIvnE">`
+            text += `<strong class="FripBadge__Title-sc-1symmx5-4 hOVumI">` + questDTO.questContent + `</strong>`
+            text += `<div class="FripBadge__SubTitleContainer-sc-1symmx5-5 ezRosO">`
+            text += `<span class="FripBadge__SubTitle-sc-1symmx5-10 kdLIth">오늘의 퀘스트 깰 사람 손!🙋🏻‍♀</span>`
+            text += `</div>`
+            text += ` </div>`
+            text += `<img class="FripBadge__BadgeImage-sc-1symmx5-11 fSDzSK" src="/imgin/badge.png" alt="representative badge">`
+            text += `</button>`
+            text += `<div class="completeWrap" style="display:none;">`
+            text += `<span class="FripBadge__BadgeMark-sc-1symmx5-1 completeQuest" style="margin-right: 15px;"><a href="/myList/myDiary">일기쓰기</a></span>`
+            text += `<span class="FripBadge__BadgeMark-sc-1symmx5-1 completeQuest"><a href="/myList/myListFree">자랑하기</a></span>`
+            text += `</div>`
+            text += `</div>`
+
+            $("#todayQuest").html(text);
+        }
+    }
+
+    // 오늘의 퀘스트 뱃지 눌렀을 때 이미지 색상 변경(이벤트 위임)
+    $("#todayQuest").on("click", "img.FripBadge__BadgeImage-sc-1symmx5-11", function () {
+        if ($(this).attr("class").includes("uncheckedBadge")) {
+            $("img.FripBadge__BadgeImage-sc-1symmx5-11").attr("class", "FripBadge__BadgeImage-sc-1symmx5-11 fSDzSK");
+            $(".completeWrap").show();
+            todayQuestService.addTodayQuestAchievement();
+
+        } else {
+            console.log("else 들어옴");
+            $("#__BVID__287___BV_modal_outer_").css('display', 'block')
+
+        }
+
+    })
+
+    $(".saveRequest").on("click", function () {
+        $("#__BVID__287___BV_modal_outer_").css('display', 'none')
+    })
+
+</script>
+</html>
