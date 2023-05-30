@@ -1,5 +1,5 @@
 # JPA
-JPA 수업 내용 레파지토리입니다
+JPA 수업 내용입니다.
 
 ### ORM(Object Relational Mapping)
 
